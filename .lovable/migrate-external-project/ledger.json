@@ -1,0 +1,10 @@
+[
+ {"capability":"code","source":"big-site","outcome":"migrate","status":"verified","next_action":""},
+ {"capability":"schema","source":"drizzle/migrations","outcome":"migrate","status":"verified","next_action":""},
+ {"capability":"storage buckets","source":"5 private buckets","outcome":"migrate","status":"verified","next_action":"import file bytes"},
+ {"capability":"records","source":"old Cloud","outcome":"migrate","status":"pending","next_action":"user exports data"},
+ {"capability":"auth identities","source":"old Cloud","outcome":"migrate","status":"pending","next_action":"user export of users"},
+ {"capability":"secrets","source":"TELEGRAM_BOT_TOKEN, YOOKASSA_*, VK_ACCESS_TOKEN","outcome":"preserve","status":"pending","next_action":"request via secure form"},
+ {"capability":"schedules","source":"demo-reminders hourly","outcome":"preserve","status":"pending","next_action":"recreate after secrets"},
+ {"capability":"cutover","source":"rapportgame.ru, YooKassa/Telegram webhooks","outcome":"preserve","status":"pending","next_action":"after publish"}
+]
