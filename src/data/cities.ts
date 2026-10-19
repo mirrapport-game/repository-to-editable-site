@@ -10,7 +10,8 @@ import elenaVrnPhoto from "@/assets/hosts/elena-voronezh.jpg";
 import tsvetkovyPhoto from "@/assets/hosts/tsvetkovy.jpg";
 import korunskyPhoto from "@/assets/hosts/sergey-korunsky.jpg";
 import lednevPhoto from "@/assets/hosts/sergey-lednev.jpg";
-import nnPhoto from "@/assets/hosts/udovichenkov-selezneva.jpg";
+import nnPhoto1 from "@/assets/hosts/udovichenkov-original-1.jpg";
+import nnPhoto2 from "@/assets/hosts/udovichenkov-original-2.jpg";
 import nskPhoto from "@/assets/hosts/evgeny-novosibirsk.jpg";
 import evgenyIrkPhoto from "@/assets/hosts/evgeny-irkutsk.jpg";
 import vrublevskayaAsset from "@/assets/hosts/victoria-vrublevskaya-new.jpg";
@@ -46,6 +47,8 @@ export type Facilitator = {
   surname: string;
   /** Empty string = no photo yet; the page shows initials. */
   photo: string;
+  /** Optional extra photos; when present, the city page shows them as an auto-rotating slider. */
+  photos?: string[];
   /** Optional short intro video URL; loads only when the visitor presses play. */
   introVideo?: string;
   roles: string[];
