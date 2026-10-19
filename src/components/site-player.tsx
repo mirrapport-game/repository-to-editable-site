@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import { Pause, Play, SkipBack, SkipForward } from "lucide-react";
-import hereAndNow from "@/assets/here-and-now.mp3.asset.json";
-import segodnya from "@/assets/segodnya-sluchilos-vazhnoe.mp3.asset.json";
-import possoritsya from "@/assets/hochesh-possoritsya.mp3.asset.json";
+import hereAndNow from "@/assets/here-and-now.mp3";
+import segodnya from "@/assets/segodnya-sluchilos-vazhnoe.mp3";
+import possoritsya from "@/assets/hochesh-possoritsya.mp3";
 
 const TRACKS = [
-  { title: "Here and Now", url: hereAndNow.url },
-  { title: "Сегодня случилось важное", url: segodnya.url },
-  { title: "Хочешь поссориться из-за работы", url: possoritsya.url },
+  { title: "Here and Now", url: hereAndNow },
+  { title: "Сегодня случилось важное", url: segodnya },
+  { title: "Хочешь поссориться из-за работы", url: possoritsya },
 ];
 
 // Site-wide music: nothing is downloaded until the visitor presses Play.

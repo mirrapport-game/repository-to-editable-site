@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { openBookingWidget } from "@/components/booking-format";
 import { GameOrderForm } from "@/components/game-order-form";
 import { authorPortraitImage } from "@/data/site";
-import presentation from "@/assets/rapport-business-presentation.pdf.asset.json";
+import presentation from "@/assets/rapport-business-presentation.pdf";
 import { CountUp, DemoCallInvite, FlipCards, Reveal, TeamCheck } from "@/components/business-interactive";
 import businessCutout from "@/assets/rapport-business-cutout.webp";
 
@@ -55,7 +55,7 @@ export function BusinessOffer() {
             <p className="mt-6 max-w-2xl text-xl leading-8 text-background/90">Живой тренинг для сотрудников и руководителей, который превращает эмоциональные амбиции команды в мотивацию, сплочённость и результат.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" onClick={openBookingWidget}><CalendarDays />Обсудить игру для команды</Button>
-              <Button asChild size="lg" variant="secondary"><a href={presentation.url} target="_blank" rel="noreferrer"><Download />Презентация (PDF)</a></Button>
+              <Button asChild size="lg" variant="secondary"><a href={presentation} target="_blank" rel="noreferrer"><Download />Презентация (PDF)</a></Button>
             </div>
           </div>
           <img src={businessCutout} alt="Коробка игры «Раппóрт Бизнес»" width={640} height={640} className="mx-auto w-full max-w-sm drop-shadow-2xl transition-transform duration-700 hover:-translate-y-2" />
@@ -198,7 +198,7 @@ export function BusinessOffer() {
     <DemoCallInvite />
 
     <section className="game-story-booking"><div className="section-inner"><p className="eyebrow">Начните трансформацию команды</p><h2>Обсудим игру<br />для вашей компании</h2><p>Расскажите о команде и задаче — подберём формат и программу.</p><GameOrderForm gameTitle="Раппóрт Бизнес" />
-      <div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="outline"><a href={presentation.url} target="_blank" rel="noreferrer"><Download />Скачать презентацию</a></Button><Button asChild variant="outline"><a href="mailto:rapportower@gmail.com">rapportower@gmail.com <ArrowRight /></a></Button></div>
+      <div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="outline"><a href={presentation} target="_blank" rel="noreferrer"><Download />Скачать презентацию</a></Button><Button asChild variant="outline"><a href="mailto:rapportower@gmail.com">rapportower@gmail.com <ArrowRight /></a></Button></div>
     </div></section>
   </>;
 }

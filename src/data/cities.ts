@@ -1,5 +1,5 @@
-import natalyaPhoto from "@/assets/natalya-kireeva.webp.asset.json";
-import artemPhoto from "@/assets/artem-efimov-portrait.webp.asset.json";
+import natalyaPhoto from "@/assets/natalya-kireeva.webp";
+import artemPhoto from "@/assets/artem-efimov-portrait.webp";
 import marinaPhoto from "@/assets/hosts/marina-kravchenko.jpg";
 import andreyPhoto from "@/assets/hosts/andrey-feshchenko.jpg";
 import tatyanaPhoto from "@/assets/hosts/tatyana-otto.jpg";
@@ -10,15 +10,15 @@ import elenaVrnPhoto from "@/assets/hosts/elena-voronezh.jpg";
 import tsvetkovyPhoto from "@/assets/hosts/tsvetkovy.jpg";
 import korunskyPhoto from "@/assets/hosts/sergey-korunsky.jpg";
 import lednevPhoto from "@/assets/hosts/sergey-lednev.jpg";
-import nnPhotoAsset from "@/assets/hosts/udovichenkov-maya-new.jpg.asset.json";
-const nnPhoto = nnPhotoAsset.url;
+import nnPhotoAsset from "@/assets/hosts/udovichenkov-maya-new.jpg";
+const nnPhoto = nnPhotoAsset;
 import nskPhoto from "@/assets/hosts/evgeny-novosibirsk.jpg";
 import evgenyIrkPhoto from "@/assets/hosts/evgeny-irkutsk.jpg";
-import vrublevskayaAsset from "@/assets/hosts/victoria-vrublevskaya-new.jpg.asset.json";
-const vrublevskayaPhoto = vrublevskayaAsset.url;
+import vrublevskayaAsset from "@/assets/hosts/victoria-vrublevskaya-new.jpg";
+const vrublevskayaPhoto = vrublevskayaAsset;
 import koldashevaPhoto from "@/assets/hosts/olga-koldasheva.jpg";
-import samaraAsset from "@/assets/hosts/svetlana-tikhomirova-new.jpg.asset.json";
-const samaraPhoto = samaraAsset.url;
+import samaraAsset from "@/assets/hosts/svetlana-tikhomirova-new.jpg";
+const samaraPhoto = samaraAsset;
 import kemerovoPhoto from "@/assets/hosts/victoria-kemerovo.jpg";
 import elviraPhoto from "@/assets/hosts/elvira-spb.jpg";
 import dinaPhoto from "@/assets/hosts/dina-magdenko.webp";
@@ -26,8 +26,8 @@ import nikitinPhoto from "@/assets/hosts/alexander-nikitin.jpg";
 import katrinPhoto from "@/assets/hosts/katrin-krasnoyarsk.jpg";
 import natalyaKrsPhoto from "@/assets/hosts/natalya-krasnoyarsk.jpg";
 import timoshenkoPhoto from "@/assets/hosts/elena-timoshenko.jpg";
-import mariannaPhoto from "@/assets/hosts/marianna.png.asset.json";
-import panasyukPhoto from "@/assets/hosts/margarita-panasyuk.jpg.asset.json";
+import mariannaPhoto from "@/assets/hosts/marianna.png";
+import panasyukPhoto from "@/assets/hosts/margarita-panasyuk.jpg";
 import efremovaPhoto from "@/assets/hosts/tatyana-efremova.jpg";
 import moskvinaPhoto from "@/assets/hosts/maria-moskvina.jpg";
 
@@ -62,7 +62,7 @@ const artem: Facilitator = {
   slug: "artem-efimov",
   name: "Артём",
   surname: "Ефимов",
-  photo: artemPhoto.url,
+  photo: artemPhoto,
   roles: ["Автор серии игр «Раппóрт»", "Ведущий игр об отношениях и коммуникации", "Основатель Академии Раппóрт"],
   story: [
     "Артём Ефимов — автор серии психологических игр «Раппóрт». Он создаёт пространство, в котором сложные темы перестают быть тяжёлыми, а честный разговор становится началом настоящих изменений.",
@@ -106,8 +106,8 @@ const H = {
   moskvina: host("maria-moskaleva", "Мария", "Москалева", moskvinaPhoto, ["Москва"], ["Ведущая игр «Раппóрт»"], noInfo),
   tikhomirova: host("svetlana-tikhomirova", "Светлана", "Тихомирова", samaraPhoto, ["Самара"], ["Ведущая игр «Раппóрт»"], ["«Психологическая игра для всех, кто хочет улучшить отношения. Разбираем конфликты, учимся понимать друг друга»."], "https://t.me/rapport_samara"),
   victoriaKem: host("victoria-kemerovo", "Виктория", "", kemerovoPhoto, ["Кемерово"], ["Ведущая игр «Раппóрт»"], ["«Психологические игры для пар и тех, кто хочет улучшить отношения»."], "https://t.me/raportkemerovo"),
-  marianna: host("marianna-lenoblast", "Марианна", "", mariannaPhoto.url, ["Ленинградская область"], ["Ведущая игр «Раппóрт»"], noInfo),
-  panasyuk: host("margarita-panasyuk", "Маргарита", "Панасюк", panasyukPhoto.url, ["Краснодар"], ["Ведущая игр «Раппóрт»"], noInfo),
+  marianna: host("marianna-lenoblast", "Марианна", "", mariannaPhoto, ["Ленинградская область"], ["Ведущая игр «Раппóрт»"], noInfo),
+  panasyuk: host("margarita-panasyuk", "Маргарита", "Панасюк", panasyukPhoto, ["Краснодар"], ["Ведущая игр «Раппóрт»"], noInfo),
   efremova: host("tatyana-efremova", "Татьяна", "Ефремова", efremovaPhoto, ["Благовещенск"], ["Психолог-сексолог"], ["«Здесь про отношения с тобой и к себе»."], "https://t.me/sexologist_blg", "@Tatyana_Efremova"),
   elvira: host("elvira-spb", "Эльвира", "", elviraPhoto, ["Санкт-Петербург"], ["Ведущая игр «Раппóрт»"], ["Канал «Раппóрт — территория счастливых отношений»: как построить отношения, о которых мечтаешь."], "https://t.me/territoria_chastia"),
 };
@@ -123,7 +123,7 @@ const allCities: City[] = [
       slug: "natalya-kireeva",
       name: "Наталья",
       surname: "Киреева",
-      photo: natalyaPhoto.url,
+      photo: natalyaPhoto,
       roles: ["Практикующий психолог", "Коуч", "Парный семейный терапевт (ЭФТ)"],
       story: [
         "После множества трансформационных игр меня пригласили на «Раппóрт» как участницу. В процессе игры я увидела, как пары говорят о важном, о чём молчат годами. В тот же вечер я написала автору: «Я хочу приобрести „Раппóрт“ и проводить его в Иркутске». Это было импульсивное и самое верное профессиональное решение.",

@@ -2,13 +2,13 @@ import { useState } from "react";
 import { openBookingWidget } from "@/components/booking-format";
 import { ArrowDown, ArrowRight, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import zvPurple from "@/assets/zhit-vmeste-purple.webp.asset.json";
-import zvBlue from "@/assets/zhit-vmeste-blue.webp.asset.json";
-import bMc from "@/assets/beauty-master-client.webp.asset.json";
-import bLm from "@/assets/beauty-lead-master.webp.asset.json";
-import zhD from "@/assets/zh-devochka.webp.asset.json";
-import zhZh from "@/assets/zh-zhelaniya.webp.asset.json";
-import zhZd from "@/assets/zh-zdorovie.webp.asset.json";
+import zvPurple from "@/assets/zhit-vmeste-purple.webp";
+import zvBlue from "@/assets/zhit-vmeste-blue.webp";
+import bMc from "@/assets/beauty-master-client.webp";
+import bLm from "@/assets/beauty-lead-master.webp";
+import zhD from "@/assets/zh-devochka.webp";
+import zhZh from "@/assets/zh-zhelaniya.webp";
+import zhZd from "@/assets/zh-zdorovie.webp";
 import bizCover from "@/assets/rapport-business-cutout.webp";
 
 // Draft life situations written by the agent — replace with real game cards when the owner provides them.
@@ -63,9 +63,9 @@ const S = {
 };
 
 const GAMES = [
-  { label: "Раппóрт — Отношения", covers: [zvPurple.url, zvBlue.url], sets: [S.relF, S.relM], tags: ["Женская карта", "Мужская карта"] },
-  { label: "Раппóрт — Живая", covers: [zhD.url, zhZh.url, zhZd.url], sets: [S.self1, S.self2, S.self3], tags: ["Девочка внутри", "Я и мои желания", "Я и моё здоровье"] },
-  { label: "Раппóрт Beauty", covers: [bMc.url, bLm.url], sets: [S.beautyMC, S.beautyLM], tags: ["Мастер — клиент", "Руководитель — мастер"] },
+  { label: "Раппóрт — Отношения", covers: [zvPurple, zvBlue], sets: [S.relF, S.relM], tags: ["Женская карта", "Мужская карта"] },
+  { label: "Раппóрт — Живая", covers: [zhD, zhZh, zhZd], sets: [S.self1, S.self2, S.self3], tags: ["Девочка внутри", "Я и мои желания", "Я и моё здоровье"] },
+  { label: "Раппóрт Beauty", covers: [bMc, bLm], sets: [S.beautyMC, S.beautyLM], tags: ["Мастер — клиент", "Руководитель — мастер"] },
   { label: "Раппóрт Бизнес", covers: [bizCover], sets: [S.biz], tags: ["Ситуация"] },
 ];
 

@@ -6,7 +6,7 @@ import { GameOrderForm } from "@/components/game-order-form";
 import { Reveal } from "@/components/business-interactive";
 import { CountUp, PageMotion } from "@/components/motion";
 import { seoHead } from "@/lib/seo";
-import deck from "@/assets/rapport-investor-deck.pdf.asset.json";
+import deck from "@/assets/rapport-investor-deck.pdf";
 
 // Питч для инвесторов — все цифры и условия из брифа автора (Артём Ефимов). Страница не индексируется.
 const TITLE = "Раппорт Групп — инвестиции в рынок психологических игр";
@@ -48,7 +48,7 @@ function Investors() {
           <Button size="lg" onClick={toForm}>Инвестировать под 40% годовых</Button>
           <Button size="lg" variant="outline" className="border-background/40 bg-transparent text-background hover:bg-background/10" onClick={toForm}>Получить 10% компании за 1 млн ₽</Button>
           <Button size="lg" variant="ghost" asChild className="text-background hover:bg-background/10"><a href="/market">Анализ рынка</a></Button>
-          <Button size="lg" variant="ghost" asChild className="text-background hover:bg-background/10"><a href={deck.url} download="Rapport-Group-investor-deck.pdf"><Download /> Скачать презентацию (PDF)</a></Button>
+          <Button size="lg" variant="ghost" asChild className="text-background hover:bg-background/10"><a href={deck} download="Rapport-Group-investor-deck.pdf"><Download /> Скачать презентацию (PDF)</a></Button>
         </div>
         <div className="mt-14 grid grid-cols-2 gap-4 border-t border-background/20 pt-8 sm:grid-cols-5">
           {STATS.map(([v, l]) => <div key={l}><CountUp value={v!} className="font-display text-4xl text-accent sm:text-5xl" /><p className="mt-1 text-sm text-background/80">{l}</p></div>)}
@@ -175,7 +175,7 @@ function Investors() {
       <h2>Оставьте заявку<br />на встречу</h2>
       <p>Мы свяжемся с вами в течение 24 часов и вышлем подробную презентацию. В комментарии укажите сумму и формат: 40% годовых, 10% доли, участие знаниями и компетенциями или обсудить.</p>
       <GameOrderForm gameTitle="Инвестиции в Раппорт Групп" />
-      <Button asChild variant="outline" className="mt-6"><a href={deck.url} download="Rapport-Group-investor-deck.pdf"><Download /> Скачать презентацию (PDF)</a></Button>
+      <Button asChild variant="outline" className="mt-6"><a href={deck} download="Rapport-Group-investor-deck.pdf"><Download /> Скачать презентацию (PDF)</a></Button>
     </div></section>
 
     <footer className="bg-foreground px-5 py-12 text-center text-background">

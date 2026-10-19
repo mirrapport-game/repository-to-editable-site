@@ -8,7 +8,7 @@ import { PageMotion } from "@/components/motion";
 import { GameFacts } from "@/components/game-facts";
 import { ZoomImage } from "@/components/zoom-image";
 import { seoHead } from "@/lib/seo";
-import whatImg from "@/assets/zh-what-happens.webp.asset.json";
+import whatImg from "@/assets/zh-what-happens.webp";
 
 // Интенсив «Я живая — Раппорт с собой»: тексты из рабочих тетрадей и методички автора.
 const TITLE = "Интенсив «Я живая — Раппорт с собой» — глубокая работа с собой";
@@ -86,7 +86,7 @@ function YaZhivaya() {
         <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map(([t, d], i) => <Reveal key={t} delay={i * 70}><li className="card-lift h-full rounded-3xl border border-border bg-card p-6"><span className="font-display text-4xl text-primary">{i + 1}</span><h3 className="mt-3 font-display text-2xl">{t}</h3><p className="mt-2 text-muted-foreground">{d}</p></li></Reveal>)}
         </ol>
-        <Reveal className="mt-10"><ZoomImage src={whatImg.url} alt="Что происходит на игре и интенсиве" className="mx-auto max-w-3xl shadow-lg" /></Reveal>
+        <Reveal className="mt-10"><ZoomImage src={whatImg} alt="Что происходит на игре и интенсиве" className="mx-auto max-w-3xl shadow-lg" /></Reveal>
       </div>
     </section>
 

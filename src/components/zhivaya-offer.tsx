@@ -7,12 +7,12 @@ import { GameOrderForm } from "@/components/game-order-form";
 import { Reveal } from "@/components/business-interactive";
 import { ZoomImage } from "@/components/zoom-image";
 import { ShadowTest } from "@/components/shadow-test";
-import box from "@/assets/zh-box.webp.asset.json";
-import spheresImg from "@/assets/zh-12-spheres.webp.asset.json";
-import cardsImg from "@/assets/zh-cards.png.asset.json";
-import howImg from "@/assets/zh-how.png.asset.json";
-import whyImg from "@/assets/zh-why-cards.webp.asset.json";
-import whatImg from "@/assets/zh-what-happens.webp.asset.json";
+import box from "@/assets/zh-box.webp";
+import spheresImg from "@/assets/zh-12-spheres.webp";
+import cardsImg from "@/assets/zh-cards.png";
+import howImg from "@/assets/zh-how.png";
+import whyImg from "@/assets/zh-why-cards.webp";
+import whatImg from "@/assets/zh-what-happens.webp";
 
 // «Раппóрт — Живая»: тексты из методички ведущей и материалов автора.
 const SPHERES = [
@@ -98,7 +98,7 @@ export function ZhivayaOffer() {
               <Button size="lg" variant="secondary" onClick={openBookingWidget}>Записаться на игру</Button>
             </div>
           </div>
-          <img src={box.url} alt="Коробка игры «Раппóрт — Живая»" width={1371} height={1148} className="w-full rounded-3xl shadow-2xl transition-transform duration-700 hover:scale-[1.02]" />
+          <img src={box} alt="Коробка игры «Раппóрт — Живая»" width={1371} height={1148} className="w-full rounded-3xl shadow-2xl transition-transform duration-700 hover:scale-[1.02]" />
         </div>
         <dl className="mt-14 grid grid-cols-3 gap-4 border-t border-background/25 pt-8">
           {[["12", "сфер жизни женщины"], ["3", "уровня роли: персонаж, тень, ты"], ["0", "советов и оценок"]].map(([v, l]) => <div key={l}><dt className="font-display text-4xl text-accent sm:text-6xl">{v}</dt><dd className="mt-2 text-sm text-background/85 sm:text-base">{l}</dd></div>)}
@@ -117,7 +117,7 @@ export function ZhivayaOffer() {
           </div>
           <p className="mt-6 text-lg text-muted-foreground">Ты играешь персонажа, а не себя. Но эта роль — то, что ты не разрешаешь себе в жизни. Через игру встречаешься с этими частями себя и забираешь оттуда ресурс.</p>
         </Reveal>
-        <Reveal delay={150}><ZoomImage src={whyImg.url} alt="Почему карточки, а не разговор" className="shadow-lg" /></Reveal>
+        <Reveal delay={150}><ZoomImage src={whyImg} alt="Почему карточки, а не разговор" className="shadow-lg" /></Reveal>
       </div>
     </section>
 
@@ -136,7 +136,7 @@ export function ZhivayaOffer() {
             <p className="mt-6 text-background/75">На игре ты сама выбираешь сферу или персонажа — и тянешь сценарий.</p>
           </div>
         </div>
-        <Reveal className="mt-10"><ZoomImage src={spheresImg.url} alt="12 сфер жизни женщины в игре «Раппóрт — Живая»" className="mx-auto max-w-3xl shadow-lg" /></Reveal>
+        <Reveal className="mt-10"><ZoomImage src={spheresImg} alt="12 сфер жизни женщины в игре «Раппóрт — Живая»" className="mx-auto max-w-3xl shadow-lg" /></Reveal>
       </div>
     </section>
 
@@ -160,8 +160,8 @@ export function ZhivayaOffer() {
           <Reveal delay={600}><li className="flex h-full items-center rounded-3xl bg-accent p-6 font-display text-2xl text-accent-foreground">Никаких советов. Никаких оценок. Только ты и твоя карта.</li></Reveal>
         </ol>
         <div className="mt-10 grid gap-6">
-          <ZoomImage src={howImg.url} alt="Как работает игра «Раппóрт — Живая»" />
-          <ZoomImage src={whatImg.url} alt="Что происходит на игре «Раппóрт — Живая»" />
+          <ZoomImage src={howImg} alt="Как работает игра «Раппóрт — Живая»" />
+          <ZoomImage src={whatImg} alt="Что происходит на игре «Раппóрт — Живая»" />
         </div>
       </div>
     </section>
@@ -172,7 +172,7 @@ export function ZhivayaOffer() {
         <h2 className="section-title">В конце ты забираешь <em>свою карту</em></h2>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">Карта-подсказка с ресурсом остаётся с тобой и поддерживает в жизни. Открой любую:</p>
         <AffirmationCards />
-        <Reveal className="mt-10"><ZoomImage src={cardsImg.url} alt="Карты игры «Раппóрт — Живая»" className="shadow-lg" /></Reveal>
+        <Reveal className="mt-10"><ZoomImage src={cardsImg} alt="Карты игры «Раппóрт — Живая»" className="shadow-lg" /></Reveal>
       </div>
     </section>
 

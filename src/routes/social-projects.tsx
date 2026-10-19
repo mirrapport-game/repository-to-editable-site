@@ -7,8 +7,8 @@ import { PageMotion } from "@/components/motion";
 import { GameFacts } from "@/components/game-facts";
 import { seoHead } from "@/lib/seo";
 import { authorPortraitImage } from "@/data/site";
-import marina from "@/assets/marina-kravchenko.webp.asset.json";
-import box from "@/assets/zh-box.webp.asset.json";
+import marina from "@/assets/marina-kravchenko.webp";
+import box from "@/assets/zh-box.webp";
 
 // Страница для государственных проектов, клубов и сообществ — тексты из презентации проекта «Живая».
 const TITLE = "Игра-тренажёр «Живая» для госпроектов, клубов и сообществ";
@@ -53,7 +53,7 @@ function SocialProjects() {
             <Button asChild size="lg" variant="secondary"><Link to="/demo">Демо-игра</Link></Button>
           </div>
         </div>
-        <img src={box.url} alt="Игра-тренажёр «Живая»" className="w-full rounded-3xl shadow-2xl transition-transform duration-500 hover:-translate-y-2" />
+        <img src={box} alt="Игра-тренажёр «Живая»" className="w-full rounded-3xl shadow-2xl transition-transform duration-500 hover:-translate-y-2" />
       </div>
     </section>
 
@@ -132,7 +132,7 @@ function SocialProjects() {
         <p className="eyebrow">Команда проекта</p>
         <h2 className="section-title">Кто <em>стоит за игрой</em></h2>
         <div className="mt-12 grid gap-4 md:grid-cols-2">
-          {[{ img: authorPortraitImage, n: "Артём Ефимов", r: "Автор проекта" }, { img: marina.url, n: "Марина Кравченко", r: "Эксперт проекта, ведущая терапевтических игр в Волгограде" }].map((m) => <div key={m.n} className="card-lift flex items-center gap-6 rounded-3xl bg-card p-6"><img src={m.img} alt={m.n} loading="lazy" className="size-24 shrink-0 rounded-full object-cover" /><div><h3 className="font-display text-2xl">{m.n}</h3><p className="text-muted-foreground">{m.r}</p></div></div>)}
+          {[{ img: authorPortraitImage, n: "Артём Ефимов", r: "Автор проекта" }, { img: marina, n: "Марина Кравченко", r: "Эксперт проекта, ведущая терапевтических игр в Волгограде" }].map((m) => <div key={m.n} className="card-lift flex items-center gap-6 rounded-3xl bg-card p-6"><img src={m.img} alt={m.n} loading="lazy" className="size-24 shrink-0 rounded-full object-cover" /><div><h3 className="font-display text-2xl">{m.n}</h3><p className="text-muted-foreground">{m.r}</p></div></div>)}
         </div>
         <p className="mt-6 text-muted-foreground">Уже сейчас: еженедельные игры, кабинет до 14 человек, партнёры — ресторан «Болконский» и beauty-мастера Красноармейского района Волгограда.</p>
       </div>
