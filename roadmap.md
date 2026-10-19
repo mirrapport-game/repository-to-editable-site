@@ -4,9 +4,10 @@
 - [x] Создать приложение Timeweb rapportgame-big (id 272985, IP 72.56.36.10) из нового репозитория — собрано, страницы отдают 200
 - [x] Переключить rapportgame.ru на rapportgame-big (72.56.36.10)
 - [x] Удалить старое приложение Polite Raven (271583)
-- [ ] Внести приватные ключи (TELEGRAM_BOT_TOKEN, YOOKASSA_SHOP_ID, YOOKASSA_SECRET_KEY, VK_ACCESS_TOKEN) в окружение rapportgame-big — ждёт ключи
-- [x] Перенести большой сайт (код, таблицы, хранилища, картинки)
-- [ ] Загрузить данные и пользователей из старого проекта — ждёт выгрузку от пользователя
+- [x] Внести приватные ключи (TELEGRAM_BOT_TOKEN, YOOKASSA_SHOP_ID, YOOKASSA_SECRET_KEY, VK_ACCESS_TOKEN, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, SUPABASE_SERVICE_ROLE_KEY, LOVABLE_API_KEY) в окружение rapportgame-big через API Timeweb — готово
+- [x] Загрузить данные и пользователей из старого проекта — ждёт выгрузку от пользователя
 - [x] Лендинг new.rapportgame.ru — отдельный проект Rapport Game Home; не менять при переносе большого сайта
-- [ ] Подключить Telegram-бота: переменные окружения в Timeweb, перезапуск, регистрация вебхука
-- [ ] Ключ ВК (VK_ACCESS_TOKEN): получен через защищённую форму; добавить в окружение Timeweb и проверить кросспостинг
+- [x] Подключить Telegram-бота: переменные окружения в Timeweb, перезапуск, вебхук https://rapportgame.ru/api/public/telegram/webhook зарегистрирован и проверен (секрет проверен: 401/200), напоминания на managed HTTP schedule, анонсы через announce_marathon_slot
+- [x] Ключ ВК (VK_ACCESS_TOKEN): получен через защищённую форму и добавлен в окружение Timeweb; кросспостинг сработает на первом посте в канал (не проверялся напрямую)
+- [ ] Проверить кросспостинг в VK на первом реальном посте в канале
+- [ ] Авто-обновления нет: после правок пользователь пишет «обнови сайт» — запускается сборка в Timeweb
