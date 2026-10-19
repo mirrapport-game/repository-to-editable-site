@@ -78,9 +78,9 @@ const artem: Facilitator = {
 };
 
 /** Host whose details come from their own Telegram channel (text quoted, nothing invented). */
-function host(slug: string, name: string, surname: string, photo: string, locations: string[], roles: string[], story: string[], url = "", handle = ""): Facilitator {
+function host(slug: string, name: string, surname: string, photo: string, locations: string[], roles: string[], story: string[], url = "", handle = "", photos: string[] = []): Facilitator {
   const tg = handle || (url.includes("t.me/") && !url.includes("/+") ? "@" + url.split("t.me/")[1] : url ? "канал ведущего" : "");
-  return { slug, name, surname, photo, roles, story, locations, telegram: tg || "@artem_rapport", telegramUrl: url || "https://t.me/artem_rapport", channelUrl: url || undefined };
+  return { slug, name, surname, photo, photos, roles, story, locations, telegram: tg || "@artem_rapport", telegramUrl: url || "https://t.me/artem_rapport", channelUrl: url || undefined };
 }
 const noInfo = ["Подробное описание ведущего скоро появится. Записаться на игру можно через форму на сайте."];
 
@@ -95,7 +95,7 @@ const H = {
   tsvetkovy: host("tsvetkovy", "Цветана и Роман", "Цветковы", tsvetkovyPhoto, ["Санкт-Петербург"], ["Ресурсные отношения с собой", "Пара ведущих"], ["Канал «О!Живая с Цветаной»: «экспертность по ресурсным отношениям с собой и всё, что умножает количество счастливых и пробуждённых женщин»."], "https://t.me/ozhivaya88", "@TsvetanaLove"),
   korunsky: host("sergey-korunsky", "Сергей", "Корунский", korunskyPhoto, ["Донецк"], ["Предприниматель", "Бакалавр психологии, гипнотерапевт", "Автор книги «Жизнь Вечная»"], ["Канал «Сергей Корунский — жизнь без страхов»."], "https://t.me/serg_korunskiy"),
   lednev: host("sergey-lednev", "Сергей", "Вертекс", lednevPhoto, ["Ярославль"], ["Кризисы и взросление"], ["Канал «Сергей Вертекс. Реальность без намордника»: «говорю прямо про кризисы и взросление»."], "https://t.me/DoctorVertexClub"),
-  nn: host("udovichenkov-maya", "Александр Удовиченко", "и Майя Селезнёва", nnPhoto, ["Нижний Новгород"], ["Пара ведущих", "Игра про отношения мужчины и женщины"], ["«Проводим каждый четверг и воскресенье в 19:00 в Нижнем Новгороде»."], "https://t.me/rapportnn"),
+  nn: host("udovichenkov-maya", "Александр Удовиченко", "и Майя Селезнёва", nnPhoto1, ["Нижний Новгород"], ["Пара ведущих", "Игра про отношения мужчины и женщины"], ["«Проводим каждый четверг и воскресенье в 19:00 в Нижнем Новгороде»."], "https://t.me/rapportnn", "", [nnPhoto1, nnPhoto2]),
   dina: host("dina-magdenko", "Дина", "Магденко", dinaPhoto, ["Челябинск"], ["Психолог"], noInfo, "https://vk.ru/psyhologdina74", "ВКонтакте"),
   nikitin: host("alexander-nikitin", "Александр", "Никитин", nikitinPhoto, ["Челябинск"], ["Сексология", "Ведущий игр «Раппóрт»"], ["Канал «Сексология для всех»."], "https://t.me/sexology555"),
   evgenyNsk: host("evgeny-novosibirsk", "Евгений", "", nskPhoto, ["Новосибирск", "Онлайн"], ["Ведущий игры «Раппóрт Отношения»"], ["«Живое пространство, где люди исследуют отношения через игру „Раппóрт“, учатся понимать друг друга, знакомятся, находят друзей и любимых»."], "https://t.me/rapport_nsk", "@evbro"),
