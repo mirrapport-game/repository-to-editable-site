@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
     { property: "og:title", content: "Раппóрт — психологические и трансформационные игры про отношения" },
     { property: "og:description", content: "Игры для глубоких разговоров, развития и гармоничных отношений." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+    { property: "og:image", content: "https://rapportgame.ru/og-rapport.jpg" }, { name: "twitter:image", content: "https://rapportgame.ru/og-rapport.jpg" },
   ] }),
   component: Index,
 });
@@ -68,7 +69,7 @@ function Index() {
     <BentoFacts />
     <AchievementStats />
     <ReviewWall />
-    <section className="section"><div className="section-inner"><VideoCarousel eyebrow="Видео" heading="Артём Ефимов об игре «Раппóрт»" videos={[{ src: "/video/artem-ob-igre.mp4", title: "Артём Ефимов об игре «Раппóрт»" }]} /></div></section>
+    <section className="section"><div className="section-inner"><VideoCarousel eyebrow="Видео" heading="Артём Ефимов об игре «Раппóрт»" poster="/video/artem-poster.jpg" videos={[{ src: "/video/artem-ob-igre.mp4", title: "Артём Ефимов об игре «Раппóрт»" }]} /></div></section>
     <BookingBand title="Хотите так же?" text="Запишитесь на ближайшую игру онлайн или в вашем городе." />
     <AuthorSection />
     <HomeFaq />

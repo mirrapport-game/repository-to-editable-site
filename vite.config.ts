@@ -6,11 +6,20 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Nitro's `compressPublicAssets` knob is forwarded to nitro() at runtime, but the
+// wrapper's option type only lists the stable build-time keys, so assert the shape.
+const nitroOptions = {
+  preset: "node-server",
+  output: { dir: ".output", serverDir: ".output/server", publicDir: ".output/public" },
+  // Hand out .br/.gz copies of the bundled CSS, JS and prerendered pages.
+  compressPublicAssets: { brotli: true, gzip: true },
+} as {
+  preset?: string;
+  output?: { dir?: string; serverDir?: string; publicDir?: string };
+};
+
 export default defineConfig({
-  nitro: {
-    preset: "node-server",
-    output: { dir: ".output", serverDir: ".output/server", publicDir: ".output/public" },
-  },
+  nitro: nitroOptions,
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
