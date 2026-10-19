@@ -38,7 +38,7 @@ export function ReviewWall() {
         <div className="mt-14 columns-1 gap-5 sm:columns-2 lg:columns-3">
           {participantReviewImages.slice(0, 9).map((r) => (
             <figure key={r.src} className="card-lift mb-5 break-inside-avoid overflow-hidden rounded-3xl border border-border bg-card">
-              <img src={r.src} alt={r.alt} loading="lazy" className="w-full" />
+              <img src={r.src} alt={r.alt} width={r.width} height={r.height} loading="lazy" decoding="async" className="w-full" />
               <figcaption className="px-5 py-3 text-sm text-muted-foreground">{r.game}</figcaption>
             </figure>
           ))}
