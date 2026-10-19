@@ -2,9 +2,10 @@ FROM oven/bun:1.3.13 AS build
 WORKDIR /app
 COPY package.json bun.lock bunfig.toml ./
 RUN bun install --frozen-lockfile
-ARG VITE_SUPABASE_URL
-ARG VITE_SUPABASE_PUBLISHABLE_KEY
-ARG VITE_SUPABASE_PROJECT_ID
+# Public (non-secret) connection settings as defaults; a hosting platform can override them.
+ARG VITE_SUPABASE_URL=https://acyxzhjnjxujhjvmrhdr.supabase.co
+ARG VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_qFaswTxknOBeVtzfxIrTtw_JfV3aHgx
+ARG VITE_SUPABASE_PROJECT_ID=acyxzhjnjxujhjvmrhdr
 ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
 ENV VITE_SUPABASE_PUBLISHABLE_KEY=$VITE_SUPABASE_PUBLISHABLE_KEY
 ENV VITE_SUPABASE_PROJECT_ID=$VITE_SUPABASE_PROJECT_ID
