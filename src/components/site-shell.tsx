@@ -56,7 +56,7 @@ export function SiteHeader() {
             <nav className="mt-10 flex flex-col gap-1" aria-label="Боковая навигация">
               <CityPicker className="mb-4 h-11 w-full" />
               <div className="mt-4" />
-              {menuLinks.map(([to, label]) => <SheetClose asChild key={to}><Link to={to} activeOptions={{ exact: false }} activeProps={to === "/games" ? { className: "bg-primary/10 text-primary font-semibold border-l-2 border-l-primary pl-4", "aria-current": "page" } : undefined} className="border-b border-border py-4 text-lg">{label}</Link></SheetClose>)}
+              {menuLinks.map(([to, label]) => <SheetClose asChild key={to}><Link to={to} activeOptions={{ exact: false }} activeProps={to === "/games" ? { className: "bg-primary/10 text-primary font-semibold border-l-2 border-l-primary pl-4", "aria-current": "page" } : {}} className="border-b border-border py-4 text-lg">{label}</Link></SheetClose>)}
               <SheetClose asChild><Link to="/course" className="flex items-center gap-2 border-b border-border py-4 text-lg"><UserRound className="size-5" />Личный кабинет ведущего</Link></SheetClose>
               <SheetClose asChild><Button type="button" className="mt-6" onClick={openBookingWidget}><CalendarDays />Записаться</Button></SheetClose>
               <Button asChild variant="outline"><a href={TELEGRAM_URL} target="_blank" rel="noreferrer"><Send />Открыть в Telegram</a></Button>
