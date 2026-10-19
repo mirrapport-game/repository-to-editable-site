@@ -1,0 +1,2 @@
+import { z } from "zod";
+export const schedulePhoneSchema = z.string().trim().max(24).regex(/^\+?[\d\s()-]+$/, "Укажите номер телефона").transform(value => value.replace(/[\s()-]/g, "")).refine(value => /^\+?\d{10,15}$/.test(value), "Укажите номер телефона с кодом страны");

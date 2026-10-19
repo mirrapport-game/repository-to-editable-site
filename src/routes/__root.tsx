@@ -1,3 +1,5 @@
+import { ymInitScript, ymHit } from "@/lib/metrika";
+import { useRouterState } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -8,26 +10,40 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { BackNavigation } from "@/components/back-navigation";
+import { QuestBar, QuestHide, StoryNext } from "@/components/story-next";
+import { QuestProvider } from "@/hooks/use-quest";
+const ExitOffer = lazy(() => import("@/components/exit-offer").then((m) => ({ default: m.ExitOffer })));
+const CookieConsent = lazy(() => import("@/components/cookie-consent").then((m) => ({ default: m.CookieConsent })));
+import { BookingSection } from "@/components/booking-section";
+import { SiteBookingBand } from "@/components/booking-band";
+import { Toaster } from "@/components/ui/sonner";
+const TelegramMiniApp = lazy(() => import("@/components/telegram-miniapp").then((m) => ({ default: m.TelegramMiniApp })));
+const SitePlayer = lazy(() => import("@/components/site-player").then((m) => ({ default: m.SitePlayer })));
 
 function NotFoundComponent() {
+  if (typeof document !== "undefined") document.title = "Страница не найдена — Раппóрт";
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <title>Страница не найдена — Раппóрт</title>
+      <meta name="robots" content="noindex" />
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Страница не найдена</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          Такой страницы нет или она переехала.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            На главную
           </Link>
         </div>
       </div>
@@ -78,21 +94,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Раппóрт — серия психологических игр" },
+      { name: "description", content: "Игры «Раппóрт» для отношений, развития, команд и глубоких разговоров." },
+      { name: "author", content: "Артём Ефимов" },
+      { property: "og:title", content: "Раппóрт — серия психологических игр" },
+      { property: "og:description", content: "Игры для глубоких разговоров и гармоничных отношений." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "theme-color", content: "#1E293B" },
+    ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@graph": [
+      { "@type": "Organization", "@id": "https://rapportgame.ru/#org", name: "Раппóрт", url: "https://rapportgame.ru/", founder: { "@type": "Person", name: "Артём Ефимов" }, sameAs: ["https://t.me/artem_rapport"] },
+      { "@type": "WebSite", name: "Раппóрт — серия психологических игр", url: "https://rapportgame.ru/", inLanguage: "ru-RU", publisher: { "@id": "https://rapportgame.ru/#org" } },
+    ] }) },
+      ...(ymInitScript() ? [{ children: ymInitScript()! }] : []),
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" }, { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }, { rel: "manifest", href: "/manifest.webmanifest" },
+      {"rel": "preload", "as": "font", "type": "font/woff2", "href": "/__l5e/assets-v1/3d57436d-76bb-4730-9ecf-1e347972c1bb/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYrXtKgS4.woff2", "crossOrigin": "anonymous"},
+      {"rel": "preload", "as": "font", "type": "font/woff2", "href": "/__l5e/assets-v1/ad7b35c7-7d97-4e88-b49a-c5bfd7556829/gNMKW3F-SZuj7xmb-HY6EQ.woff2", "crossOrigin": "anonymous"},
     ],
   }),
   shellComponent: RootShell,
@@ -103,7 +128,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <head>
         <HeadContent />
       </head>
@@ -117,11 +142,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const path = useRouterState({ select: (s) => s.location.href });
+  const isLanding = path.startsWith("/lp/") || path.startsWith("/investors") || path.startsWith("/market");
+  // SPA navigation: report each client-side page change to Yandex Metrika (first load is counted by init).
+  const first = useRef(true);
+  useEffect(() => { if (first.current) { first.current = false; return; } ymHit(location.href); }, [path]);
+  if (isLanding) return <QueryClientProvider client={queryClient}><QuestProvider><main><Outlet /></main><Suspense fallback={null}><SitePlayer /><TelegramMiniApp /></Suspense><Toaster richColors position="top-center" /></QuestProvider></QueryClientProvider>;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}><QuestProvider>
+      <div className="min-h-screen"><SiteHeader /><QuestBar /><QuestHide><BackNavigation /></QuestHide><main><Outlet /></main><StoryNext /><QuestHide><SiteBookingBand /><BookingSection /><SiteFooter /></QuestHide></div><Suspense fallback={null}><CookieConsent /></Suspense><Suspense fallback={null}><SitePlayer /><TelegramMiniApp /></Suspense><QuestHide><Suspense fallback={null}><ExitOffer /></Suspense></QuestHide><Toaster richColors position="top-center" />
+    </QuestProvider></QueryClientProvider>
   );
 }

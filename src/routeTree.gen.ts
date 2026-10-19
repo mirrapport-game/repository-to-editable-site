@@ -10,33 +10,748 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RBRouteImport } from './routes/RB'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as BloggersRouteImport } from './routes/bloggers'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ContactsRouteImport } from './routes/contacts'
+import { Route as CourseRouteImport } from './routes/course'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as FacilitatorsRouteImport } from './routes/facilitators'
+import { Route as GameRouteImport } from './routes/game'
+import { Route as GameCreationRouteImport } from './routes/game-creation'
+import { Route as GamesRouteImport } from './routes/games'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as ManageApplicationsRouteImport } from './routes/manage-applications'
+import { Route as ManageClubRouteImport } from './routes/manage-club'
+import { Route as ManageCourseRouteImport } from './routes/manage-course'
+import { Route as ManageCrmRouteImport } from './routes/manage-crm'
+import { Route as ManageLandingsRouteImport } from './routes/manage-landings'
+import { Route as ManageMarathonRouteImport } from './routes/manage-marathon'
+import { Route as ManageMinigameRouteImport } from './routes/manage-minigame'
+import { Route as ManageReviewsRouteImport } from './routes/manage-reviews'
+import { Route as MarketRouteImport } from './routes/market'
+import { Route as MentorshipRouteImport } from './routes/mentorship'
+import { Route as OfferRouteImport } from './routes/offer'
+import { Route as OnlinePlatformRouteImport } from './routes/online-platform'
+import { Route as PlayRouteImport } from './routes/play'
+import { Route as QuestRouteImport } from './routes/quest'
+import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as Rapport_businessRouteImport } from './routes/rapport_business'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SocialProjectsRouteImport } from './routes/social-projects'
+import { Route as TrainersRouteImport } from './routes/trainers'
+import { Route as YaZhivayaRouteImport } from './routes/ya-zhivaya'
+import { Route as ZhivayaRouteImport } from './routes/zhivaya'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
+import { Route as GamesIndexRouteImport } from './routes/games.index'
+import { Route as GamesSlugRouteImport } from './routes/games.$slug'
+import { Route as LpIrkutskNatalyaRouteImport } from './routes/lp/irkutsk-natalya'
+import { Route as LpSochiYuliaRouteImport } from './routes/lp/sochi-yulia'
+import { Route as LpSpbNatalyaRouteImport } from './routes/lp/spb-natalya'
+import { Route as LpVolgogradMarinaRouteImport } from './routes/lp/volgograd-marina'
+import { Route as PaymentResultRouteImport } from './routes/payment/result'
+import { Route as LpLandingTopicRouteImport } from './routes/lp/$landing.$topic'
+import { Route as ApiPublicTelegramAnnounceRouteImport } from './routes/api/public/telegram/announce'
+import { Route as ApiPublicTelegramAskScheduleRouteImport } from './routes/api/public/telegram/ask-schedule'
+import { Route as ApiPublicTelegramRemindRouteImport } from './routes/api/public/telegram/remind'
+import { Route as ApiPublicTelegramWebhookRouteImport } from './routes/api/public/telegram/webhook'
+import { Route as ApiPublicYookassaWebhookRouteImport } from './routes/api/public/yookassa/webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RBRoute = RBRouteImport.update({
+  id: '/RB',
+  path: '/RB',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BloggersRoute = BloggersRouteImport.update({
+  id: '/bloggers',
+  path: '/bloggers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactsRoute = ContactsRouteImport.update({
+  id: '/contacts',
+  path: '/contacts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CourseRoute = CourseRouteImport.update({
+  id: '/course',
+  path: '/course',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacilitatorsRoute = FacilitatorsRouteImport.update({
+  id: '/facilitators',
+  path: '/facilitators',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameRoute = GameRouteImport.update({
+  id: '/game',
+  path: '/game',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameCreationRoute = GameCreationRouteImport.update({
+  id: '/game-creation',
+  path: '/game-creation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsRoute = InvestorsRouteImport.update({
+  id: '/investors',
+  path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageApplicationsRoute = ManageApplicationsRouteImport.update({
+  id: '/manage-applications',
+  path: '/manage-applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageClubRoute = ManageClubRouteImport.update({
+  id: '/manage-club',
+  path: '/manage-club',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageCourseRoute = ManageCourseRouteImport.update({
+  id: '/manage-course',
+  path: '/manage-course',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageCrmRoute = ManageCrmRouteImport.update({
+  id: '/manage-crm',
+  path: '/manage-crm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageLandingsRoute = ManageLandingsRouteImport.update({
+  id: '/manage-landings',
+  path: '/manage-landings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageMarathonRoute = ManageMarathonRouteImport.update({
+  id: '/manage-marathon',
+  path: '/manage-marathon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageMinigameRoute = ManageMinigameRouteImport.update({
+  id: '/manage-minigame',
+  path: '/manage-minigame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageReviewsRoute = ManageReviewsRouteImport.update({
+  id: '/manage-reviews',
+  path: '/manage-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorshipRoute = MentorshipRouteImport.update({
+  id: '/mentorship',
+  path: '/mentorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfferRoute = OfferRouteImport.update({
+  id: '/offer',
+  path: '/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlinePlatformRoute = OnlinePlatformRouteImport.update({
+  id: '/online-platform',
+  path: '/online-platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayRoute = PlayRouteImport.update({
+  id: '/play',
+  path: '/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestRoute = QuestRouteImport.update({
+  id: '/quest',
+  path: '/quest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Rapport_businessRoute = Rapport_businessRouteImport.update({
+  id: '/rapport_business',
+  path: '/rapport_business',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SocialProjectsRoute = SocialProjectsRouteImport.update({
+  id: '/social-projects',
+  path: '/social-projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainersRoute = TrainersRouteImport.update({
+  id: '/trainers',
+  path: '/trainers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YaZhivayaRoute = YaZhivayaRouteImport.update({
+  id: '/ya-zhivaya',
+  path: '/ya-zhivaya',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZhivayaRoute = ZhivayaRouteImport.update({
+  id: '/zhivaya',
+  path: '/zhivaya',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
+const CitiesSlugRoute = CitiesSlugRouteImport.update({
+  id: '/cities/$slug',
+  path: '/cities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesIndexRoute = GamesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GamesRoute,
+} as any)
+const GamesSlugRoute = GamesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GamesRoute,
+} as any)
+const LpIrkutskNatalyaRoute = LpIrkutskNatalyaRouteImport.update({
+  id: '/lp/irkutsk-natalya',
+  path: '/lp/irkutsk-natalya',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpSochiYuliaRoute = LpSochiYuliaRouteImport.update({
+  id: '/lp/sochi-yulia',
+  path: '/lp/sochi-yulia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpSpbNatalyaRoute = LpSpbNatalyaRouteImport.update({
+  id: '/lp/spb-natalya',
+  path: '/lp/spb-natalya',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpVolgogradMarinaRoute = LpVolgogradMarinaRouteImport.update({
+  id: '/lp/volgograd-marina',
+  path: '/lp/volgograd-marina',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentResultRoute = PaymentResultRouteImport.update({
+  id: '/payment/result',
+  path: '/payment/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpLandingTopicRoute = LpLandingTopicRouteImport.update({
+  id: '/lp/$landing/$topic',
+  path: '/lp/$landing/$topic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTelegramAnnounceRoute =
+  ApiPublicTelegramAnnounceRouteImport.update({
+    id: '/api/public/telegram/announce',
+    path: '/api/public/telegram/announce',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicTelegramAskScheduleRoute =
+  ApiPublicTelegramAskScheduleRouteImport.update({
+    id: '/api/public/telegram/ask-schedule',
+    path: '/api/public/telegram/ask-schedule',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicTelegramRemindRoute = ApiPublicTelegramRemindRouteImport.update({
+  id: '/api/public/telegram/remind',
+  path: '/api/public/telegram/remind',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTelegramWebhookRoute =
+  ApiPublicTelegramWebhookRouteImport.update({
+    id: '/api/public/telegram/webhook',
+    path: '/api/public/telegram/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicYookassaWebhookRoute =
+  ApiPublicYookassaWebhookRouteImport.update({
+    id: '/api/public/yookassa/webhook',
+    path: '/api/public/yookassa/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/RB': typeof RBRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/bloggers': typeof BloggersRoute
+  '/community': typeof CommunityRoute
+  '/contacts': typeof ContactsRoute
+  '/course': typeof CourseRoute
+  '/demo': typeof DemoRoute
+  '/facilitators': typeof FacilitatorsRoute
+  '/game': typeof GameRoute
+  '/game-creation': typeof GameCreationRoute
+  '/games': typeof GamesRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/investors': typeof InvestorsRoute
+  '/manage-applications': typeof ManageApplicationsRoute
+  '/manage-club': typeof ManageClubRoute
+  '/manage-course': typeof ManageCourseRoute
+  '/manage-crm': typeof ManageCrmRoute
+  '/manage-landings': typeof ManageLandingsRoute
+  '/manage-marathon': typeof ManageMarathonRoute
+  '/manage-minigame': typeof ManageMinigameRoute
+  '/manage-reviews': typeof ManageReviewsRoute
+  '/market': typeof MarketRoute
+  '/mentorship': typeof MentorshipRoute
+  '/offer': typeof OfferRoute
+  '/online-platform': typeof OnlinePlatformRoute
+  '/play': typeof PlayRoute
+  '/quest': typeof QuestRoute
+  '/quiz': typeof QuizRoute
+  '/rapport_business': typeof Rapport_businessRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/reviews': typeof ReviewsRoute
+  '/schedule': typeof ScheduleRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/social-projects': typeof SocialProjectsRoute
+  '/trainers': typeof TrainersRoute
+  '/ya-zhivaya': typeof YaZhivayaRoute
+  '/zhivaya': typeof ZhivayaRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/cities/$slug': typeof CitiesSlugRoute
+  '/games/$slug': typeof GamesSlugRoute
+  '/lp/irkutsk-natalya': typeof LpIrkutskNatalyaRoute
+  '/lp/sochi-yulia': typeof LpSochiYuliaRoute
+  '/lp/spb-natalya': typeof LpSpbNatalyaRoute
+  '/lp/volgograd-marina': typeof LpVolgogradMarinaRoute
+  '/payment/result': typeof PaymentResultRoute
+  '/blog/': typeof BlogIndexRoute
+  '/games/': typeof GamesIndexRoute
+  '/lp/$landing/$topic': typeof LpLandingTopicRoute
+  '/api/public/telegram/announce': typeof ApiPublicTelegramAnnounceRoute
+  '/api/public/telegram/ask-schedule': typeof ApiPublicTelegramAskScheduleRoute
+  '/api/public/telegram/remind': typeof ApiPublicTelegramRemindRoute
+  '/api/public/telegram/webhook': typeof ApiPublicTelegramWebhookRoute
+  '/api/public/yookassa/webhook': typeof ApiPublicYookassaWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/RB': typeof RBRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/bloggers': typeof BloggersRoute
+  '/community': typeof CommunityRoute
+  '/contacts': typeof ContactsRoute
+  '/course': typeof CourseRoute
+  '/demo': typeof DemoRoute
+  '/facilitators': typeof FacilitatorsRoute
+  '/game': typeof GameRoute
+  '/game-creation': typeof GameCreationRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/investors': typeof InvestorsRoute
+  '/manage-applications': typeof ManageApplicationsRoute
+  '/manage-club': typeof ManageClubRoute
+  '/manage-course': typeof ManageCourseRoute
+  '/manage-crm': typeof ManageCrmRoute
+  '/manage-landings': typeof ManageLandingsRoute
+  '/manage-marathon': typeof ManageMarathonRoute
+  '/manage-minigame': typeof ManageMinigameRoute
+  '/manage-reviews': typeof ManageReviewsRoute
+  '/market': typeof MarketRoute
+  '/mentorship': typeof MentorshipRoute
+  '/offer': typeof OfferRoute
+  '/online-platform': typeof OnlinePlatformRoute
+  '/play': typeof PlayRoute
+  '/quest': typeof QuestRoute
+  '/quiz': typeof QuizRoute
+  '/rapport_business': typeof Rapport_businessRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/reviews': typeof ReviewsRoute
+  '/schedule': typeof ScheduleRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/social-projects': typeof SocialProjectsRoute
+  '/trainers': typeof TrainersRoute
+  '/ya-zhivaya': typeof YaZhivayaRoute
+  '/zhivaya': typeof ZhivayaRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/cities/$slug': typeof CitiesSlugRoute
+  '/games/$slug': typeof GamesSlugRoute
+  '/lp/irkutsk-natalya': typeof LpIrkutskNatalyaRoute
+  '/lp/sochi-yulia': typeof LpSochiYuliaRoute
+  '/lp/spb-natalya': typeof LpSpbNatalyaRoute
+  '/lp/volgograd-marina': typeof LpVolgogradMarinaRoute
+  '/payment/result': typeof PaymentResultRoute
+  '/blog': typeof BlogIndexRoute
+  '/games': typeof GamesIndexRoute
+  '/lp/$landing/$topic': typeof LpLandingTopicRoute
+  '/api/public/telegram/announce': typeof ApiPublicTelegramAnnounceRoute
+  '/api/public/telegram/ask-schedule': typeof ApiPublicTelegramAskScheduleRoute
+  '/api/public/telegram/remind': typeof ApiPublicTelegramRemindRoute
+  '/api/public/telegram/webhook': typeof ApiPublicTelegramWebhookRoute
+  '/api/public/yookassa/webhook': typeof ApiPublicYookassaWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/RB': typeof RBRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/bloggers': typeof BloggersRoute
+  '/community': typeof CommunityRoute
+  '/contacts': typeof ContactsRoute
+  '/course': typeof CourseRoute
+  '/demo': typeof DemoRoute
+  '/facilitators': typeof FacilitatorsRoute
+  '/game': typeof GameRoute
+  '/game-creation': typeof GameCreationRoute
+  '/games': typeof GamesRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/investors': typeof InvestorsRoute
+  '/manage-applications': typeof ManageApplicationsRoute
+  '/manage-club': typeof ManageClubRoute
+  '/manage-course': typeof ManageCourseRoute
+  '/manage-crm': typeof ManageCrmRoute
+  '/manage-landings': typeof ManageLandingsRoute
+  '/manage-marathon': typeof ManageMarathonRoute
+  '/manage-minigame': typeof ManageMinigameRoute
+  '/manage-reviews': typeof ManageReviewsRoute
+  '/market': typeof MarketRoute
+  '/mentorship': typeof MentorshipRoute
+  '/offer': typeof OfferRoute
+  '/online-platform': typeof OnlinePlatformRoute
+  '/play': typeof PlayRoute
+  '/quest': typeof QuestRoute
+  '/quiz': typeof QuizRoute
+  '/rapport_business': typeof Rapport_businessRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/reviews': typeof ReviewsRoute
+  '/schedule': typeof ScheduleRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/social-projects': typeof SocialProjectsRoute
+  '/trainers': typeof TrainersRoute
+  '/ya-zhivaya': typeof YaZhivayaRoute
+  '/zhivaya': typeof ZhivayaRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/cities/$slug': typeof CitiesSlugRoute
+  '/games/$slug': typeof GamesSlugRoute
+  '/lp/irkutsk-natalya': typeof LpIrkutskNatalyaRoute
+  '/lp/sochi-yulia': typeof LpSochiYuliaRoute
+  '/lp/spb-natalya': typeof LpSpbNatalyaRoute
+  '/lp/volgograd-marina': typeof LpVolgogradMarinaRoute
+  '/payment/result': typeof PaymentResultRoute
+  '/blog/': typeof BlogIndexRoute
+  '/games/': typeof GamesIndexRoute
+  '/lp/$landing/$topic': typeof LpLandingTopicRoute
+  '/api/public/telegram/announce': typeof ApiPublicTelegramAnnounceRoute
+  '/api/public/telegram/ask-schedule': typeof ApiPublicTelegramAskScheduleRoute
+  '/api/public/telegram/remind': typeof ApiPublicTelegramRemindRoute
+  '/api/public/telegram/webhook': typeof ApiPublicTelegramWebhookRoute
+  '/api/public/yookassa/webhook': typeof ApiPublicYookassaWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/RB'
+    | '/about'
+    | '/auth'
+    | '/blog'
+    | '/bloggers'
+    | '/community'
+    | '/contacts'
+    | '/course'
+    | '/demo'
+    | '/facilitators'
+    | '/game'
+    | '/game-creation'
+    | '/games'
+    | '/how-it-works'
+    | '/investors'
+    | '/manage-applications'
+    | '/manage-club'
+    | '/manage-course'
+    | '/manage-crm'
+    | '/manage-landings'
+    | '/manage-marathon'
+    | '/manage-minigame'
+    | '/manage-reviews'
+    | '/market'
+    | '/mentorship'
+    | '/offer'
+    | '/online-platform'
+    | '/play'
+    | '/quest'
+    | '/quiz'
+    | '/rapport_business'
+    | '/reset-password'
+    | '/reviews'
+    | '/schedule'
+    | '/sitemap.xml'
+    | '/social-projects'
+    | '/trainers'
+    | '/ya-zhivaya'
+    | '/zhivaya'
+    | '/blog/$slug'
+    | '/cities/$slug'
+    | '/games/$slug'
+    | '/lp/irkutsk-natalya'
+    | '/lp/sochi-yulia'
+    | '/lp/spb-natalya'
+    | '/lp/volgograd-marina'
+    | '/payment/result'
+    | '/blog/'
+    | '/games/'
+    | '/lp/$landing/$topic'
+    | '/api/public/telegram/announce'
+    | '/api/public/telegram/ask-schedule'
+    | '/api/public/telegram/remind'
+    | '/api/public/telegram/webhook'
+    | '/api/public/yookassa/webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/RB'
+    | '/about'
+    | '/auth'
+    | '/bloggers'
+    | '/community'
+    | '/contacts'
+    | '/course'
+    | '/demo'
+    | '/facilitators'
+    | '/game'
+    | '/game-creation'
+    | '/how-it-works'
+    | '/investors'
+    | '/manage-applications'
+    | '/manage-club'
+    | '/manage-course'
+    | '/manage-crm'
+    | '/manage-landings'
+    | '/manage-marathon'
+    | '/manage-minigame'
+    | '/manage-reviews'
+    | '/market'
+    | '/mentorship'
+    | '/offer'
+    | '/online-platform'
+    | '/play'
+    | '/quest'
+    | '/quiz'
+    | '/rapport_business'
+    | '/reset-password'
+    | '/reviews'
+    | '/schedule'
+    | '/sitemap.xml'
+    | '/social-projects'
+    | '/trainers'
+    | '/ya-zhivaya'
+    | '/zhivaya'
+    | '/blog/$slug'
+    | '/cities/$slug'
+    | '/games/$slug'
+    | '/lp/irkutsk-natalya'
+    | '/lp/sochi-yulia'
+    | '/lp/spb-natalya'
+    | '/lp/volgograd-marina'
+    | '/payment/result'
+    | '/blog'
+    | '/games'
+    | '/lp/$landing/$topic'
+    | '/api/public/telegram/announce'
+    | '/api/public/telegram/ask-schedule'
+    | '/api/public/telegram/remind'
+    | '/api/public/telegram/webhook'
+    | '/api/public/yookassa/webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/RB'
+    | '/about'
+    | '/auth'
+    | '/blog'
+    | '/bloggers'
+    | '/community'
+    | '/contacts'
+    | '/course'
+    | '/demo'
+    | '/facilitators'
+    | '/game'
+    | '/game-creation'
+    | '/games'
+    | '/how-it-works'
+    | '/investors'
+    | '/manage-applications'
+    | '/manage-club'
+    | '/manage-course'
+    | '/manage-crm'
+    | '/manage-landings'
+    | '/manage-marathon'
+    | '/manage-minigame'
+    | '/manage-reviews'
+    | '/market'
+    | '/mentorship'
+    | '/offer'
+    | '/online-platform'
+    | '/play'
+    | '/quest'
+    | '/quiz'
+    | '/rapport_business'
+    | '/reset-password'
+    | '/reviews'
+    | '/schedule'
+    | '/sitemap.xml'
+    | '/social-projects'
+    | '/trainers'
+    | '/ya-zhivaya'
+    | '/zhivaya'
+    | '/blog/$slug'
+    | '/cities/$slug'
+    | '/games/$slug'
+    | '/lp/irkutsk-natalya'
+    | '/lp/sochi-yulia'
+    | '/lp/spb-natalya'
+    | '/lp/volgograd-marina'
+    | '/payment/result'
+    | '/blog/'
+    | '/games/'
+    | '/lp/$landing/$topic'
+    | '/api/public/telegram/announce'
+    | '/api/public/telegram/ask-schedule'
+    | '/api/public/telegram/remind'
+    | '/api/public/telegram/webhook'
+    | '/api/public/yookassa/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RBRoute: typeof RBRoute
+  AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  BloggersRoute: typeof BloggersRoute
+  CommunityRoute: typeof CommunityRoute
+  ContactsRoute: typeof ContactsRoute
+  CourseRoute: typeof CourseRoute
+  DemoRoute: typeof DemoRoute
+  FacilitatorsRoute: typeof FacilitatorsRoute
+  GameRoute: typeof GameRoute
+  GameCreationRoute: typeof GameCreationRoute
+  GamesRoute: typeof GamesRouteWithChildren
+  HowItWorksRoute: typeof HowItWorksRoute
+  InvestorsRoute: typeof InvestorsRoute
+  ManageApplicationsRoute: typeof ManageApplicationsRoute
+  ManageClubRoute: typeof ManageClubRoute
+  ManageCourseRoute: typeof ManageCourseRoute
+  ManageCrmRoute: typeof ManageCrmRoute
+  ManageLandingsRoute: typeof ManageLandingsRoute
+  ManageMarathonRoute: typeof ManageMarathonRoute
+  ManageMinigameRoute: typeof ManageMinigameRoute
+  ManageReviewsRoute: typeof ManageReviewsRoute
+  MarketRoute: typeof MarketRoute
+  MentorshipRoute: typeof MentorshipRoute
+  OfferRoute: typeof OfferRoute
+  OnlinePlatformRoute: typeof OnlinePlatformRoute
+  PlayRoute: typeof PlayRoute
+  QuestRoute: typeof QuestRoute
+  QuizRoute: typeof QuizRoute
+  Rapport_businessRoute: typeof Rapport_businessRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  ReviewsRoute: typeof ReviewsRoute
+  ScheduleRoute: typeof ScheduleRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SocialProjectsRoute: typeof SocialProjectsRoute
+  TrainersRoute: typeof TrainersRoute
+  YaZhivayaRoute: typeof YaZhivayaRoute
+  ZhivayaRoute: typeof ZhivayaRoute
+  CitiesSlugRoute: typeof CitiesSlugRoute
+  LpIrkutskNatalyaRoute: typeof LpIrkutskNatalyaRoute
+  LpSochiYuliaRoute: typeof LpSochiYuliaRoute
+  LpSpbNatalyaRoute: typeof LpSpbNatalyaRoute
+  LpVolgogradMarinaRoute: typeof LpVolgogradMarinaRoute
+  PaymentResultRoute: typeof PaymentResultRoute
+  LpLandingTopicRoute: typeof LpLandingTopicRoute
+  ApiPublicTelegramAnnounceRoute: typeof ApiPublicTelegramAnnounceRoute
+  ApiPublicTelegramAskScheduleRoute: typeof ApiPublicTelegramAskScheduleRoute
+  ApiPublicTelegramRemindRoute: typeof ApiPublicTelegramRemindRoute
+  ApiPublicTelegramWebhookRoute: typeof ApiPublicTelegramWebhookRoute
+  ApiPublicYookassaWebhookRoute: typeof ApiPublicYookassaWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +763,471 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/RB': {
+      id: '/RB'
+      path: '/RB'
+      fullPath: '/RB'
+      preLoaderRoute: typeof RBRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bloggers': {
+      id: '/bloggers'
+      path: '/bloggers'
+      fullPath: '/bloggers'
+      preLoaderRoute: typeof BloggersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacts': {
+      id: '/contacts'
+      path: '/contacts'
+      fullPath: '/contacts'
+      preLoaderRoute: typeof ContactsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/course': {
+      id: '/course'
+      path: '/course'
+      fullPath: '/course'
+      preLoaderRoute: typeof CourseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facilitators': {
+      id: '/facilitators'
+      path: '/facilitators'
+      fullPath: '/facilitators'
+      preLoaderRoute: typeof FacilitatorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game': {
+      id: '/game'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game-creation': {
+      id: '/game-creation'
+      path: '/game-creation'
+      fullPath: '/game-creation'
+      preLoaderRoute: typeof GameCreationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors': {
+      id: '/investors'
+      path: '/investors'
+      fullPath: '/investors'
+      preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-applications': {
+      id: '/manage-applications'
+      path: '/manage-applications'
+      fullPath: '/manage-applications'
+      preLoaderRoute: typeof ManageApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-club': {
+      id: '/manage-club'
+      path: '/manage-club'
+      fullPath: '/manage-club'
+      preLoaderRoute: typeof ManageClubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-course': {
+      id: '/manage-course'
+      path: '/manage-course'
+      fullPath: '/manage-course'
+      preLoaderRoute: typeof ManageCourseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-crm': {
+      id: '/manage-crm'
+      path: '/manage-crm'
+      fullPath: '/manage-crm'
+      preLoaderRoute: typeof ManageCrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-landings': {
+      id: '/manage-landings'
+      path: '/manage-landings'
+      fullPath: '/manage-landings'
+      preLoaderRoute: typeof ManageLandingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-marathon': {
+      id: '/manage-marathon'
+      path: '/manage-marathon'
+      fullPath: '/manage-marathon'
+      preLoaderRoute: typeof ManageMarathonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-minigame': {
+      id: '/manage-minigame'
+      path: '/manage-minigame'
+      fullPath: '/manage-minigame'
+      preLoaderRoute: typeof ManageMinigameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-reviews': {
+      id: '/manage-reviews'
+      path: '/manage-reviews'
+      fullPath: '/manage-reviews'
+      preLoaderRoute: typeof ManageReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentorship': {
+      id: '/mentorship'
+      path: '/mentorship'
+      fullPath: '/mentorship'
+      preLoaderRoute: typeof MentorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer': {
+      id: '/offer'
+      path: '/offer'
+      fullPath: '/offer'
+      preLoaderRoute: typeof OfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-platform': {
+      id: '/online-platform'
+      path: '/online-platform'
+      fullPath: '/online-platform'
+      preLoaderRoute: typeof OnlinePlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play': {
+      id: '/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof PlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quest': {
+      id: '/quest'
+      path: '/quest'
+      fullPath: '/quest'
+      preLoaderRoute: typeof QuestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rapport_business': {
+      id: '/rapport_business'
+      path: '/rapport_business'
+      fullPath: '/rapport_business'
+      preLoaderRoute: typeof Rapport_businessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/social-projects': {
+      id: '/social-projects'
+      path: '/social-projects'
+      fullPath: '/social-projects'
+      preLoaderRoute: typeof SocialProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trainers': {
+      id: '/trainers'
+      path: '/trainers'
+      fullPath: '/trainers'
+      preLoaderRoute: typeof TrainersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ya-zhivaya': {
+      id: '/ya-zhivaya'
+      path: '/ya-zhivaya'
+      fullPath: '/ya-zhivaya'
+      preLoaderRoute: typeof YaZhivayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zhivaya': {
+      id: '/zhivaya'
+      path: '/zhivaya'
+      fullPath: '/zhivaya'
+      preLoaderRoute: typeof ZhivayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/cities/$slug': {
+      id: '/cities/$slug'
+      path: '/cities/$slug'
+      fullPath: '/cities/$slug'
+      preLoaderRoute: typeof CitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games/': {
+      id: '/games/'
+      path: '/'
+      fullPath: '/games/'
+      preLoaderRoute: typeof GamesIndexRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/games/$slug': {
+      id: '/games/$slug'
+      path: '/$slug'
+      fullPath: '/games/$slug'
+      preLoaderRoute: typeof GamesSlugRouteImport
+      parentRoute: typeof GamesRoute
+    }
+    '/lp/irkutsk-natalya': {
+      id: '/lp/irkutsk-natalya'
+      path: '/lp/irkutsk-natalya'
+      fullPath: '/lp/irkutsk-natalya'
+      preLoaderRoute: typeof LpIrkutskNatalyaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/sochi-yulia': {
+      id: '/lp/sochi-yulia'
+      path: '/lp/sochi-yulia'
+      fullPath: '/lp/sochi-yulia'
+      preLoaderRoute: typeof LpSochiYuliaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/spb-natalya': {
+      id: '/lp/spb-natalya'
+      path: '/lp/spb-natalya'
+      fullPath: '/lp/spb-natalya'
+      preLoaderRoute: typeof LpSpbNatalyaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/volgograd-marina': {
+      id: '/lp/volgograd-marina'
+      path: '/lp/volgograd-marina'
+      fullPath: '/lp/volgograd-marina'
+      preLoaderRoute: typeof LpVolgogradMarinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment/result': {
+      id: '/payment/result'
+      path: '/payment/result'
+      fullPath: '/payment/result'
+      preLoaderRoute: typeof PaymentResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/$landing/$topic': {
+      id: '/lp/$landing/$topic'
+      path: '/lp/$landing/$topic'
+      fullPath: '/lp/$landing/$topic'
+      preLoaderRoute: typeof LpLandingTopicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/announce': {
+      id: '/api/public/telegram/announce'
+      path: '/api/public/telegram/announce'
+      fullPath: '/api/public/telegram/announce'
+      preLoaderRoute: typeof ApiPublicTelegramAnnounceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/ask-schedule': {
+      id: '/api/public/telegram/ask-schedule'
+      path: '/api/public/telegram/ask-schedule'
+      fullPath: '/api/public/telegram/ask-schedule'
+      preLoaderRoute: typeof ApiPublicTelegramAskScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/remind': {
+      id: '/api/public/telegram/remind'
+      path: '/api/public/telegram/remind'
+      fullPath: '/api/public/telegram/remind'
+      preLoaderRoute: typeof ApiPublicTelegramRemindRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/telegram/webhook': {
+      id: '/api/public/telegram/webhook'
+      path: '/api/public/telegram/webhook'
+      fullPath: '/api/public/telegram/webhook'
+      preLoaderRoute: typeof ApiPublicTelegramWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/yookassa/webhook': {
+      id: '/api/public/yookassa/webhook'
+      path: '/api/public/yookassa/webhook'
+      fullPath: '/api/public/yookassa/webhook'
+      preLoaderRoute: typeof ApiPublicYookassaWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
+interface GamesRouteChildren {
+  GamesSlugRoute: typeof GamesSlugRoute
+  GamesIndexRoute: typeof GamesIndexRoute
+}
+
+const GamesRouteChildren: GamesRouteChildren = {
+  GamesSlugRoute: GamesSlugRoute,
+  GamesIndexRoute: GamesIndexRoute,
+}
+
+const GamesRouteWithChildren = GamesRoute._addFileChildren(GamesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RBRoute: RBRoute,
+  AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  BlogRoute: BlogRouteWithChildren,
+  BloggersRoute: BloggersRoute,
+  CommunityRoute: CommunityRoute,
+  ContactsRoute: ContactsRoute,
+  CourseRoute: CourseRoute,
+  DemoRoute: DemoRoute,
+  FacilitatorsRoute: FacilitatorsRoute,
+  GameRoute: GameRoute,
+  GameCreationRoute: GameCreationRoute,
+  GamesRoute: GamesRouteWithChildren,
+  HowItWorksRoute: HowItWorksRoute,
+  InvestorsRoute: InvestorsRoute,
+  ManageApplicationsRoute: ManageApplicationsRoute,
+  ManageClubRoute: ManageClubRoute,
+  ManageCourseRoute: ManageCourseRoute,
+  ManageCrmRoute: ManageCrmRoute,
+  ManageLandingsRoute: ManageLandingsRoute,
+  ManageMarathonRoute: ManageMarathonRoute,
+  ManageMinigameRoute: ManageMinigameRoute,
+  ManageReviewsRoute: ManageReviewsRoute,
+  MarketRoute: MarketRoute,
+  MentorshipRoute: MentorshipRoute,
+  OfferRoute: OfferRoute,
+  OnlinePlatformRoute: OnlinePlatformRoute,
+  PlayRoute: PlayRoute,
+  QuestRoute: QuestRoute,
+  QuizRoute: QuizRoute,
+  Rapport_businessRoute: Rapport_businessRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  ReviewsRoute: ReviewsRoute,
+  ScheduleRoute: ScheduleRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SocialProjectsRoute: SocialProjectsRoute,
+  TrainersRoute: TrainersRoute,
+  YaZhivayaRoute: YaZhivayaRoute,
+  ZhivayaRoute: ZhivayaRoute,
+  CitiesSlugRoute: CitiesSlugRoute,
+  LpIrkutskNatalyaRoute: LpIrkutskNatalyaRoute,
+  LpSochiYuliaRoute: LpSochiYuliaRoute,
+  LpSpbNatalyaRoute: LpSpbNatalyaRoute,
+  LpVolgogradMarinaRoute: LpVolgogradMarinaRoute,
+  PaymentResultRoute: PaymentResultRoute,
+  LpLandingTopicRoute: LpLandingTopicRoute,
+  ApiPublicTelegramAnnounceRoute: ApiPublicTelegramAnnounceRoute,
+  ApiPublicTelegramAskScheduleRoute: ApiPublicTelegramAskScheduleRoute,
+  ApiPublicTelegramRemindRoute: ApiPublicTelegramRemindRoute,
+  ApiPublicTelegramWebhookRoute: ApiPublicTelegramWebhookRoute,
+  ApiPublicYookassaWebhookRoute: ApiPublicYookassaWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
