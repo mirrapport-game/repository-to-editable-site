@@ -39,7 +39,6 @@ const USES = [
 const TEAM = [
   { name: "Артём Ефимов", role: "Автор игры", quote: "Раньше была дилемма: карьера или душевное спокойствие. Сегодня это синтез: карьера — путь к душевному спокойствию и реализации.", facts: ["Сертифицированный игропрактик", "800 часов практики трансформационных и бизнес-игр", "Основатель группы компаний «Раппóрт»"], img: authorPortraitImage },
   { name: "Лиана Кушенко", role: "Бизнес-тренер", quote: "Мы продаём не тренинг, а коммерческий успех компании, обусловленный самой сплочённой и эффективной командой.", facts: ["Сертифицированный корпоративный бизнес-тренер", "Лидер глобальной программы Mental Health в Colgate в России", "Финалист президентской программы для управленческих кадров", "Дипломированный психолог"] },
-  { name: "Оксана Гузяева", role: "Траблшутер", quote: "Чтобы укрепить связи в коллективе и заново познакомить коллег, используйте бизнес-игры.", facts: ["20 лет в управлении продажами (FMCG, B2B): Mars, Colgate, Nestlé", "Управление командой, найм, обучение, развитие", "Решение кризисных ситуаций"] },
 ];
 
 export function BusinessOffer() {
@@ -183,7 +182,7 @@ export function BusinessOffer() {
       <div className="section-inner">
         <p className="eyebrow">Команда</p>
         <h2 className="section-title">Кто <em>проводит</em></h2>
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className={`mt-12 grid gap-4 ${TEAM.length > 2 ? "lg:grid-cols-3" : "mx-auto max-w-4xl lg:grid-cols-2"}`}>
           {TEAM.map((m) => <article key={m.name} className="flex flex-col rounded-3xl border border-border bg-card p-8">
             {m.img && <img src={m.img} alt={m.name} loading="lazy" className="mb-6 aspect-square w-24 rounded-full object-cover" />}
             <p className="text-sm font-bold uppercase tracking-widest text-primary">{m.role}</p>
