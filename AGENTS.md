@@ -40,3 +40,4 @@
 
 - The self-hosted Docker runtime uses Nginx for HTTP compression; application responses remain uncompressed internally to preserve compatibility with Lovable hosting.
 - Self-hosted typography uses local WOFF2 subsets with optional font display and two critical Russian faces preloaded, avoiding late layout shifts and third-party font CSS.
+- The schema lives in Lovable Cloud migrations under drizzle/migrations; scheduled Telegram reminders must be recreated as managed HTTP schedules, not hand-written cron SQL.
