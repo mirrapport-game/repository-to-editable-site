@@ -11,8 +11,8 @@ import { PriceCalculator } from "@/components/price-calculator";
 import { FacilitatorTariffs } from "@/components/facilitator-tariffs";
 import { TELEGRAM_URL } from "@/data/site";
 import { cities } from "@/data/cities";
-import facCards from "@/assets/facilitators/fac-cards.jpg.asset.json";
-import facTable from "@/assets/facilitators/fac-table.jpg.asset.json";
+import facCards from "@/assets/facilitators/fac-cards.jpg";
+import facTable from "@/assets/facilitators/fac-table.jpg";
 import { VideoCarousel } from "@/components/video-carousel";
 
 // First 8 unique hosts with photos, in city order; each links to their city page.
@@ -26,8 +26,8 @@ const featuredHosts = (() => {
 })();
 
 const facPhotos = [
-  { src: facCards.url, alt: "Карточки «Раппóрт» на игровом столе", caption: "Карточки этапов на столе" },
-  { src: facTable.url, alt: "Участницы игры «Раппóрт» за столом", caption: "Живая игра в группе" },
+  { src: facCards, alt: "Карточки «Раппóрт» на игровом столе", caption: "Карточки этапов на столе" },
+  { src: facTable, alt: "Участницы игры «Раппóрт» за столом", caption: "Живая игра в группе" },
 ];
 
 const kit = [

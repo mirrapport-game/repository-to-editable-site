@@ -1,48 +1,48 @@
-import gallery2 from "@/assets/gallery/gallery-2.jpg.asset.json";
-import gallery4 from "@/assets/gallery/gallery-4.jpg.asset.json";
-import gallery6 from "@/assets/gallery/gallery-6.jpg.asset.json";
-import artemAsset from "@/assets/artem-efimov.webp.asset.json";
-import artemPosterAsset from "@/assets/artem-efimov-poster.png.asset.json";
-import artemPortraitAsset from "@/assets/artem-efimov-portrait.webp.asset.json";
-import beautyAsset from "@/assets/rapport-beauty.webp.asset.json";
-import relationshipsAsset from "@/assets/rapport-relationships.webp.asset.json";
-import zhivayaAsset from "@/assets/rapport-zhivaya.webp.asset.json";
+import gallery2 from "@/assets/gallery/gallery-2.jpg";
+import gallery4 from "@/assets/gallery/gallery-4.jpg";
+import gallery6 from "@/assets/gallery/gallery-6.jpg";
+import artemAsset from "@/assets/artem-efimov.webp";
+import artemPosterAsset from "@/assets/artem-efimov-poster.png";
+import artemPortraitAsset from "@/assets/artem-efimov-portrait.webp";
+import beautyAsset from "@/assets/rapport-beauty.webp";
+import relationshipsAsset from "@/assets/rapport-relationships.webp";
+import zhivayaAsset from "@/assets/rapport-zhivaya.webp";
 import relationshipsCutout from "@/assets/rapport-relationships-cutout.webp";
 import zhivayaCutout from "@/assets/rapport-zhivaya-rectangular.webp";
 import beautyCutout from "@/assets/rapport-beauty-cutout.webp";
 import businessCutout from "@/assets/rapport-business-cutout.webp";
-import zhivayaAfterGameAsset from "@/assets/zhivaya-after-game.webp.asset.json";
-import zhivayaSpheresAsset from "@/assets/zhivaya-12-spheres.webp.asset.json";
-import zhivayaBeforeAfterAsset from "@/assets/zhivaya-before-after.webp.asset.json";
-import zhivayaProcessAsset from "@/assets/zhivaya-process.webp.asset.json";
+import zhivayaAfterGameAsset from "@/assets/zhivaya-after-game.webp";
+import zhivayaSpheresAsset from "@/assets/zhivaya-12-spheres.webp";
+import zhivayaBeforeAfterAsset from "@/assets/zhivaya-before-after.webp";
+import zhivayaProcessAsset from "@/assets/zhivaya-process.webp";
 import rapportHero from "@/assets/rapport-hero-gathering.webp";
-import gameCardMomentAsset from "@/assets/rapport-game-card-moment.png.asset.json";
-import gameInProgressAsset from "@/assets/rapport-game-in-progress.png.asset.json";
-import gameTableAsset from "@/assets/rapport-game-table.jpg.asset.json";
-import liveGameAudienceAsset from "@/assets/live-game-audience.jpg.asset.json";
-import liveGameGroupAsset from "@/assets/rapport-live-game-group.png.asset.json";
-import liveGameEveningAsset from "@/assets/rapport-live-game-evening.jpg.asset.json";
-import participantReview1Asset from "@/assets/participant-review-1.webp.asset.json";
-import participantReview2Asset from "@/assets/participant-review-2.webp.asset.json";
-import participantReview3Asset from "@/assets/participant-review-3.webp.asset.json";
-import participantReview4Asset from "@/assets/participant-review-4.webp.asset.json";
-import participantReview5Asset from "@/assets/participant-review-5.webp.asset.json";
-import participantReview6Asset from "@/assets/participant-review-6.webp.asset.json";
-import participantReview7Asset from "@/assets/participant-review-7.webp.asset.json";
-import participantReview8Asset from "@/assets/participant-review-8.webp.asset.json";
-import participantReview9Asset from "@/assets/participant-review-9.jpg.asset.json";
-import participantReview10Asset from "@/assets/participant-review-10.jpg.asset.json";
-import participantReview11Asset from "@/assets/participant-review-11.jpg.asset.json";
-import participantReview12Asset from "@/assets/participant-review-12.jpg.asset.json";
-import participantReview13Asset from "@/assets/participant-review-13.jpg.asset.json";
-import participantReview14Asset from "@/assets/participant-review-14.jpg.asset.json";
-import participantReview15Asset from "@/assets/participant-review-15.jpg.asset.json";
-import participantReview16Asset from "@/assets/participant-review-16.jpg.asset.json";
-import participantReview17Asset from "@/assets/participant-review-17.jpg.asset.json";
-import participantReview18Asset from "@/assets/participant-review-18.jpg.asset.json";
-import liveG3 from "@/assets/artem-gallery/g3.jpg.asset.json";
-import liveG5 from "@/assets/artem-gallery/g5.jpg.asset.json";
-import liveG6 from "@/assets/artem-gallery/g6.jpg.asset.json";
+import gameCardMomentAsset from "@/assets/rapport-game-card-moment.png";
+import gameInProgressAsset from "@/assets/rapport-game-in-progress.png";
+import gameTableAsset from "@/assets/rapport-game-table.jpg";
+import liveGameAudienceAsset from "@/assets/live-game-audience.jpg";
+import liveGameGroupAsset from "@/assets/rapport-live-game-group.png";
+import liveGameEveningAsset from "@/assets/rapport-live-game-evening.jpg";
+import participantReview1Asset from "@/assets/participant-review-1.webp";
+import participantReview2Asset from "@/assets/participant-review-2.webp";
+import participantReview3Asset from "@/assets/participant-review-3.webp";
+import participantReview4Asset from "@/assets/participant-review-4.webp";
+import participantReview5Asset from "@/assets/participant-review-5.webp";
+import participantReview6Asset from "@/assets/participant-review-6.webp";
+import participantReview7Asset from "@/assets/participant-review-7.webp";
+import participantReview8Asset from "@/assets/participant-review-8.webp";
+import participantReview9Asset from "@/assets/participant-review-9.jpg";
+import participantReview10Asset from "@/assets/participant-review-10.jpg";
+import participantReview11Asset from "@/assets/participant-review-11.jpg";
+import participantReview12Asset from "@/assets/participant-review-12.jpg";
+import participantReview13Asset from "@/assets/participant-review-13.jpg";
+import participantReview14Asset from "@/assets/participant-review-14.jpg";
+import participantReview15Asset from "@/assets/participant-review-15.jpg";
+import participantReview16Asset from "@/assets/participant-review-16.jpg";
+import participantReview17Asset from "@/assets/participant-review-17.jpg";
+import participantReview18Asset from "@/assets/participant-review-18.jpg";
+import liveG3 from "@/assets/artem-gallery/g3.jpg";
+import liveG5 from "@/assets/artem-gallery/g5.jpg";
+import liveG6 from "@/assets/artem-gallery/g6.jpg";
 
 export const TELEGRAM_URL = "https://t.me/artem_rapport";
 export const TELEGRAM_CHANNEL_URL = "https://t.me/rapport_game";
@@ -94,15 +94,15 @@ export const games: Game[] = [
       { kind: "online", label: "Онлайн", note: "Видеовстреча из любой точки мира" },
       { kind: "offline", label: "Офлайн", note: "Живая встреча с ведущим" },
     ],
-    audienceImage: { src: gameTableAsset.url, alt: "Пары за игровым полем «Раппóрт»" },
-    outcomeImage: { src: liveGameEveningAsset.url, alt: "Тёплый вечер после игры «Раппóрт»" },
+    audienceImage: { src: gameTableAsset, alt: "Пары за игровым полем «Раппóрт»" },
+    outcomeImage: { src: liveGameEveningAsset, alt: "Тёплый вечер после игры «Раппóрт»" },
     testimonials: [
       { text: "Каждый получает ответ на свой запрос, несмотря на то, что это происходит через обыгрывание рандомных ситуаций в паре.", author: "Участница игры" },
       { text: "Есть возможность посмотреть на ситуацию со стороны и получить поддержку и оценку ведущих и людей в поле.", author: "Участница игры" },
       { text: "Чувство юмора — это очень мощный ресурс. Посмеяться с другим человеком до слёз в непонятной ситуации — то, что может отменить армагеддон.", author: "Участница игры" },
     ],
     price: "от 2 500 ₽",
-    image: relationshipsAsset.url,
+    image: relationshipsAsset,
     cutoutImage: relationshipsCutout,
     sourceUrl: "https://rapportgame.ru/game/",
   },
@@ -120,21 +120,21 @@ export const games: Game[] = [
     formats: [
       { kind: "offline", label: "Офлайн", note: "Живые встречи в кругу до 12 участниц" },
     ],
-    audienceImage: { src: liveGameGroupAsset.url, alt: "Женский круг на игре «Раппóрт Живая»" },
-    outcomeImage: { src: gameCardMomentAsset.url, alt: "Момент открытия карты на игре" },
+    audienceImage: { src: liveGameGroupAsset, alt: "Женский круг на игре «Раппóрт Живая»" },
+    outcomeImage: { src: gameCardMomentAsset, alt: "Момент открытия карты на игре" },
     testimonials: [
       { text: "Я стала больше выбирать себя, своё тело и своё настроение. Внутри поселилось какое-то тепло и любовь к себе.", author: "Участница игры «Живая»" },
       { text: "Игра мягко, но очень точно помогает посмотреть на себя по-новому, услышать свои желания и вспомнить, какая ты на самом деле.", author: "Участница игры «Живая»" },
       { text: "Через игровое пространство можно отредактировать реакции, страхи, опасения и зажимы.", author: "Участник игры «Живая»" },
     ],
     price: "от 2 500 ₽",
-    image: zhivayaAsset.url,
+    image: zhivayaAsset,
     cutoutImage: zhivayaCutout,
     gallery: [
-      { src: zhivayaAfterGameAsset.url, alt: "Что участница может сказать себе после игры «Раппóрт Живая»" },
-      { src: zhivayaSpheresAsset.url, alt: "Двенадцать сфер жизни женщины в игре «Раппóрт Живая»" },
-      { src: zhivayaBeforeAfterAsset.url, alt: "Изменение взгляда на себя до и после игры «Раппóрт Живая»" },
-      { src: zhivayaProcessAsset.url, alt: "Шесть этапов психологической игры «Раппóрт Живая»" },
+      { src: zhivayaAfterGameAsset, alt: "Что участница может сказать себе после игры «Раппóрт Живая»" },
+      { src: zhivayaSpheresAsset, alt: "Двенадцать сфер жизни женщины в игре «Раппóрт Живая»" },
+      { src: zhivayaBeforeAfterAsset, alt: "Изменение взгляда на себя до и после игры «Раппóрт Живая»" },
+      { src: zhivayaProcessAsset, alt: "Шесть этапов психологической игры «Раппóрт Живая»" },
     ],
     sourceUrl: "https://rapportgame.ru/zhivaya/",
   },
@@ -149,10 +149,10 @@ export const games: Game[] = [
     outcomes: ["Сильнее коммуникация", "Больше доверия", "Рост через качество отношений"],
     duration: "По программе ведущего",
     format: "Для beauty-команд",
-    audienceImage: { src: gameInProgressAsset.url, alt: "Команда во время игры «Раппóрт»" },
-    outcomeImage: { src: gameCardMomentAsset.url, alt: "Участники обсуждают карту" },
+    audienceImage: { src: gameInProgressAsset, alt: "Команда во время игры «Раппóрт»" },
+    outcomeImage: { src: gameCardMomentAsset, alt: "Участники обсуждают карту" },
     price: "от 2 500 ₽",
-    image: beautyAsset.url,
+    image: beautyAsset,
     cutoutImage: beautyCutout,
     sourceUrl: "https://rapportgame.ru/RB",
   },
@@ -167,8 +167,8 @@ export const games: Game[] = [
     outcomes: ["Командная коммуникация", "Разбор конфликтов", "Практика на реальных кейсах"],
     duration: "Корпоративный формат",
     format: "Для команд и руководителей",
-    audienceImage: { src: gameTableAsset.url, alt: "Команда за игровым столом" },
-    outcomeImage: { src: gameInProgressAsset.url, alt: "Разбор рабочих кейсов в игре" },
+    audienceImage: { src: gameTableAsset, alt: "Команда за игровым столом" },
+    outcomeImage: { src: gameInProgressAsset, alt: "Разбор рабочих кейсов в игре" },
     price: "от 2 500 ₽",
     image: businessCutout,
     cutoutImage: businessCutout,
@@ -192,55 +192,55 @@ export const games: Game[] = [
   },
 ];
 
-export const authorImage = artemAsset.url;
-export const authorPortraitImage = artemPortraitAsset.url;
-export const authorPosterImage = artemPosterAsset.url;
+export const authorImage = artemAsset;
+export const authorPortraitImage = artemPortraitAsset;
+export const authorPosterImage = artemPosterAsset;
 export const heroImage = rapportHero;
 
 export const processPhotos = [
   {
-    src: liveGameEveningAsset.url,
+    src: liveGameEveningAsset,
     alt: "Участники живой игры «Раппóрт» обсуждают ситуацию за общим столом",
     caption: "Настоящие встречи и настоящие эмоции",
   },
   {
-    src: gallery2.url,
+    src: gallery2,
     alt: "Ведущий и участники обсуждают ситуацию за столом с карточками «Раппóрт»",
     caption: "Разговор, в котором слышат каждого",
   },
   {
-    src: gameInProgressAsset.url,
+    src: gameInProgressAsset,
     alt: "Участник игры «Раппóрт» выбирает карту во время встречи",
     caption: "Живой диалог вместо готовых ответов",
   },
   {
-    src: gameTableAsset.url,
+    src: gameTableAsset,
     alt: "Коробка и карточки игры «Раппóрт» на игровом столе",
     caption: "Пространство для честного разговора",
   },
-  { src: gallery6.url, alt: "Участники игры «Раппóрт» на диване в кафе вечером", caption: "Живая игра в уютной атмосфере" },
-  { src: liveG6.url, alt: "Ведущий и участники во время игры «Раппóрт» в кафе", caption: "Разговор, который хочется продолжить" },
+  { src: gallery6, alt: "Участники игры «Раппóрт» на диване в кафе вечером", caption: "Живая игра в уютной атмосфере" },
+  { src: liveG6, alt: "Ведущий и участники во время игры «Раппóрт» в кафе", caption: "Разговор, который хочется продолжить" },
 ] as const;
 
 export const participantReviewImages = [
-  { src: participantReview1Asset.url, alt: "Отзыв участницы о подходе ведущего и ответах на запросы в игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview2Asset.url, alt: "Отзыв участницы о поддержке и возможности посмотреть на ситуацию со стороны", game: "Раппóрт — Живая" },
-  { src: participantReview3Asset.url, alt: "Отзыв участницы о юморе как ресурсе во время игры", game: "Раппóрт — Живая" },
-  { src: participantReview4Asset.url, alt: "Отзыв участницы о проживании ролей и знакомстве с собой", game: "Раппóрт — Живая" },
-  { src: participantReview5Asset.url, alt: "Отзыв участницы об изменениях после игры «Раппóрт — Живая»", game: "Раппóрт — Живая" },
-  { src: participantReview6Asset.url, alt: "Отзыв о безопасном игровом пространстве «Раппóрт — Живая»", game: "Раппóрт — Живая" },
-  { src: participantReview7Asset.url, alt: "Отзыв участницы о внутренней силе после игры «Раппóрт — Живая»", game: "Раппóрт — Живая" },
-  { src: participantReview8Asset.url, alt: "Отзыв участницы о первом опыте трансформационной игры «Раппóрт»", game: "Раппóрт — Живая" },
-  { src: participantReview9Asset.url, alt: "Отзыв: Татьяна Павлова об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview10Asset.url, alt: "Отзыв: Елена Назарова об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview11Asset.url, alt: "Отзыв: Алла об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview12Asset.url, alt: "Отзыв: Лана Лаппо об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview13Asset.url, alt: "Отзыв: Михаил об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview14Asset.url, alt: "Отзыв: Аида Эльканова об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview15Asset.url, alt: "Отзыв: Елена (Воронеж) об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview16Asset.url, alt: "Отзыв: Анна Николаевна об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview17Asset.url, alt: "Отзыв: Елена Гречко об игре «Раппóрт»", game: "Раппóрт — Отношения" },
-  { src: participantReview18Asset.url, alt: "Отзыв: Елена об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview1Asset, alt: "Отзыв участницы о подходе ведущего и ответах на запросы в игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview2Asset, alt: "Отзыв участницы о поддержке и возможности посмотреть на ситуацию со стороны", game: "Раппóрт — Живая" },
+  { src: participantReview3Asset, alt: "Отзыв участницы о юморе как ресурсе во время игры", game: "Раппóрт — Живая" },
+  { src: participantReview4Asset, alt: "Отзыв участницы о проживании ролей и знакомстве с собой", game: "Раппóрт — Живая" },
+  { src: participantReview5Asset, alt: "Отзыв участницы об изменениях после игры «Раппóрт — Живая»", game: "Раппóрт — Живая" },
+  { src: participantReview6Asset, alt: "Отзыв о безопасном игровом пространстве «Раппóрт — Живая»", game: "Раппóрт — Живая" },
+  { src: participantReview7Asset, alt: "Отзыв участницы о внутренней силе после игры «Раппóрт — Живая»", game: "Раппóрт — Живая" },
+  { src: participantReview8Asset, alt: "Отзыв участницы о первом опыте трансформационной игры «Раппóрт»", game: "Раппóрт — Живая" },
+  { src: participantReview9Asset, alt: "Отзыв: Татьяна Павлова об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview10Asset, alt: "Отзыв: Елена Назарова об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview11Asset, alt: "Отзыв: Алла об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview12Asset, alt: "Отзыв: Лана Лаппо об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview13Asset, alt: "Отзыв: Михаил об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview14Asset, alt: "Отзыв: Аида Эльканова об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview15Asset, alt: "Отзыв: Елена (Воронеж) об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview16Asset, alt: "Отзыв: Анна Николаевна об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview17Asset, alt: "Отзыв: Елена Гречко об игре «Раппóрт»", game: "Раппóрт — Отношения" },
+  { src: participantReview18Asset, alt: "Отзыв: Елена об игре «Раппóрт»", game: "Раппóрт — Отношения" },
 ] as const;
 
 export type ArticleSection = { heading: string; paragraphs?: string[]; bullets?: string[] };

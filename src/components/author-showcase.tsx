@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { PlayCircle, Star, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import g1 from "@/assets/artem-gallery/g1.jpg.asset.json";
-import g2 from "@/assets/artem-gallery/g2.jpg.asset.json";
-import g3 from "@/assets/artem-gallery/g3.jpg.asset.json";
-import g4 from "@/assets/artem-gallery/g4.jpg.asset.json";
-import g5 from "@/assets/artem-gallery/g5.jpg.asset.json";
-import g6 from "@/assets/artem-gallery/g6.jpg.asset.json";
-import g7 from "@/assets/artem-gallery/g7.jpg.asset.json";
-import g8 from "@/assets/artem-gallery/g8.jpg.asset.json";
-import g9 from "@/assets/artem-gallery/g9.jpg.asset.json";
-import g10 from "@/assets/artem-gallery/g10.jpg.asset.json";
+import g1 from "@/assets/artem-gallery/g1.jpg";
+import g2 from "@/assets/artem-gallery/g2.jpg";
+import g3 from "@/assets/artem-gallery/g3.jpg";
+import g4 from "@/assets/artem-gallery/g4.jpg";
+import g5 from "@/assets/artem-gallery/g5.jpg";
+import g6 from "@/assets/artem-gallery/g6.jpg";
+import g7 from "@/assets/artem-gallery/g7.jpg";
+import g8 from "@/assets/artem-gallery/g8.jpg";
+import g9 from "@/assets/artem-gallery/g9.jpg";
+import g10 from "@/assets/artem-gallery/g10.jpg";
 
 const GALLERY = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10].map((g) => g.url);
 

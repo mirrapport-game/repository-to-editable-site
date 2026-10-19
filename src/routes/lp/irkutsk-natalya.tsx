@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HostLanding, type HostLandingConfig } from "@/components/host-landing";
-import natalyaPhoto from "@/assets/natalya-kireeva.webp.asset.json";
+import natalyaPhoto from "@/assets/natalya-kireeva.webp";
 
 const TITLE = "Раппóрт — Живая в Иркутске с ведущей Наталья Киреева";
 const DESC = "Женская игра-практикум «Раппóрт — Живая» в Иркутске. Без лекций и советов: вы играете роль и видите свои сценарии со стороны. Ведущая — Наталья Киреева. Личные границы, любовь к себе, выбор себя, работа с тенью.";
@@ -28,7 +28,7 @@ const config: HostLandingConfig = {
     "Тем, кто ищет живой женский круг поддержки"
   ],
   "quote": "«Я рядом всё время. Я не оцениваю. Я помогаю увидеть то, что ты сама не замечаешь».",
-  "photo": natalyaPhoto.url
+  "photo": natalyaPhoto
 };
 
 export const Route = createFileRoute("/lp/irkutsk-natalya")({

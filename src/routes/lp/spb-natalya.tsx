@@ -4,9 +4,9 @@ import vanyushkinaPhoto from "@/assets/hosts/natalya-vanyushkina.jpg";
 
 const TITLE = "Раппóрт — Живая в Петербурге с ведущей Наталья Ванюшкина";
 const DESC = "Женская игра-практикум «Раппóрт — Живая» в Петербурге. Без лекций и советов: вы играете роль и видите свои сценарии со стороны. Ведущая — Наталья Ванюшкина. Личные границы, любовь к себе, выбор себя, работа с тенью.";
-import r1 from "@/assets/spb-natalya-review-1.jpg.asset.json";
-import r2 from "@/assets/spb-natalya-review-2.jpg.asset.json";
-import r3 from "@/assets/spb-natalya-review-3.jpg.asset.json";
+import r1 from "@/assets/spb-natalya-review-1.jpg";
+import r2 from "@/assets/spb-natalya-review-2.jpg";
+import r3 from "@/assets/spb-natalya-review-3.jpg";
 
 const config: HostLandingConfig = {
   "landing": "spb-natalya",
@@ -32,9 +32,9 @@ const config: HostLandingConfig = {
   ],
   "quote": "«Я рядом всё время. Я не оцениваю. Я помогаю увидеть, где ты прячешься от себя».",
   "extraReviews": [
-    { src: r1.url, alt: "Отзыв участницы о взгляде на игру «Раппóрт — Живая»" },
-    { src: r2.url, alt: "Отзыв участницы о ролевом формате «Раппóрт — Живая»" },
-    { src: r3.url, alt: "Отзыв психолога о том, как Наталья ведёт «Раппóрт — Живая»" },
+    { src: r1, alt: "Отзыв участницы о взгляде на игру «Раппóрт — Живая»" },
+    { src: r2, alt: "Отзыв участницы о ролевом формате «Раппóрт — Живая»" },
+    { src: r3, alt: "Отзыв психолога о том, как Наталья ведёт «Раппóрт — Живая»" },
   ],
   "photo": vanyushkinaPhoto
 };

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Reveal } from "@/components/business-interactive";
-import cover from "@/assets/beauty-skills-cover.webp.asset.json";
-import s12 from "@/assets/beauty-skill-12.webp.asset.json";
-import s15 from "@/assets/beauty-skill-13.webp.asset.json";
-import s19 from "@/assets/beauty-skill-19.webp.asset.json";
+import cover from "@/assets/beauty-skills-cover.webp";
+import s12 from "@/assets/beauty-skill-12.webp";
+import s15 from "@/assets/beauty-skill-13.webp";
+import s19 from "@/assets/beauty-skill-19.webp";
 
 const CARDS = [
-  { img: s12.url, alt: "Навык 12: правило «нет» (гибкая вежливость)" },
-  { img: s15.url, alt: "Навык 15: конкретика вместо абстракций" },
-  { img: s19.url, alt: "Навык 19: разделение фактов и эмоций" },
+  { img: s12, alt: "Навык 12: правило «нет» (гибкая вежливость)" },
+  { img: s15, alt: "Навык 15: конкретика вместо абстракций" },
+  { img: s19, alt: "Навык 19: разделение фактов и эмоций" },
 ];
 
 /** Карты «Навыки» из игры: по клику карта мягко переворачивается. */
@@ -29,7 +29,7 @@ export function BeautySkillCards() {
                   onClick={() => setOpen(isOpen ? open.filter((x) => x !== i) : [...open, i])}
                   className="flip-card card-lift aspect-[3/2] w-full">
                   <span className="flip-inner block">
-                    <span className="flip-face overflow-hidden rounded-2xl shadow-lg"><img src={cover.url} alt="" loading="lazy" className="h-full w-full object-cover" /></span>
+                    <span className="flip-face overflow-hidden rounded-2xl shadow-lg"><img src={cover} alt="" loading="lazy" className="h-full w-full object-cover" /></span>
                     <span className="flip-face flip-back overflow-hidden rounded-2xl bg-card shadow-lg"><img src={c.img} alt={c.alt} loading="lazy" className="h-full w-full object-contain" /></span>
                   </span>
                 </button>
