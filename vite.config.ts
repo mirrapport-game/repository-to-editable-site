@@ -10,6 +10,9 @@ export default defineConfig({
   nitro: {
     preset: "node-server",
     output: { dir: ".output", serverDir: ".output/server", publicDir: ".output/public" },
+    // Pre-compress bundled assets at build time so the server can hand out
+    // .br/.gz copies instead of sending the raw files.
+    compressPublicAssets: { brotli: true, gzip: true },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
