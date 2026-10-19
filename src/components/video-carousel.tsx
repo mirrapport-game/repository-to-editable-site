@@ -5,7 +5,7 @@ export type VideoSlide = { src: string; title: string };
 
 // Autoplaying muted video playlist: plays slides in sequence, with prev/next
 // and native controls for seeking and sound.
-export function VideoCarousel({ videos, eyebrow, heading }: { videos: VideoSlide[]; eyebrow?: string; heading?: string }) {
+export function VideoCarousel({ videos, eyebrow, heading, poster }: { videos: VideoSlide[]; eyebrow?: string; heading?: string; poster?: string }) {
   const [index, setIndex] = useState(0);
   const [muted, setMuted] = useState(true);
   const ref = useRef<HTMLVideoElement>(null);
@@ -15,7 +15,19 @@ export function VideoCarousel({ videos, eyebrow, heading }: { videos: VideoSlide
     const v = ref.current;
     if (!v) return;
     v.muted = muted;
-    void v.play().catch(() => {});
+    // Only fetch and play once the block is on screen — keeps the first
+    // paint light for visitors who never scroll to the video.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) void v.play().catch(() => {});
+          else v.pause();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    io.observe(v);
+    return () => io.disconnect();
   }, [index, muted]);
 
   function go(next: number) {
@@ -35,6 +47,7 @@ export function VideoCarousel({ videos, eyebrow, heading }: { videos: VideoSlide
           muted={muted}
           playsInline
           controls
+          poster={poster}
           preload="metadata"
           onEnded={() => go(index + 1)}
         />
