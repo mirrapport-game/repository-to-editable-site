@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
     { property: "og:title", content: "Раппóрт — психологические и трансформационные игры про отношения" },
     { property: "og:description", content: "Игры для глубоких разговоров, развития и гармоничных отношений." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+    { property: "og:image", content: "https://rapportgame.ru/og-rapport.jpg" }, { name: "twitter:image", content: "https://rapportgame.ru/og-rapport.jpg" },
   ] }),
   component: Index,
 });
