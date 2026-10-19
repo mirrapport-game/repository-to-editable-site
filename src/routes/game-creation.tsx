@@ -2,7 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FocusGroupSection } from "@/components/focus-group-section";
-import { TELEGRAM_URL } from "@/data/site";
+import { games, TELEGRAM_URL } from "@/data/site";
+
+const upcomingGames = games.filter((g) => g.comingSoon);
 
 const title = "Создание новых игр «Раппóрт» — фокус-группы и игры под ключ";
 const description = "Приглашаем в фокус-группы по созданию новых игр «Раппóрт» и разрабатываем психологические игры под ключ. Бюджет от 300 000 ₽.";

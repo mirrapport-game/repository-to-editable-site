@@ -190,6 +190,30 @@ export const games: Game[] = [
     description: "Новое направление серии «Раппóрт» готовится к запуску.",
     audience: [], outcomes: [], duration: "Скоро", format: "Скоро", price: "Скоро", comingSoon: true,
   },
+  {
+    slug: "ty-zhivoy",
+    title: "Раппóрт — Ты Живой",
+    shortTitle: "Ты Живой",
+    tagline: "Игра для мужчин",
+    description: "Новое направление серии «Раппóрт» готовится к запуску.",
+    audience: [], outcomes: [], duration: "Скоро", format: "Скоро", price: "Скоро", comingSoon: true,
+  },
+  {
+    slug: "sila-setevogo",
+    title: "Раппóрт — Сила сетевого",
+    shortTitle: "Сила сетевого",
+    tagline: "Игра для сетевых компаний",
+    description: "Новое направление серии «Раппóрт» готовится к запуску.",
+    audience: [], outcomes: [], duration: "Скоро", format: "Скоро", price: "Скоро", comingSoon: true,
+  },
+  {
+    slug: "pro-dat",
+    title: "Раппóрт — Про дать",
+    shortTitle: "Про дать",
+    tagline: "Игра про продажи",
+    description: "Новое направление серии «Раппóрт» готовится к запуску.",
+    audience: [], outcomes: [], duration: "Скоро", format: "Скоро", price: "Скоро", comingSoon: true,
+  },
 ];
 
 export const authorImage = artemAsset;
