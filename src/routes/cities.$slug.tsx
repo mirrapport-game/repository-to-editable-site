@@ -140,7 +140,7 @@ function HostPhoto({ host, className, alt }: { host: Facilitator; className?: st
 }
 
 /** Auto-rotating slider: every 3 seconds the next original photo crossfades in. */
-function HostPhotoSlider({ photos, label, className }: { photos: string[]; label: string; className?: string }) {
+function HostPhotoSlider({ photos, label, className }: { photos: string[]; label: string; className?: string | undefined }) {
   const [index, setIndex] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setIndex((n) => (n + 1) % photos.length), 3000);
