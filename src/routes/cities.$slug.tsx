@@ -132,9 +132,43 @@ function CityPage() {
 
 function HostPhoto({ host, className, alt }: { host: Facilitator; className?: string; alt?: string }) {
   const label = alt ?? `${host.name} ${host.surname}`.trim();
-  if (host.photo) return <img src={host.photo} alt={label} className={className} loading="lazy" />;
+  const photos = host.photos && host.photos.length > 0 ? host.photos : host.photo ? [host.photo] : [];
+  if (photos.length > 1) return <HostPhotoSlider photos={photos} label={label} className={className} />;
+  if (photos[0]) return <img src={photos[0]} alt={label} className={className} loading="lazy" />;
   const initials = `${host.name[0] ?? ""}${host.surname[0] ?? ""}`.toUpperCase();
   return <div role="img" aria-label={label} className={`${className ?? ""} flex aspect-[4/5] w-full items-center justify-center bg-secondary font-serif text-5xl text-primary`}>{initials}</div>;
+}
+
+/** Auto-rotating slider: every 3 seconds the next original photo crossfades in. */
+function HostPhotoSlider({ photos, label, className }: { photos: string[]; label: string; className?: string | undefined }) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIndex((n) => (n + 1) % photos.length), 3000);
+    return () => clearInterval(t);
+  }, [photos.length]);
+  return (
+    <>
+      {photos.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt={i === index ? label : ""}
+          aria-hidden={i === index ? undefined : true}
+          className={className}
+          loading={i === 0 ? "eager" : "lazy"}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: i === index ? 1 : 0,
+            transition: "opacity .7s ease",
+          }}
+        />
+      ))}
+    </>
+  );
 }
 
 const ZHIVAYA_HOSTS = new Set(["yulia-novitskaya", "natalya-vanyushkina", "artem-efimov", "natalya-kireeva", "marina-kravchenko"]);
