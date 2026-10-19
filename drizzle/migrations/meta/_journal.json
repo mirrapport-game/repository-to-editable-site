@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792439454539,
+      "tag": "0000_rapport_schema_part1",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792439505662,
+      "tag": "0001_rapport_schema_part2",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792439586845,
+      "tag": "0002_rapport_schema_part3",
+      "breakpoints": true
+    }
+  ]
+}

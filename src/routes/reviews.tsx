@@ -1,0 +1,10 @@
+import { Link } from "@tanstack/react-router";
+import { useIsAdmin } from "@/components/site-shell";
+import { seoMeta, canonical } from "@/lib/seo";
+import { createFileRoute } from "@tanstack/react-router";
+import { FinalCta, PageIntro } from "@/components/content";
+import { VideoReviewCard } from "@/components/video-review-card";
+import { GameReviewGallery } from "@/components/game-review-gallery";
+import { getPublishedVideoReviews } from "@/lib/video-reviews.functions";
+export const Route=createFileRoute("/reviews")({loader:()=>getPublishedVideoReviews(),head: () => ({ links: canonical("/reviews"), meta: [...seoMeta("/reviews"), {title:"Отзывы об играх «Раппóрт»"},{name:"description",content:"Впечатления участников и ведущих психологических игр «Раппóрт» из разных городов России."},{property:"og:title",content:"Отзывы об играх «Раппóрт»"},{property:"og:description",content:"Что участники замечают и уносят с собой после игры."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Page});
+function Page(){const videoReviews=Route.useLoaderData();const isAdmin=useIsAdmin();return <><PageIntro eyebrow="Отзывы" title="Слова после честного разговора" text="Настоящие сообщения участников после игр «Раппóрт»."/><section className="section"><div className="section-inner"><div className="mb-12"><p className="eyebrow">Видеоистории</p><h2 className="section-title max-w-4xl">Услышать тех, кто уже <em>сыграл</em></h2>{isAdmin&&<Link to="/manage-reviews" className="mt-6 inline-flex rounded-full bg-primary px-6 py-3 text-primary-foreground">+ Добавить видеоотзыв</Link>}</div>{videoReviews.length===0&&<div className="flex aspect-video max-w-xl items-center justify-center rounded-2xl border-2 border-dashed border-border text-muted-foreground">Здесь скоро появятся видеоотзывы</div>}<div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{videoReviews.map((review)=><VideoReviewCard key={review.id} review={review}/>)}</div></div></section><GameReviewGallery/><FinalCta/></>}
