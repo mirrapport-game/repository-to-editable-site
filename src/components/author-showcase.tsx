@@ -12,7 +12,7 @@ import g8 from "@/assets/artem-gallery/g8.jpg";
 import g9 from "@/assets/artem-gallery/g9.jpg";
 import g10 from "@/assets/artem-gallery/g10.jpg";
 
-const GALLERY = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10].map((g) => g.url);
+const GALLERY = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10];
 
 /** Video files of the game itself; add URLs here when videos arrive. */
 const GAME_VIDEOS: string[] = [];
