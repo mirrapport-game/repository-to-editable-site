@@ -28,6 +28,12 @@ export const telegramSignIn = createServerFn({ method: "POST" })
     const name = [data.first_name, data.last_name].filter(Boolean).join(" ");
     const created = await supabaseAdmin.auth.admin.createUser({ email, email_confirm: true, user_metadata: { telegram_id: data.id, telegram_username: data.username, full_name: name } });
     if (created.error && !/already|registered|exists/i.test(created.error.message)) throw new Error(created.error.message);
+    if (!created.error) {
+      try {
+        const { notifyLead } = await import("@/lib/telegram-schedule.server");
+        await notifyLead(`🆕 Новая регистрация на сайте\n${name || "Без имени"}${data.username ? ` (@${data.username})` : ""}\nTelegram ID: ${data.id}`);
+      } catch (e) { console.error("register notify", e); }
+    }
     const link = await supabaseAdmin.auth.admin.generateLink({ type: "magiclink", email });
     if (link.error) throw new Error(link.error.message);
     return { tokenHash: link.data.properties.hashed_token };

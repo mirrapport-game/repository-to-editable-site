@@ -118,9 +118,8 @@ export function VideoReviewsManager() {
 
   if (loading) return <div className="py-24 text-center text-muted-foreground">Загрузка…</div>;
   if (!userEmail) return <div className="mx-auto max-w-md py-16">
-    <div className="border border-border bg-card p-7"><h2 className="font-display text-4xl">Вход для владельца</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">Первый зарегистрированный аккаунт получит доступ к управлению видеоотзывами.</p>
-      <form className="mt-7 space-y-4" onSubmit={submitAuth}><div className="space-y-2"><Label htmlFor="admin-email">Email</Label><Input id="admin-email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required /></div><div className="space-y-2"><Label htmlFor="admin-password">Пароль</Label><Input id="admin-password" type="password" minLength={6} value={password} onChange={(e)=>setPassword(e.target.value)} required /></div><Button className="w-full" type="submit">{mode === "signin" ? "Войти" : "Зарегистрироваться"}</Button></form>
-      <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground"><span className="h-px flex-1 bg-border"/>или<span className="h-px flex-1 bg-border"/></div><TelegramLogin /><Button className="mt-3 w-full" variant="ghost" onClick={()=>setMode(mode === "signin" ? "signup" : "signin")}>{mode === "signin" ? "Создать аккаунт" : "У меня уже есть аккаунт"}</Button>
+    <div className="border border-border bg-card p-7"><h2 className="font-display text-4xl">Вход для владельца</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">Войдите через Telegram аккаунтом владельца сайта.</p>
+      <div className="mt-7"><TelegramLogin /></div>
     </div></div>;
   if (!isAdmin) return <div className="mx-auto max-w-xl py-20 text-center"><h2 className="font-display text-4xl">Нет доступа</h2><p className="mt-4 text-muted-foreground">Аккаунт {userEmail} не является владельцем этой страницы.</p><Button className="mt-6" variant="outline" onClick={()=>supabase.auth.signOut()}><LogOut/>Выйти</Button></div>;
 
