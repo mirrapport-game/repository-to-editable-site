@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Calculator, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -76,6 +76,26 @@ const scale = [
 const digits = (v: string) => v.replace(/[^\d]/g, "").slice(0, 9);
 const num = (v: string) => Number(v) || 0;
 
+// Числовое поле калькулятора. Пока поле в фокусе, показываем «сырые» цифры и не переписываем
+// значение на отформатированное: на мобильных браузерах перезапись значения при каждом нажатии
+// заставляет страницу прыгать к полю. Форматируем с пробелами только после ухода из поля.
+function NumericField({ label, value, onChange, suffix = "" }: { label: string; value: string; onChange: (v: string) => void; suffix?: string }) {
+  const [focused, setFocused] = useState(false);
+  const [text, setText] = useState(value);
+  useEffect(() => { if (!focused) setText(value); }, [value, focused]);
+  return <label className="grid gap-2 text-sm">
+    <span className="text-muted-foreground">{label}</span>
+    <div className="relative"><Input
+      inputMode="numeric"
+      value={focused ? text : text ? Number(text).toLocaleString("ru-RU") : ""}
+      placeholder="0"
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
+      onChange={(e) => { const d = digits(e.target.value); setText(d); onChange(d); }}
+    />{suffix && <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">{suffix}</span>}</div>
+  </label>;
+}
+
 const SCHEDULES = {
   "5/2": { label: "пятидневка", daysPerYear: 247 },
   "6/1": { label: "шестидневка", daysPerYear: 299 },
@@ -124,10 +144,6 @@ export function PriceCalculator() {
   const paybackText = monthIncome <= 0 ? "—" : payback < 1 ? `${Math.max(1, Math.ceil(payback * 30))} дн.` : `${payback.toFixed(1).replace(".", ",")} мес.`;
 
   const rub = (n: number) => `${n.toLocaleString("ru-RU")} ₽`;
-  const field = (label: string, value: string, set: (v: string) => void, suffix = "") => <label className="grid gap-2 text-sm">
-    <span className="text-muted-foreground">{label}</span>
-    <div className="relative"><Input inputMode="numeric" value={value ? Number(value).toLocaleString("ru-RU") : ""} placeholder="0" onChange={(e) => set(digits(e.target.value))} />{suffix && <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">{suffix}</span>}</div>
-  </label>;
   const slider = (label: string, value: number, min: number, max: number, step: number, set: (n: number) => void, show: string) => <label className="grid gap-2 text-sm">
     <span className="flex justify-between text-muted-foreground"><span>{label}</span><b className="text-foreground">{show}</b></span>
     <div className="price-calc-slider !mt-0"><input type="range" min={min} max={max} step={step} value={value} aria-label={label} onChange={(e) => set(Number(e.target.value))} style={{ ["--share" as string]: `${((value - min) / (max - min)) * 100}%` }} /></div>
@@ -141,20 +157,35 @@ export function PriceCalculator() {
           <p className="max-w-lg text-lg leading-8 text-muted-foreground">Небольшая история в четыре шага: где вы сейчас, во сколько себя оцениваете и что может измениться с играми.</p>
         </div>
 
-        {/* Шаг 1 */}
+        {/* Шаг 1: оценка своего часа */}
         <div className="price-calc">
-          <div className="flex items-center gap-3"><Calculator className="size-6 text-primary" /><h3 className="font-display text-2xl">Шаг 1. Рассчитаем часовую ставку</h3></div>
+          <h3 className="font-display text-2xl">Шаг 1. А во сколько вы оцениваете свой час?</h3>
+          <p className="mt-2 text-sm text-muted-foreground">Подвиньте ползунок — и узнайте, что ваша цена говорит о вас.</p>
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+            <p className="price-calc-value font-display">{price.toLocaleString("ru-RU")} <span className="text-primary">₽</span></p>
+            <p className="max-w-sm font-display text-2xl italic leading-snug sm:text-3xl">{verdict.title}</p>
+          </div>
+          <div className="price-calc-slider">
+            <input type="range" min={MIN} max={MAX} step={STEP} value={price} aria-label="Цена часа" onChange={(e) => setPrice(Number(e.target.value))} style={{ ["--share" as string]: `${share}%` }} />
+            <div className="price-calc-scale">{scale.map(({ at, label }) => <span key={label} className={price >= at ? "is-passed" : undefined}>{label}</span>)}</div>
+          </div>
+          <p className="price-calc-note">{verdict.note}</p>
+        </div>
+
+        {/* Шаг 2 */}
+        <div className="price-calc mt-8">
+          <div className="flex items-center gap-3"><Calculator className="size-6 text-primary" /><h3 className="font-display text-2xl">Шаг 2. Рассчитаем часовую ставку</h3></div>
           <p className="mt-4 text-sm text-muted-foreground">Как вы сейчас работаете?</p>
           <div className="mt-3 flex flex-wrap gap-2">{(Object.keys(WORK) as Work[]).map((k) => <Button key={k} type="button" variant={work === k ? "default" : "outline"} onClick={() => setWork(k)}>{WORK[k].label}</Button>)}</div>
           <p className="mt-6 max-w-2xl text-sm text-muted-foreground">Укажите средний доход в месяц. Если он нестабильный — среднемесячный за последние полгода.</p>
           <div className="mt-4 grid gap-5 sm:grid-cols-3">
-            {field(work === "hire" ? "Зарплата" : "Доход", incomeText, setIncomeText, "₽/мес")}
+            <NumericField label={work === "hire" ? "Зарплата" : "Доход"} value={incomeText} onChange={setIncomeText} suffix="₽/мес" />
             <label className="grid gap-2 text-sm"><span className="text-muted-foreground">График работы</span>
               <select className="h-10 rounded-md border border-input bg-background px-3 text-sm" value={schedule} onChange={(e) => setSchedule(e.target.value as keyof typeof SCHEDULES)}>
                 {Object.entries(SCHEDULES).map(([k, s]) => <option key={k} value={k}>{s.label}</option>)}
               </select>
             </label>
-            {field("Рабочий день", dayText, setDayText, "часов")}
+            <NumericField label="Рабочий день" value={dayText} onChange={setDayText} suffix="часов" />
           </div>
           <p className="mt-6 border-t border-border pt-6 font-display text-4xl">= {rub(workHourCost)}/час</p>
           <p className="mt-4 rounded-xl bg-muted/50 p-4 leading-7">{WORK[work].story(rub(workHourCost))}</p>
@@ -162,15 +193,15 @@ export function PriceCalculator() {
 
         {/* Шаг 3: доход с игр */}
         <div className="price-calc mt-8">
-          <div className="flex items-center gap-3"><Users className="size-6 text-primary" /><h3 className="font-display text-2xl">Шаг 2. Ваш дополнительный доход с игр</h3></div>
+          <div className="flex items-center gap-3"><Users className="size-6 text-primary" /><h3 className="font-display text-2xl">Шаг 3. Ваш дополнительный доход с игр</h3></div>
           <p className="mt-2 text-sm text-muted-foreground">А теперь представим, что этот же человек начинает вести игры «Раппóрт».</p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {slider("Игроков за столом", players, 4, 12, 1, setPlayers, `${players}`)}
             {slider("Стоимость для одного игрока", perPlayer, 2500, 15000, 500, setPerPlayer, rub(perPlayer))}
-            <div className="grid gap-2">{field("Сколько игр в неделю", gamesText, setGamesText, "игр")}<p className="text-xs text-muted-foreground">1 игра — 3 часа · {gamesPerMonth * 3} ч в месяц · за игру {rub(gamePrice)}</p></div>
-            <div className="grid gap-2">{field("Сколько тренингов в месяц", trainingsText, setTrainingsText, "трен.")}<p className="text-xs text-muted-foreground">1 тренинг — 8 часов · {trainings * 8} ч в месяц</p></div>
-            {field("Участников в тренинге", trainingPeopleText, setTrainingPeopleText, "чел.")}
-            <div className="grid gap-2">{field("Цена тренинга для одного участника", trainingPriceText, setTrainingPriceText, "₽")}<p className="text-xs text-muted-foreground">За тренинг {rub(trainingPrice)}</p></div>
+            <div className="grid gap-2"><NumericField label="Сколько игр в неделю" value={gamesText} onChange={setGamesText} suffix="игр" /><p className="text-xs text-muted-foreground">1 игра — 3 часа · {gamesPerMonth * 3} ч в месяц · за игру {rub(gamePrice)}</p></div>
+            <div className="grid gap-2"><NumericField label="Сколько тренингов в месяц" value={trainingsText} onChange={setTrainingsText} suffix="трен." /><p className="text-xs text-muted-foreground">1 тренинг — 8 часов · {trainings * 8} ч в месяц</p></div>
+            <NumericField label="Участников в тренинге" value={trainingPeopleText} onChange={setTrainingPeopleText} suffix="чел." />
+            <div className="grid gap-2"><NumericField label="Цена тренинга для одного участника" value={trainingPriceText} onChange={setTrainingPriceText} suffix="₽" /><p className="text-xs text-muted-foreground">За тренинг {rub(trainingPrice)}</p></div>
           </div>
           <div className="mt-6 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
             <div><p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">Вы получаете в месяц</p><p className="price-calc-value font-display">{monthIncome.toLocaleString("ru-RU")} <span className="text-primary">₽</span></p></div>
@@ -182,7 +213,7 @@ export function PriceCalculator() {
 
         {/* Шаг 4: окупаемость */}
         <div className="price-calc mt-8">
-          <h3 className="font-display text-2xl">Шаг 3. Окупаемость</h3>
+          <h3 className="font-display text-2xl">Шаг 4. Окупаемость</h3>
           <p className="mt-4 text-sm text-muted-foreground">При стоимости игры</p>
           <div className="mt-3 flex flex-wrap gap-2">{[75000, 200000].map((p) => <Button key={p} type="button" variant={pkg === p ? "default" : "outline"} onClick={() => setPkg(p)}>{rub(p)}</Button>)}</div>
           <div className="mt-6 border-t border-border pt-6"><p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">Окупаемость</p><p className="price-calc-value font-display">{paybackText}</p><p className="mt-4 text-sm uppercase tracking-[0.18em] text-muted-foreground">Ваша новая цена часа</p><p className="font-display text-4xl text-primary">{rub(hourFromGames)}</p></div>
@@ -191,20 +222,6 @@ export function PriceCalculator() {
             <p className="flex-1 text-muted-foreground">Хотите так же? Обсудим условия и поддержку сообщества.</p>
             <Button asChild><a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Обсудить свою ставку <ArrowRight /></a></Button>
           </div>
-        </div>
-        {/* Шаг 2: юмор */}
-        <div className="price-calc mt-8">
-          <h3 className="font-display text-2xl">Шаг 4. А во сколько вы оцениваете свой час?</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Подвиньте ползунок — и узнайте, что ваша цена говорит о вас.</p>
-          <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
-            <p className="price-calc-value font-display">{price.toLocaleString("ru-RU")} <span className="text-primary">₽</span></p>
-            <p className="max-w-sm font-display text-2xl italic leading-snug sm:text-3xl">{verdict.title}</p>
-          </div>
-          <div className="price-calc-slider">
-            <input type="range" min={MIN} max={MAX} step={STEP} value={price} aria-label="Цена часа" onChange={(e) => setPrice(Number(e.target.value))} style={{ ["--share" as string]: `${share}%` }} />
-            <div className="price-calc-scale">{scale.map(({ at, label }) => <span key={label} className={price >= at ? "is-passed" : undefined}>{label}</span>)}</div>
-          </div>
-          <p className="price-calc-note">{verdict.note}</p>
         </div>
 
       </div>
