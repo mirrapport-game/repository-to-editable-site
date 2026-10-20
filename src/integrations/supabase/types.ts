@@ -14,6 +14,21 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_hidden_posts: {
+        Row: {
+          created_at: string
+          post_id: string
+        }
+        Insert: {
+          created_at?: string
+          post_id: string
+        }
+        Update: {
+          created_at?: string
+          post_id?: string
+        }
+        Relationships: []
+      }
       blogger_applications: {
         Row: {
           audience: string

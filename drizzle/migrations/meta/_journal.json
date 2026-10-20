@@ -22,6 +22,13 @@
       "when": 1792439586845,
       "tag": "0002_rapport_schema_part3",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792454655393,
+      "tag": "0003_blog_hidden_posts",
+      "breakpoints": true
     }
   ]
 }
