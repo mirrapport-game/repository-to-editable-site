@@ -174,4 +174,10 @@ function HostPhotoSlider({ photos, label, className }: { photos: string[]; label
 const ZHIVAYA_HOSTS = new Set(["yulia-novitskaya", "natalya-vanyushkina", "artem-efimov", "natalya-kireeva", "marina-kravchenko"]);
 // Paid hosts (those who bought «Живая») keep their personal contacts; others route to the shared booking form.
 const paid = (slug: string) => ZHIVAYA_HOSTS.has(slug);
-function gamesOf(slug: string) { return ["«Раппóрт про отношения»", ...(ZHIVAYA_HOSTS.has(slug) ? ["«Раппóрт — Живая»"] : [])]; }
+// Ведущие, у которых список игр отличается от обычного (по умолчанию: «Раппóрт про отношения» + «Живая»).
+const HOST_GAMES: Record<string, string[]> = {
+  "natalya-vanyushkina": ["«Раппóрт — Живая»"],
+};
+function gamesOf(slug: string) {
+  return HOST_GAMES[slug] ?? ["«Раппóрт про отношения»", ...(ZHIVAYA_HOSTS.has(slug) ? ["«Раппóрт — Живая»"] : [])];
+}

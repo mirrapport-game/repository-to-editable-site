@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 // Hosts allowed to run online games — only they see the online block.
 // Male hosts get masculine wording in the checklist.
 const MALE_HOSTS = new Set(["artem-efimov"]);
-const ONLINE_HOSTS = new Set(["artem-efimov", "yulia-novitskaya", "marina-kravchenko", "natalya-kireeva"]);
+const ONLINE_HOSTS = new Set(["artem-efimov", "yulia-novitskaya", "marina-kravchenko", "natalya-kireeva", "sergey-lednev"]);
 
 type Item = { id: string; text: string };
 type Group = { title: string; online?: boolean; items: Item[] };
