@@ -199,7 +199,7 @@ function IntensivePage() {
         <SignupForm />
       </section>
       <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 py-10 text-center md:flex-row md:justify-between md:text-left">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 pb-24 pt-10 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl uppercase text-gold-gradient">«Новый уровень»</p>
             <p className="mt-1 text-sm text-muted-foreground">Интенсив для психологов по отношениям · 27.10, 12:00–16:00 · Санкт-Петербург</p>
