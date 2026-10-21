@@ -101,7 +101,7 @@ function SceneBackground() {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-scene]"));
     const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.scene));
+      for (const e of entries) if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset["scene"]));
     }, { rootMargin: "-45% 0px -45% 0px" });
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
