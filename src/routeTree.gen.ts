@@ -49,6 +49,7 @@ import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SocialProjectsRouteImport } from './routes/social-projects'
 import { Route as TrainersRouteImport } from './routes/trainers'
+import { Route as VhodRouteImport } from './routes/vhod'
 import { Route as YaZhivayaRouteImport } from './routes/ya-zhivaya'
 import { Route as ZhivayaRouteImport } from './routes/zhivaya'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -268,6 +269,11 @@ const TrainersRoute = TrainersRouteImport.update({
   path: '/trainers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VhodRoute = VhodRouteImport.update({
+  id: '/vhod',
+  path: '/vhod',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YaZhivayaRoute = YaZhivayaRouteImport.update({
   id: '/ya-zhivaya',
   path: '/ya-zhivaya',
@@ -404,6 +410,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-projects': typeof SocialProjectsRoute
   '/trainers': typeof TrainersRoute
+  '/vhod': typeof VhodRoute
   '/ya-zhivaya': typeof YaZhivayaRoute
   '/zhivaya': typeof ZhivayaRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -462,6 +469,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-projects': typeof SocialProjectsRoute
   '/trainers': typeof TrainersRoute
+  '/vhod': typeof VhodRoute
   '/ya-zhivaya': typeof YaZhivayaRoute
   '/zhivaya': typeof ZhivayaRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -523,6 +531,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/social-projects': typeof SocialProjectsRoute
   '/trainers': typeof TrainersRoute
+  '/vhod': typeof VhodRoute
   '/ya-zhivaya': typeof YaZhivayaRoute
   '/zhivaya': typeof ZhivayaRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -585,6 +594,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/social-projects'
     | '/trainers'
+    | '/vhod'
     | '/ya-zhivaya'
     | '/zhivaya'
     | '/blog/$slug'
@@ -643,6 +653,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/social-projects'
     | '/trainers'
+    | '/vhod'
     | '/ya-zhivaya'
     | '/zhivaya'
     | '/blog/$slug'
@@ -703,6 +714,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/social-projects'
     | '/trainers'
+    | '/vhod'
     | '/ya-zhivaya'
     | '/zhivaya'
     | '/blog/$slug'
@@ -764,6 +776,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SocialProjectsRoute: typeof SocialProjectsRoute
   TrainersRoute: typeof TrainersRoute
+  VhodRoute: typeof VhodRoute
   YaZhivayaRoute: typeof YaZhivayaRoute
   ZhivayaRoute: typeof ZhivayaRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
@@ -1062,6 +1075,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vhod': {
+      id: '/vhod'
+      path: '/vhod'
+      fullPath: '/vhod'
+      preLoaderRoute: typeof VhodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ya-zhivaya': {
       id: '/ya-zhivaya'
       path: '/ya-zhivaya'
@@ -1256,6 +1276,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SocialProjectsRoute: SocialProjectsRoute,
   TrainersRoute: TrainersRoute,
+  VhodRoute: VhodRoute,
   YaZhivayaRoute: YaZhivayaRoute,
   ZhivayaRoute: ZhivayaRoute,
   CitiesSlugRoute: CitiesSlugRoute,

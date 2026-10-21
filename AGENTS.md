@@ -24,21 +24,17 @@
 - Keep booking format values in the shared booking-format module so every public signup form and CRM entry uses the same options.
 - Telegram is called directly with the TELEGRAM_BOT_TOKEN secret (workspace connector is disabled); lead alerts go only to allow-listed owner chats stored server-side.
 - Game-page explanatory content (what/steps/takeaways/pricing/FAQ) lives in src/data/game-details.ts keyed by game slug, so pages stay data-driven.
-- Quest UI (riddles, progress bar, header counter) renders only in visit mode "quest", entered via /quest, so the regular site stays uncluttered.
-- Quest level 3 (/games in quest mode) shows practice for the game picked on level 2 (stored in localStorage "rapport-quest-game"); case trainers live in src/components/case-trainer.tsx — keeps quest steps non-repetitive.
+- Quest UI renders only in visit mode "quest" (entered via /quest); level 3 practices the game picked on level 2 (localStorage "rapport-quest-game"), trainers in src/components/case-trainer.tsx.
 - Released game pages and /games are prerendered at build time (vite.config.ts reads slugs from src/data/site.ts); router uses trailingSlash "preserve" because the prerenderer requests paths with a trailing slash and a redirect would skip them.
-
 - Telegram mini-app sign-in validates WebApp initData server-side and reuses the tg<ID>@telegram.rapportgame.ru account, so site and bot share one club profile.
 - Club Telegram notifications go through one authenticated server function (clubNotify) that re-checks the caller owns the invite/like/message before messaging.
 - Use the existing marathon schedule for homepage games and admin date editing; host_name identifies homepage entries so booking and capacity stay unified.
 - Shared consent fields span all existing form columns, never a fixed column count, to avoid creating implicit tracks in single-column forms.
-
 - Primary navigation uses one shared link list for the horizontal navigation and the side drawer, available at every screen size; account and admin controls remain separate to keep public destinations consistent.
 - The homepage reuses HeroCards and CaseTrainer for the playable cards and rapport practice; AI navigation is independent so hiding AI never hides these non-AI games.
-- The schedule route and homepage reuse MarathonSchedule in homepage mode; horizontal date groups are presentation-only and preserve the existing booking data flow.
-- Schedule category selection lives in a pure schedule-presentation helper; homepage deletion uses existing admin-protected RLS and checks affected rows before claiming success.
+- Schedule route and homepage reuse MarathonSchedule (date groups presentation-only); category selection is a pure helper; homepage deletion relies on admin RLS and checks affected rows.
 - Meeting capacity validation is shared by create, edit and duplicate actions; database constraints remain authoritative and their migrations must be applied to the existing backend before expanded limits work.
-
 - External Timeweb Cloud Apps deployments use Nitro's node-server output and a multi-stage Docker image; public database settings must be supplied at image build time and private credentials only at runtime, so deployments cannot silently use a different database. HTTP compression belongs to the hosting proxy, not application responses.
 - Self-hosted typography uses local WOFF2 subsets with optional font display and two critical Russian faces preloaded, avoiding late layout shifts and third-party font CSS.
 - The schema lives in Lovable Cloud migrations under drizzle/migrations; scheduled Telegram reminders must be recreated as managed HTTP schedules, not hand-written cron SQL.
+- Admin code entry (/vhod) checks the code against the server-only ADMIN_ENTRY_CODE secret and signs into the existing admin account, so the code never reaches the browser.
