@@ -93,7 +93,6 @@ function IntensivePage() {
     <div className="theme-intensive">
       {/* Обложка */}
       <section className="relative isolate overflow-hidden">
-        <img src={cover.url} alt="" aria-hidden className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40 blur-md scale-110" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
           <p className="eyebrow text-primary">27.10 · 12:00–16:00 · участие бесплатно</p>
@@ -146,6 +145,7 @@ function IntensivePage() {
       {/* Ведущие */}
       <section className="mx-auto max-w-6xl px-5 py-20">
         <h2 className="text-center font-display text-4xl md:text-6xl">Ведущие</h2>
+        <img src={cover.url} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <article className="border border-border bg-card p-8">
             <p className="eyebrow text-primary">Продажи услуг психологов</p>
