@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUp, Pencil, Plus, Trash2, X } from "lucide-react";
+import { ArrowDown, ArrowUp, Music, Pencil, Plus, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/components/site-shell";
@@ -41,6 +41,8 @@ type Draft = {
   authorBio: string;
   authorTelegram: string;
   authorChannel: string;
+  audioPath: string;
+  audioTitle: string;
   isPublished: boolean;
   sections: SectionForm[];
 };
@@ -59,6 +61,8 @@ const emptyDraft = (): Draft => ({
   authorBio: "",
   authorTelegram: "",
   authorChannel: "",
+  audioPath: "",
+  audioTitle: "",
   isPublished: false,
   sections: [{ heading: "", paragraphs: "", bullets: "" }],
 });
@@ -96,6 +100,8 @@ function draftFromRow(row: SiteArticleRow): Draft {
     authorBio: row.author_bio,
     authorTelegram: row.author_telegram ?? "",
     authorChannel: row.author_channel ?? "",
+    audioPath: row.audio_url ?? "",
+    audioTitle: row.audio_title ?? "",
     isPublished: row.is_published,
     sections: toFormSections(row.sections),
   };
@@ -109,6 +115,7 @@ export function ArticlesManager() {
   const [loading, setLoading] = useState(false);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [busy, setBusy] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [confirmId, setConfirmId] = useState<string | null>(null);
 
   const fetchList = useServerFn(listSiteArticles);
