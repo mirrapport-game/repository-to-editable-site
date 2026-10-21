@@ -410,6 +410,32 @@ export function ArticlesManager() {
             </Field>
           </div>
 
+          <Field
+            label="Трек на тему статьи"
+            hint="Загрузите mp3 или другой аудиофайл — в статье появится выбор «послушать или прочитать»."
+          >
+            <Input
+              type="file"
+              accept="audio/*"
+              disabled={uploading}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) void uploadAudio(file);
+                e.target.value = "";
+              }}
+            />
+            {uploading && <span className="text-xs text-muted-foreground">Загружаем трек…</span>}
+            {draft.audioPath && !uploading && (
+              <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                <Music className="size-4" aria-hidden="true" />
+                <span>Трек прикреплён{draft.audioTitle ? `: ${draft.audioTitle}` : ""}</span>
+                <Button type="button" variant="ghost" size="sm" onClick={() => patch({ audioPath: "", audioTitle: "" })}>
+                  Убрать
+                </Button>
+              </div>
+            )}
+          </Field>
+
           <Field label="Об авторе">
             <Textarea rows={2} value={draft.authorBio} onChange={(e) => patch({ authorBio: e.target.value })} />
           </Field>
