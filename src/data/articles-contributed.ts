@@ -1,8 +1,10 @@
 import type { Article } from "@/data/site";
+import { artemArticles } from "@/data/articles-artem";
 
 // Статьи ведущих и психологов проекта «Раппóрт».
 // Темы взяты из реальных публикаций их Telegram-каналов, авторы указаны честно.
 export const contributedArticles: Article[] = [
+  ...artemArticles,
   {
     slug: "molchanie-partnera",
     title: "Почему молчание партнёра ранит сильнее ссоры",
