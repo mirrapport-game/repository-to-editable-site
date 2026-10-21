@@ -206,7 +206,7 @@ function IntensivePage() {
           </div>
           <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground md:items-end">
             <p>Ведущие: Ольга Счастливая и Артём Ефимов</p>
-            <div className="flex gap-4"><a href="https://t.me/Rapport_game_bot" className="hover:text-primary">Telegram</a><a href="/legal" className="hover:text-primary">Политика конфиденциальности</a></div>
+            <div className="flex gap-4"><a href="https://t.me/Rapport_game_bot" className="hover:text-primary">Telegram</a><a href="/offer" className="hover:text-primary">Оферта</a></div>
           </div>
         </div>
       </footer>
