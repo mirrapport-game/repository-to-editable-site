@@ -69,7 +69,7 @@ function SignupForm() {
     setBusy(true);
     try {
       await submitLandingLead({ data: {
-        landing: "intensiv-novyi-uroven", host: "Ольга Счастливая и Артём Ефимов", city: "Интенсив 27.10",
+        landing: "intensiv-novyi-uroven", host: "Ольга Счастливая и Артём Ефимов", city: "Санкт-Петербург",
         name: String(f.get("name") ?? ""), contact: String(f.get("contact") ?? ""), button: "Регистрация на интенсив",
         marketing: f.get("consent_marketing") === "on", website: String(f.get("website") ?? ""),
       } });
