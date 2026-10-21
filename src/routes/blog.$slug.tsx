@@ -8,9 +8,11 @@ import { articles, getArticle, TELEGRAM_URL } from "@/data/site";
 import { listPublishedSiteArticles } from "@/lib/site-articles.functions";
 
 export const Route = createFileRoute("/blog/$slug")({
-  // Рукописная статья из кода, а если её нет — опубликованная статья из базы.
+  // Правленая версия из базы важнее рукописной; призыв к действию берётся из рукописной.
   loader: async ({ params }) => {
-    const article = getArticle(params.slug) ?? (await listPublishedSiteArticles()).find((a) => a.slug === params.slug);
+    const local = getArticle(params.slug);
+    const db = (await listPublishedSiteArticles()).find((a) => a.slug === params.slug);
+    const article = db ? { ...db, cta: db.cta ?? local?.cta } : local;
     if (!article) throw notFound();
     return article;
   },
