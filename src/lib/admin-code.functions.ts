@@ -14,7 +14,7 @@ export const adminCodeSignIn = createServerFn({ method: "POST" })
     if (!expected) throw new Error("Вход по коду не настроен");
     const [a, b] = await Promise.all([digest(data.code), digest(expected)]);
     let diff = 0;
-    for (let i = 0; i < a.length; i++) diff |= a[i] ^ b[i];
+    for (let i = 0; i < a.length; i++) diff |= (a[i] ?? 0) ^ (b[i] ?? 0);
     await new Promise((r) => setTimeout(r, 800)); // замедляет подбор
     if (diff !== 0) return { ok: false as const };
 
