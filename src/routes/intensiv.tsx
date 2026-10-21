@@ -96,7 +96,7 @@ function IntensivePage() {
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
-          <p className="eyebrow text-primary">27.10 · 12:00–16:00 · участие бесплатно</p>
+          <p className="eyebrow text-primary">27.10 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
           <h1 className="mt-6 font-display text-5xl uppercase leading-none text-gold-gradient md:text-8xl">«Новый уровень»</h1>
           <p className="mt-6 text-xl uppercase tracking-widest md:text-2xl">от 1 касания до покупки</p>
           <div className="my-6 h-px w-40 bg-primary" />
@@ -149,8 +149,10 @@ function IntensivePage() {
         <img src={cover.url} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <article className="border border-border bg-card p-8">
-            <p className="eyebrow text-primary">Продажи услуг психологов</p>
-            <h3 className="mt-3 font-display text-4xl">Ольга Счастливая</h3>
+            <div className="flex items-center gap-5">
+              <img src={olgaPortrait.url} alt="Ольга Счастливая" loading="lazy" className="size-24 rounded-full object-cover object-top" />
+              <div><p className="eyebrow text-primary">Продажи услуг психологов</p><h3 className="mt-2 font-display text-4xl">Ольга Счастливая</h3></div>
+            </div>
             <div className="mt-6 flex gap-10"><div><span className="font-display text-5xl text-gold-gradient">19</span><p className="text-sm text-muted-foreground">лет обучаю продажам</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской психологии</p></div></div>
             <p className="mt-6 leading-7">Я продаю услуги психологов, потому что знаю этот продукт изнутри.</p>
           </article>
@@ -179,8 +181,9 @@ function IntensivePage() {
         <div>
           <p className="font-display text-7xl text-gold-gradient">27.10</p>
           <p className="mt-2 text-2xl">12:00–16:00</p>
+          <p className="mt-2 text-xl uppercase tracking-wider">Санкт-Петербург</p>
           <p className="mt-6 text-xl uppercase tracking-wider text-primary">Участие бесплатно</p>
-          <p className="mt-4 leading-7 text-muted-foreground">Количество мест ограничено — оставьте заявку, и мы пришлём адрес и детали.</p>
+          <p className="mt-4 leading-7 text-muted-foreground">Количество мест ограничено — оставьте заявку, и мы пришлём точный адрес и детали.</p>
         </div>
         <SignupForm />
       </section>
