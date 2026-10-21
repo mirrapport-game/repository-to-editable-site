@@ -195,6 +195,23 @@ export function ArticlesManager() {
     });
   }
 
+  async function uploadAudio(file: File) {
+    if (!draft) return;
+    setUploading(true);
+    try {
+      const ext = (file.name.split(".").pop() || "mp3").toLowerCase();
+      const path = `articles/${draft.slug || "article"}-${Date.now()}.${ext}`;
+      const { error } = await supabase.storage.from("article-audio").upload(path, file, { upsert: true });
+      if (error) throw error;
+      patch({ audioPath: path, audioTitle: draft.audioTitle.trim() || file.name.replace(/\.[^.]+$/, "") });
+      toast.success("Трек загружен — не забудьте сохранить статью");
+    } catch {
+      toast.error("Не удалось загрузить трек. Попробуйте файл поменьше (до 20 МБ).");
+    } finally {
+      setUploading(false);
+    }
+  }
+
   async function submit() {
     if (!draft) return;
     if (draft.title.trim().length < 3) {
@@ -231,6 +248,8 @@ export function ArticlesManager() {
           authorBio: draft.authorBio.trim(),
           authorTelegram: draft.authorTelegram.trim(),
           authorChannel: draft.authorChannel.trim(),
+          audioPath: draft.audioPath.trim(),
+          audioTitle: draft.audioTitle.trim(),
           isPublished: draft.isPublished,
         },
       });
