@@ -40,7 +40,7 @@ describe("время чтения", () => {
   });
 
   it("не показывает ноль минут для короткого текста", () => {
-    expect(estimateReadTime([""]).toBe ? estimateReadTime([""]) : estimateReadTime([""])).toBe("1 минута");
+    expect(estimateReadTime([""])).toBe("1 минута");
   });
 
   it("склоняет слово правильно", () => {
