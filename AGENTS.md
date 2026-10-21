@@ -42,3 +42,4 @@
 - External Timeweb Cloud Apps deployments use Nitro's node-server output and a multi-stage Docker image; public database settings must be supplied at image build time and private credentials only at runtime, so deployments cannot silently use a different database. HTTP compression belongs to the hosting proxy, not application responses.
 - Self-hosted typography uses local WOFF2 subsets with optional font display and two critical Russian faces preloaded, avoiding late layout shifts and third-party font CSS.
 - The schema lives in Lovable Cloud migrations under drizzle/migrations; scheduled Telegram reminders must be recreated as managed HTTP schedules, not hand-written cron SQL.
+- Admin code entry (/vhod) checks the code against the server-only ADMIN_ENTRY_CODE secret and signs into the existing admin account, so the code never reaches the browser.
