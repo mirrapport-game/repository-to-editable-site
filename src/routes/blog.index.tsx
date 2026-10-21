@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Search, X } from "lucide-react";
 import { articles } from "@/data/site";
 import { ChannelFeed } from "@/components/channel-feed";
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/blog/")({
 function BlogPage() {
   const search = Route.useSearch();
   const all = Route.useLoaderData();
-  const navigate = Link.useProps ? undefined : undefined;
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState(search.q);
   const [showAllTopics, setShowAllTopics] = useState(false);
