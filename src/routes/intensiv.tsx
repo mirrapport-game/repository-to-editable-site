@@ -13,9 +13,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ConsentFields } from "@/components/consent-fields";
 import { submitLandingLead } from "@/lib/landing-leads.functions";
+import { followupTicketPrice, intensiveOffer } from "@/data/intensiv";
+
+const rubles = (value: number) => new Intl.NumberFormat("ru-RU").format(value);
 
 const TITLE = "«Новый уровень» — интенсив для психологов по отношениям в Санкт-Петербурге, 27.10";
-const DESC = "Бесплатный интенсив и нетворкинг для психологов по отношениям в Санкт-Петербурге 27.10: путь клиента от первого касания до покупки с чеком 50/150/300 тыс. Ведущие — Ольга Счастливая и Артём Ефимов.";
+const DESC = "Бесплатный интенсив 27.10 в Санкт-Петербурге: путь от первого касания клиента и до покупки твоего продукта и качественный нетворкинг для психологов по отношениям. Ведущие — Ольга Счастливая и Артём Ефимов.";
 
 export const Route = createFileRoute("/intensiv")({
   head: () => ({
@@ -33,11 +36,11 @@ const situations = ["развод", "абьюз", "самоценность", "�
 const steps = [
   { k: "A", t: "Точка А", d: "Клиенты приходят редко, продажа консультации даётся тяжело, ценность сложно объяснить." },
   { k: "B", t: "Интенсив", d: "Собираем путь клиента, план мягкого донесения ценности и программу на 2 часа. Знакомимся с коллегами." },
-  { k: "C", t: "Новый уровень", d: "Понятная система: от первого касания до покупки с чеком 50 / 150 / 300 тыс. и первые заявки уже на практикуме." },
+  { k: "C", t: "Новый уровень", d: `Понятный путь от первого касания клиента и до покупки твоего продукта. Генерация заявок — на ${intensiveOffer.applicationGenerationEvent}-м мероприятии, через неделю.` },
 ];
 
 const outcomes = [
-  "Пошаговый путь клиента — от первого касания до покупки с чеком 50 / 150 / 300 тыс.",
+  "Путь от первого касания клиента и до покупки твоего продукта",
   "План мягкого донесения ценности вашего продукта",
   "Структуру двухчасовой программы, после которой клиент влюбляется в вас и в ваш метод",
 ];
@@ -138,10 +141,10 @@ function IntensivePage() {
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
           <p className="eyebrow text-primary">27.10 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
           <h1 className="mt-6 font-display text-5xl uppercase leading-none text-gold-gradient md:text-8xl">«Новый уровень»</h1>
-          <p className="mt-6 text-xl uppercase tracking-widest md:text-2xl">от 1 касания до покупки</p>
+          <p className="mt-6 max-w-4xl text-3xl font-bold leading-tight text-foreground md:text-5xl">путь от первого касания клиента<br className="hidden md:block" /> и до покупки твоего продукта</p>
           <div className="my-6 h-px w-40 bg-primary" />
-          <p className="font-display text-3xl uppercase leading-tight md:text-5xl">Интенсив для психологов<br />по отношениям</p>
-          <p className="mt-3 text-lg uppercase tracking-wider text-primary">+ качественный нетворкинг</p>
+          <p className="font-display font-bold uppercase leading-tight"><span className="block text-2xl md:text-3xl">Интенсив для</span><span className="mt-2 block text-4xl md:text-6xl">психологов<br />по отношениям</span></p>
+          <p className="mt-5 text-2xl font-bold uppercase leading-tight text-foreground md:text-3xl">+ качественный нетворкинг</p>
           <div className="mt-10 w-full flex justify-center"><PathScene /></div>
           <Button asChild size="lg" className="mt-8 h-14 rounded-none px-10 text-base"><a href="#register">Зарегистрироваться</a></Button>
         </div>
@@ -178,8 +181,8 @@ function IntensivePage() {
       {/* Нетворкинг и практикум */}
       <section data-scene="1" className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="border border-primary p-8"><Users className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl">Нетворкинг</h3><p className="mt-3 leading-7 text-muted-foreground">3–5 минут на каждого. Многие выступят перед всей аудиторией — это ваш шанс, чтобы коллеги и будущие партнёры узнали вас.</p></div>
-          <div className="border border-primary p-8"><CalendarDays className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl">Практикум</h3><p className="mt-3 leading-7 text-muted-foreground">Можно принять участие в практикуме и получить заявки прямо в моменте — выполняя новые для себя действия.</p></div>
+          <div className="border border-primary p-8"><Users className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl font-bold text-foreground">Качественный нетворкинг</h3><p className="mt-3 leading-7 text-muted-foreground">3–5 минут на каждого. Многие выступят перед всей аудиторией — это ваш шанс, чтобы коллеги и будущие партнёры узнали вас.</p></div>
+          <div className="border border-primary p-8"><CalendarDays className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl font-bold">Два касания — два мероприятия</h3><p className="mt-3 leading-7 text-muted-foreground">На первой встрече собираем путь клиента и знакомимся с коллегами. Генерация заявок будет на втором мероприятии — практическом интенсиве через неделю. На первой встрече получение заявок не предполагается.</p></div>
         </div>
       </section>
 
@@ -189,15 +192,16 @@ function IntensivePage() {
         <img src={coverUrl} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <article className="border border-border bg-card p-8">
-            <div className="flex items-center gap-5">
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
               <img src={olgaPortraitUrl} alt="Ольга Счастливая" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Продажи услуг психологов</p><h3 className="mt-2 font-display text-4xl">Ольга Счастливая</h3></div>
             </div>
-            <div className="mt-6 flex gap-10"><div><span className="font-display text-5xl text-gold-gradient">19</span><p className="text-sm text-muted-foreground">лет обучаю продажам</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской и женской психологии</p></div></div>
-            <p className="mt-6 leading-7">Я продаю услуги психологов, потому что знаю этот продукт изнутри.</p>
+            <div className="mt-6 grid grid-cols-2 gap-6"><div><span className="font-display text-5xl font-bold text-gold-gradient">{intensiveOffer.olgaSalesYears}</span><p className="text-sm text-muted-foreground">лет в продажах</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской и женской психологии</p></div></div>
+            <p className="mt-6 text-xl font-bold leading-7 text-foreground">Продаю собственные услуги в психологии с чеком от {rubles(intensiveOffer.olgaMinimumCheckRub)} ₽ и выше.</p>
+            <p className="mt-4 leading-7">Я знаю услуги психолога изнутри: сама работаю в психологии и продаю свои услуги дорого. Знаю, как выстроить воронку продаж не только для себя, но и для других психологов — от знакомства с клиентом до покупки.</p>
           </article>
           <article className="border border-border bg-card p-8">
-            <div className="flex items-center gap-5">
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
               <img src={authorPortraitImage} alt="Артём Ефимов" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Специалист по отношениям</p><h3 className="mt-2 font-display text-4xl">Артём Ефимов</h3></div>
             </div>
@@ -210,10 +214,20 @@ function IntensivePage() {
       {/* Как вы зарабатываете */}
       <section data-scene="3" className="mx-auto max-w-4xl px-5 py-16">
         <p className="eyebrow text-center text-primary">Как это работает</p>
-        <h2 className="mt-4 text-center font-display text-4xl md:text-5xl">Вы получаете <span className="text-gold-gradient">готового клиента</span></h2>
+        <h2 className="mt-4 text-center font-display text-4xl font-bold md:text-5xl">Как выстроить <span className="text-gold-gradient">путь клиента</span></h2>
         <ol className="mt-10 grid gap-4">
           {funnel.map((f, i) => <li key={f} className="flex items-start gap-5 border-l-2 border-primary bg-card p-5"><span className="font-display text-2xl text-primary">{i + 1}</span><span className="text-lg leading-7">{f}</span></li>)}
         </ol>
+      </section>
+
+      <section data-scene="3" className="mx-auto max-w-5xl px-5 py-16">
+        <p className="text-sm font-bold uppercase text-primary">Второе мероприятие · через {intensiveOffer.followupAfterDays} дней</p>
+        <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">Следующий интенсив — через неделю</h2>
+        <p className="mt-6 text-xl leading-8">На втором касании переходим к практике и генерации заявок. Стоимость участия — <strong>{rubles(followupTicketPrice(false))} ₽</strong>.</p>
+        <div className="mt-8 border-l-2 border-primary pl-6">
+          <h3 className="text-2xl font-bold leading-tight md:text-3xl">Приди с другом — получи билет в подарок</h3>
+          <p className="mt-4 text-lg leading-8">Возьми с собой на бесплатную встречу 27.10 друга — психолога по отношениям. Мы подарим тебе билет на следующий интенсив стоимостью {rubles(intensiveOffer.followupPriceRub)} ₽: для тебя участие в нём будет бесплатным.</p>
+        </div>
       </section>
 
       {/* Регистрация */}
