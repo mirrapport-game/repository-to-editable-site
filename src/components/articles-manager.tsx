@@ -181,7 +181,8 @@ export function ArticlesManager() {
       const target = index + direction;
       if (target < 0 || target >= current.sections.length) return current;
       const sections = [...current.sections];
-      const [moved] = sections.splice(index, 1);
+      const moved = sections.splice(index, 1)[0];
+      if (!moved) return current;
       sections.splice(target, 0, moved);
       return { ...current, sections };
     });

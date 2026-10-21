@@ -3,9 +3,15 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { articles, getArticle, TELEGRAM_URL } from "@/data/site";
+import { listPublishedSiteArticles } from "@/lib/site-articles.functions";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => { const article=getArticle(params.slug); if(!article) throw notFound(); return article; },
+  // Рукописная статья из кода, а если её нет — опубликованная статья из базы.
+  loader: async ({ params }) => {
+    const article = getArticle(params.slug) ?? (await listPublishedSiteArticles()).find((a) => a.slug === params.slug);
+    if (!article) throw notFound();
+    return article;
+  },
   head: ({ loaderData }) => loaderData ? ({
     links: canonical(`/blog/${loaderData.slug}`), meta: [...seoMeta(`/blog/${loaderData.slug}`, [loaderData.title, loaderData.category, "блог Раппорт"]), { title: `${loaderData.title} — блог «Раппóрт»` }, { name:"description",content:loaderData.description }, { property:"og:title",content:loaderData.title }, { property:"og:description",content:loaderData.description }, { property:"og:type",content:"article" }, { name:"twitter:card",content:"summary_large_image" }],
     scripts: [{ type:"application/ld+json", children:JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:loaderData.title,description:loaderData.description,datePublished:loaderData.publishedAt ?? "2026-10-02",author:{"@type":"Person",name:loaderData.author ?? "Артём Ефимов"},publisher:{"@type":"Organization",name:"Раппóрт Групп"}}) }],

@@ -64,14 +64,13 @@ export function parseSections(value: unknown): ArticleSection[] {
   return value.flatMap((item) => {
     if (!item || typeof item !== "object") return [];
     const row = item as Record<string, unknown>;
-    const section: ArticleSection = {};
-    if (typeof row.heading === "string" && row.heading.trim()) section.heading = row.heading.trim();
-    if (Array.isArray(row.paragraphs)) {
-      const paragraphs = row.paragraphs.filter((p): p is string => typeof p === "string" && p.trim().length > 0);
+    const section: ArticleSection = { heading: typeof row["heading"] === "string" ? row["heading"].trim() : "" };
+    if (Array.isArray(row["paragraphs"])) {
+      const paragraphs = row["paragraphs"].filter((p): p is string => typeof p === "string" && p.trim().length > 0);
       if (paragraphs.length) section.paragraphs = paragraphs;
     }
-    if (Array.isArray(row.bullets)) {
-      const bullets = row.bullets.filter((b): b is string => typeof b === "string" && b.trim().length > 0);
+    if (Array.isArray(row["bullets"])) {
+      const bullets = row["bullets"].filter((b): b is string => typeof b === "string" && b.trim().length > 0);
       if (bullets.length) section.bullets = bullets;
     }
     return section.heading || section.paragraphs || section.bullets ? [section] : [];
