@@ -8,7 +8,7 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => { const article=getArticle(params.slug); if(!article) throw notFound(); return article; },
   head: ({ loaderData }) => loaderData ? ({
     links: canonical(`/blog/${loaderData.slug}`), meta: [...seoMeta(`/blog/${loaderData.slug}`, [loaderData.title, loaderData.category, "блог Раппорт"]), { title: `${loaderData.title} — блог «Раппóрт»` }, { name:"description",content:loaderData.description }, { property:"og:title",content:loaderData.title }, { property:"og:description",content:loaderData.description }, { property:"og:type",content:"article" }, { name:"twitter:card",content:"summary_large_image" }],
-    scripts: [{ type:"application/ld+json", children:JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:loaderData.title,description:loaderData.description,datePublished:"2026-10-02",author:{"@type":"Person",name:"Артём Ефимов"},publisher:{"@type":"Organization",name:"Раппóрт Групп"}}) }],
+    scripts: [{ type:"application/ld+json", children:JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:loaderData.title,description:loaderData.description,datePublished:loaderData.publishedAt ?? "2026-10-02",author:{"@type":"Person",name:loaderData.author ?? "Артём Ефимов"},publisher:{"@type":"Organization",name:"Раппóрт Групп"}}) }],
   }) : ({ meta:[{title:"Статья не найдена — Раппóрт"},{name:"robots",content:"noindex"}] }), component: ArticlePage,
 });
 

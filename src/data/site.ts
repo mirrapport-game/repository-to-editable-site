@@ -274,6 +274,7 @@ export type Article = {
   description: string;
   category: string;
   date: string;
+  publishedAt?: string;
   readTime: string;
   intro: string;
   sections: ArticleSection[];
