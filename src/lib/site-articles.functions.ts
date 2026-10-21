@@ -76,11 +76,8 @@ export const saveSiteArticle = createServerFn({ method: "POST" })
     const { data: isAdmin } = await context.supabase.rpc("has_role", { _user_id: context.userId, _role: "admin" });
     if (!isAdmin) return { ok: false, error: "Недостаточно прав" };
 
-    // Такой адрес уже занят рукописной статьёй — иначе страница покажет её, а не новую.
-    const { articles } = await import("@/data/site");
-    if (!data.id && articles.some((a) => a.slug === data.slug)) {
-      return { ok: false, error: "Такой адрес уже занят существующей статьёй. Поменяйте его." };
-    }
+    // Статья с адресом готовой статьи из кода — это её правленая версия, она заменяет исходную на сайте.
+
 
     const payload = {
       slug: data.slug,

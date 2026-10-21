@@ -25,6 +25,7 @@ import {
   todayIso,
   type SiteArticleRow,
 } from "@/lib/site-articles";
+import { articles as localArticles, type Article } from "@/data/site";
 
 type SectionForm = { heading: string; paragraphs: string; bullets: string };
 type Draft = {
@@ -104,6 +105,27 @@ function draftFromRow(row: SiteArticleRow): Draft {
     audioTitle: row.audio_title ?? "",
     isPublished: row.is_published,
     sections: toFormSections(row.sections),
+  };
+}
+
+/** Готовая статья из кода -> черновик правки. Сохранение создаёт копию в базе, которая заменяет её на сайте. */
+function draftFromArticle(a: Article): Draft {
+  return {
+    ...emptyDraft(),
+    slug: a.slug,
+    slugTouched: true,
+    title: a.title,
+    category: a.category,
+    description: a.description,
+    intro: a.intro,
+    publishedAt: a.publishedAt ?? "",
+    readTime: a.readTime,
+    author: a.author ?? "",
+    authorBio: a.authorBio ?? "",
+    authorTelegram: a.authorTelegram ?? "",
+    authorChannel: a.authorChannel ?? "",
+    isPublished: true,
+    sections: toFormSections(a.sections),
   };
 }
 
@@ -539,6 +561,28 @@ export function ArticlesManager() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-6">
+        <h3 className="font-display text-2xl">Готовые статьи</h3>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Можно поправить текст и прикрепить трек. После сохранения статья появится в списке выше и заменит исходную на сайте.
+        </p>
+        <div className="mt-4 grid gap-3">
+          {localArticles
+            .filter((a) => !rows.some((r) => r.slug === a.slug))
+            .map((a) => (
+              <div key={a.slug} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-background p-4">
+                <div className="min-w-0">
+                  <p className="font-medium">{a.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{a.category} · {a.readTime}</p>
+                </div>
+                <Button variant="outline" size="sm" onClick={() => setDraft(draftFromArticle(a))}>
+                  <Pencil className="size-4" /> Изменить / добавить трек
+                </Button>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
