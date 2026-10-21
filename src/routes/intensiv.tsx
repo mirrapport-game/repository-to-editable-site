@@ -134,7 +134,7 @@ function IntensivePage() {
       </header>
       {/* Обложка */}
       <section id="top" data-scene="0" className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-transparent to-background/60" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
           <p className="eyebrow text-primary">27.10 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
           <h1 className="mt-6 font-display text-5xl uppercase leading-none text-gold-gradient md:text-8xl">«Новый уровень»</h1>
