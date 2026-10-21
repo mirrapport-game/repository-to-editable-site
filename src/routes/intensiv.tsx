@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import bgSpb from "@/assets/intensiv-bg-spb.jpg";
+import bgHall from "@/assets/intensiv-bg-hall.jpg";
+import bgStage from "@/assets/intensiv-bg-stage.jpg";
+import bgChecks from "@/assets/intensiv-bg-checks.jpg";
 import { toast } from "sonner";
 import { CalendarDays, Check, Users } from "lucide-react";
 import cover from "@/assets/novyi-uroven-cover.png.asset.json";
@@ -89,9 +93,34 @@ function SignupForm() {
   );
 }
 
+const scenes = [bgSpb, bgHall, bgStage, bgChecks];
+
+/** Фон меняется по мере прокрутки: Петербург → зал → сцена → чеки. */
+function SceneBackground() {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-scene]"));
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.scene));
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+      {scenes.map((src, i) => (
+        <img key={src} src={src} alt="" width={1600} height={912} loading={i === 0 ? "eager" : "lazy"}
+          className={`absolute inset-0 size-full object-cover transition-opacity duration-1000 ${i === active ? "opacity-100" : "opacity-0"}`} />
+      ))}
+      <div className="absolute inset-0 bg-background/75" />
+    </div>
+  );
+}
+
 function IntensivePage() {
   return (
-    <div className="theme-intensive min-h-screen bg-background text-foreground">
+    <div className="theme-intensive relative isolate min-h-screen text-foreground">
+      <SceneBackground />
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
           <a href="#top" className="font-display text-xl uppercase tracking-wider text-gold-gradient">Новый уровень</a>
@@ -104,7 +133,7 @@ function IntensivePage() {
         </div>
       </header>
       {/* Обложка */}
-      <section id="top" className="relative isolate overflow-hidden">
+      <section id="top" data-scene="0" className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
           <p className="eyebrow text-primary">27.10 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
@@ -119,7 +148,7 @@ function IntensivePage() {
       </section>
 
       {/* Путь A → B → C */}
-      <section id="path" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
+      <section id="path" data-scene="1" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
         <h2 className="text-center font-display text-4xl md:text-6xl">Из точки А — в точку <span className="text-gold-gradient">С</span></h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {steps.map((s) => (
@@ -133,7 +162,7 @@ function IntensivePage() {
       </section>
 
       {/* Для кого */}
-      <section className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-2">
+      <section data-scene="1" className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-2">
         <div>
           <p className="eyebrow text-primary">Для кого</p>
           <h2 className="mt-4 font-display text-4xl">Для тех, кто работает с ситуациями</h2>
@@ -147,7 +176,7 @@ function IntensivePage() {
       </section>
 
       {/* Нетворкинг и практикум */}
-      <section className="mx-auto max-w-6xl px-5 py-16">
+      <section data-scene="1" className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="border border-primary p-8"><Users className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl">Нетворкинг</h3><p className="mt-3 leading-7 text-muted-foreground">3–5 минут на каждого. Многие выступят перед всей аудиторией — это ваш шанс, чтобы коллеги и будущие партнёры узнали вас.</p></div>
           <div className="border border-primary p-8"><CalendarDays className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl">Практикум</h3><p className="mt-3 leading-7 text-muted-foreground">Можно принять участие в практикуме и получить заявки прямо в моменте — выполняя новые для себя действия.</p></div>
@@ -155,7 +184,7 @@ function IntensivePage() {
       </section>
 
       {/* Ведущие */}
-      <section id="hosts" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
+      <section id="hosts" data-scene="2" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
         <h2 className="text-center font-display text-4xl md:text-6xl">Ведущие</h2>
         <img src={cover.url} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
         <div className="mt-12 grid gap-10 md:grid-cols-2">
@@ -164,7 +193,7 @@ function IntensivePage() {
               <img src={olgaPortrait.url} alt="Ольга Счастливая" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Продажи услуг психологов</p><h3 className="mt-2 font-display text-4xl">Ольга Счастливая</h3></div>
             </div>
-            <div className="mt-6 flex gap-10"><div><span className="font-display text-5xl text-gold-gradient">19</span><p className="text-sm text-muted-foreground">лет обучаю продажам</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской психологии</p></div></div>
+            <div className="mt-6 flex gap-10"><div><span className="font-display text-5xl text-gold-gradient">19</span><p className="text-sm text-muted-foreground">лет обучаю продажам</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской и женской психологии</p></div></div>
             <p className="mt-6 leading-7">Я продаю услуги психологов, потому что знаю этот продукт изнутри.</p>
           </article>
           <article className="border border-border bg-card p-8">
@@ -172,14 +201,14 @@ function IntensivePage() {
               <img src={authorPortraitImage} alt="Артём Ефимов" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Специалист по отношениям</p><h3 className="mt-2 font-display text-4xl">Артём Ефимов</h3></div>
             </div>
-            <p className="mt-6 leading-7">Автор серии трансформационных игр «Раппóрт», методолог и игропрактик. Более 20 лет работает с отношениями и помогает людям увидеть свои сценарии со стороны — через игру, без лекций.</p>
+            <p className="mt-6 leading-7">Автор серии трансформационных игр «Раппóрт», методолог и игропрактик. Более 10 лет работает с отношениями и помогает людям увидеть свои сценарии со стороны — через игру, без лекций.</p>
             <p className="mt-3 leading-7 text-muted-foreground">Поделится, как игровой формат превращает первое знакомство в доверие и запись на работу.</p>
           </article>
         </div>
       </section>
 
       {/* Как вы зарабатываете */}
-      <section className="mx-auto max-w-4xl px-5 py-16">
+      <section data-scene="3" className="mx-auto max-w-4xl px-5 py-16">
         <p className="eyebrow text-center text-primary">Как это работает</p>
         <h2 className="mt-4 text-center font-display text-4xl md:text-5xl">Вы получаете <span className="text-gold-gradient">готового клиента</span></h2>
         <ol className="mt-10 grid gap-4">
@@ -188,7 +217,7 @@ function IntensivePage() {
       </section>
 
       {/* Регистрация */}
-      <section id="register" className="mx-auto grid max-w-5xl scroll-mt-20 gap-10 px-5 py-20 md:grid-cols-2 md:items-center">
+      <section id="register" data-scene="3" className="mx-auto grid max-w-5xl scroll-mt-20 gap-10 px-5 py-20 md:grid-cols-2 md:items-center">
         <div>
           <p className="font-display text-7xl text-gold-gradient">27.10</p>
           <p className="mt-2 text-2xl">12:00–16:00</p>
@@ -198,7 +227,7 @@ function IntensivePage() {
         </div>
         <SignupForm />
       </section>
-      <footer className="border-t border-border">
+      <footer className="border-t border-border bg-background">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 pb-24 pt-10 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl uppercase text-gold-gradient">«Новый уровень»</p>
