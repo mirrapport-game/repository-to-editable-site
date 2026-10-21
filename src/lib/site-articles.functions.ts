@@ -24,6 +24,8 @@ const articleSchema = z.object({
   authorBio: z.string().trim().max(1000).default(""),
   authorTelegram: z.string().trim().max(60).default(""),
   authorChannel: z.string().trim().max(200).default(""),
+  audioPath: z.string().trim().max(400).default(""),
+  audioTitle: z.string().trim().max(200).default(""),
   isPublished: z.boolean().default(false),
 });
 
@@ -41,6 +43,8 @@ export type SiteArticleInput = {
   authorBio: string;
   authorTelegram: string;
   authorChannel: string;
+  audioPath?: string;
+  audioTitle?: string;
   isPublished: boolean;
 };
 
@@ -92,6 +96,8 @@ export const saveSiteArticle = createServerFn({ method: "POST" })
       author_bio: data.authorBio,
       author_telegram: data.authorTelegram || null,
       author_channel: data.authorChannel || null,
+      audio_url: data.audioPath || null,
+      audio_title: data.audioTitle || null,
       is_published: data.isPublished,
       updated_at: new Date().toISOString(),
     };
@@ -138,4 +144,23 @@ export const deleteSiteArticle = createServerFn({ method: "POST" })
     if (error) return { ok: false, error: error.message };
     if (!count) return { ok: false, error: "Статья не найдена" };
     return { ok: true };
+  });
+
+/**
+ * Временная ссылка на трек статьи. Файл в закрытой папке хранилища,
+ * поэтому ссылку выдаёт сервер и только для опубликованной статьи.
+ */
+export const getArticleAudioUrl = createServerFn({ method: "GET" })
+  .inputValidator((input: { slug: string }) => z.object({ slug: z.string().trim().min(1).max(80) }).parse(input))
+  .handler(async ({ data }): Promise<{ url: string | null; title: string | null }> => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: row } = await supabaseAdmin
+      .from("site_articles")
+      .select("audio_url, audio_title")
+      .eq("slug", data.slug)
+      .eq("is_published", true)
+      .maybeSingle();
+    if (!row?.audio_url) return { url: null, title: null };
+    const { data: signed } = await supabaseAdmin.storage.from("article-audio").createSignedUrl(row.audio_url, 60 * 60);
+    return { url: signed?.signedUrl ?? null, title: row.audio_title ?? null };
   });

@@ -6,8 +6,8 @@ import bgStage from "@/assets/intensiv-bg-stage.jpg";
 import bgChecks from "@/assets/intensiv-bg-checks.jpg";
 import { toast } from "sonner";
 import { CalendarDays, Check, Users } from "lucide-react";
-import cover from "@/assets/novyi-uroven-cover.png.asset.json";
-import olgaPortrait from "@/assets/olga-schastlivaya.jpg.asset.json";
+import coverUrl from "@/assets/novyi-uroven-cover.png";
+import olgaPortraitUrl from "@/assets/olga-schastlivaya.jpg";
 import { authorPortraitImage } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -186,11 +186,11 @@ function IntensivePage() {
       {/* Ведущие */}
       <section id="hosts" data-scene="2" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
         <h2 className="text-center font-display text-4xl md:text-6xl">Ведущие</h2>
-        <img src={cover.url} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
+        <img src={coverUrl} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <article className="border border-border bg-card p-8">
             <div className="flex items-center gap-5">
-              <img src={olgaPortrait.url} alt="Ольга Счастливая" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
+              <img src={olgaPortraitUrl} alt="Ольга Счастливая" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Продажи услуг психологов</p><h3 className="mt-2 font-display text-4xl">Ольга Счастливая</h3></div>
             </div>
             <div className="mt-6 flex gap-10"><div><span className="font-display text-5xl text-gold-gradient">19</span><p className="text-sm text-muted-foreground">лет обучаю продажам</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской и женской психологии</p></div></div>

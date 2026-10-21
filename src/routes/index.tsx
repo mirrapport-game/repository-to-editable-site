@@ -42,7 +42,7 @@ function Index() {
         <div className="grid w-full items-end gap-5 sm:gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="lg:self-start lg:pt-[6vh]">
             <HeroRotator />
-            <p className="mt-4 max-w-xl text-base leading-7 text-background sm:mt-6 sm:text-lg sm:leading-8">Каждая карта — жизненная ситуация. В игре вы проживаете её за персонажа, а обратную связь получает роль, а не вы.</p>
+            <p className="mt-4 max-w-xl text-base leading-7 text-background sm:mt-6 sm:text-lg sm:leading-8">«Раппóрт» — серия игр Артёма Ефимова. Вы проживаете жизненную ситуацию за персонажа, получаете обратную связь без осуждения и пробуете новые способы слышать друг друга.</p>
           </div>
           <HeroCards />
         </div>

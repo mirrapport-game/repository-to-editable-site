@@ -1142,6 +1142,8 @@ export type Database = {
       }
       site_articles: {
         Row: {
+          audio_title: string | null
+          audio_url: string | null
           author: string
           author_bio: string
           author_channel: string | null
@@ -1161,6 +1163,8 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          audio_title?: string | null
+          audio_url?: string | null
           author?: string
           author_bio?: string
           author_channel?: string | null
@@ -1180,6 +1184,8 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          audio_title?: string | null
+          audio_url?: string | null
           author?: string
           author_bio?: string
           author_channel?: string | null

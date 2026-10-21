@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUp, Pencil, Plus, Trash2, X } from "lucide-react";
+import { ArrowDown, ArrowUp, Music, Pencil, Plus, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/components/site-shell";
@@ -41,6 +41,8 @@ type Draft = {
   authorBio: string;
   authorTelegram: string;
   authorChannel: string;
+  audioPath: string;
+  audioTitle: string;
   isPublished: boolean;
   sections: SectionForm[];
 };
@@ -59,6 +61,8 @@ const emptyDraft = (): Draft => ({
   authorBio: "",
   authorTelegram: "",
   authorChannel: "",
+  audioPath: "",
+  audioTitle: "",
   isPublished: false,
   sections: [{ heading: "", paragraphs: "", bullets: "" }],
 });
@@ -96,6 +100,8 @@ function draftFromRow(row: SiteArticleRow): Draft {
     authorBio: row.author_bio,
     authorTelegram: row.author_telegram ?? "",
     authorChannel: row.author_channel ?? "",
+    audioPath: row.audio_url ?? "",
+    audioTitle: row.audio_title ?? "",
     isPublished: row.is_published,
     sections: toFormSections(row.sections),
   };
@@ -109,6 +115,7 @@ export function ArticlesManager() {
   const [loading, setLoading] = useState(false);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [busy, setBusy] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [confirmId, setConfirmId] = useState<string | null>(null);
 
   const fetchList = useServerFn(listSiteArticles);
@@ -188,6 +195,23 @@ export function ArticlesManager() {
     });
   }
 
+  async function uploadAudio(file: File) {
+    if (!draft) return;
+    setUploading(true);
+    try {
+      const ext = (file.name.split(".").pop() || "mp3").toLowerCase();
+      const path = `articles/${draft.slug || "article"}-${Date.now()}.${ext}`;
+      const { error } = await supabase.storage.from("article-audio").upload(path, file, { upsert: true });
+      if (error) throw error;
+      patch({ audioPath: path, audioTitle: draft.audioTitle.trim() || file.name.replace(/\.[^.]+$/, "") });
+      toast.success("Трек загружен — не забудьте сохранить статью");
+    } catch {
+      toast.error("Не удалось загрузить трек. Попробуйте файл поменьше (до 20 МБ).");
+    } finally {
+      setUploading(false);
+    }
+  }
+
   async function submit() {
     if (!draft) return;
     if (draft.title.trim().length < 3) {
@@ -224,6 +248,8 @@ export function ArticlesManager() {
           authorBio: draft.authorBio.trim(),
           authorTelegram: draft.authorTelegram.trim(),
           authorChannel: draft.authorChannel.trim(),
+          audioPath: draft.audioPath.trim(),
+          audioTitle: draft.audioTitle.trim(),
           isPublished: draft.isPublished,
         },
       });
@@ -383,6 +409,32 @@ export function ArticlesManager() {
               <Input value={draft.readTime} onChange={(e) => patch({ readTime: e.target.value })} placeholder="5 минут" />
             </Field>
           </div>
+
+          <Field
+            label="Трек на тему статьи"
+            hint="Загрузите mp3 или другой аудиофайл — в статье появится выбор «послушать или прочитать»."
+          >
+            <Input
+              type="file"
+              accept="audio/*"
+              disabled={uploading}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) void uploadAudio(file);
+                e.target.value = "";
+              }}
+            />
+            {uploading && <span className="text-xs text-muted-foreground">Загружаем трек…</span>}
+            {draft.audioPath && !uploading && (
+              <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                <Music className="size-4" aria-hidden="true" />
+                <span>Трек прикреплён{draft.audioTitle ? `: ${draft.audioTitle}` : ""}</span>
+                <Button type="button" variant="ghost" size="sm" onClick={() => patch({ audioPath: "", audioTitle: "" })}>
+                  Убрать
+                </Button>
+              </div>
+            )}
+          </Field>
 
           <Field label="Об авторе">
             <Textarea rows={2} value={draft.authorBio} onChange={(e) => patch({ authorBio: e.target.value })} />
