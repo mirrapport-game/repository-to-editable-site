@@ -10,7 +10,7 @@
 <!-- LOVABLE:END -->
 
 - Keep public editorial content in typed local data modules so cards, detail pages, and metadata share one source of truth.
-- Keep author-supplied insight articles in a dedicated typed editorial module and derive structured publication dates and authors from article data so new entries retain accurate attribution in search results.
+- Keep blog articles in two sources merged in one place: handwritten ones in the data modules (with their own authors and dates), admin-written ones in the site_articles table; merge via src/lib/site-articles.ts, only published rows readable by visitors.
 - Store manageable video reviews in Lovable Cloud with role-based access; public pages read published rows only.
 - Keep per-game galleries in the typed game catalogue so detail pages and metadata derive from one source.
 - Keep the animated game-opening scene reusable across every published game detail page so carousel navigation and storytelling remain consistent.
