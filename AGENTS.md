@@ -9,7 +9,7 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep public editorial content in typed local data modules so cards, detail pages, and metadata share one source of truth.
+- Share editorial data across views; keep intensive offer values and ticket rules in src/data/intensiv.ts for copy and tests.
 - Keep blog articles in two sources merged in one place: handwritten ones in the data modules (with their own authors and dates), admin-written ones in the site_articles table; merge via src/lib/site-articles.ts, only published rows readable by visitors.
 - Store manageable video reviews in Lovable Cloud with role-based access; public pages read published rows only.
 - Keep per-game galleries in the typed game catalogue so detail pages and metadata derive from one source.

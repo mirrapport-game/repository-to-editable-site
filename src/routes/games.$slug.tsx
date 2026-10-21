@@ -28,7 +28,15 @@ const OFFER_PRICE: Record<string, number> = { business: 50000 };
 export const Route = createFileRoute("/games/$slug")({
   loader: ({ params }) => { const game = getGame(params.slug); if (!game || game.comingSoon) throw notFound(); return game; },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Игра не найдена — Раппóрт" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData) return { meta: [
+      { title: "Игра не найдена — Раппóрт" },
+      { name: "description", content: "Эта игра недоступна. Выберите игру в каталоге Раппóрт." },
+      { property: "og:title", content: "Игра не найдена — Раппóрт" },
+      { property: "og:description", content: "Эта игра недоступна. Выберите игру в каталоге Раппóрт." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex" },
+    ] };
     const seo = GAME_SEO[loaderData.slug] ?? { title: `${loaderData.title} — Раппорт | Психологическая игра`, description: loaderData.description, keywords: [] };
     const h = seoHead({ title: seo.title, description: seo.description, path: `/games/${loaderData.slug}`, image: loaderData.image, keywords: [...seo.keywords, loaderData.title, `${loaderData.title} отзывы`, "записаться на игру"], type: "product" });
     return { ...h, scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Product", name: loaderData.title, description: seo.description, brand: { "@type": "Brand", name: "Раппóрт" }, url: `${SITE_URL}/games/${loaderData.slug}`, offers: { "@type": "Offer", priceCurrency: "RUB", price: OFFER_PRICE[loaderData.slug] ?? 75000, availability: "https://schema.org/InStock" } }) }] };
