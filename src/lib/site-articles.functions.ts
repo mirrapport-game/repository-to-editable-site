@@ -24,6 +24,8 @@ const articleSchema = z.object({
   authorBio: z.string().trim().max(1000).default(""),
   authorTelegram: z.string().trim().max(60).default(""),
   authorChannel: z.string().trim().max(200).default(""),
+  audioPath: z.string().trim().max(400).default(""),
+  audioTitle: z.string().trim().max(200).default(""),
   isPublished: z.boolean().default(false),
 });
 
@@ -41,6 +43,8 @@ export type SiteArticleInput = {
   authorBio: string;
   authorTelegram: string;
   authorChannel: string;
+  audioPath?: string;
+  audioTitle?: string;
   isPublished: boolean;
 };
 
@@ -92,6 +96,8 @@ export const saveSiteArticle = createServerFn({ method: "POST" })
       author_bio: data.authorBio,
       author_telegram: data.authorTelegram || null,
       author_channel: data.authorChannel || null,
+      audio_url: data.audioPath || null,
+      audio_title: data.audioTitle || null,
       is_published: data.isPublished,
       updated_at: new Date().toISOString(),
     };
