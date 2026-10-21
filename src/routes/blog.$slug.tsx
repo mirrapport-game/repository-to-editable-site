@@ -12,7 +12,8 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
     const local = getArticle(params.slug);
     const db = (await listPublishedSiteArticles()).find((a) => a.slug === params.slug);
-    const article = db ? { ...db, cta: db.cta ?? local?.cta } : local;
+    const cta = db?.cta ?? local?.cta;
+    const article = db ? (cta ? { ...db, cta } : db) : local;
     if (!article) throw notFound();
     return article;
   },
