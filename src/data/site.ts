@@ -282,6 +282,8 @@ export type Article = {
   authorBio?: string;
   authorTelegram?: string;
   authorChannel?: string;
+  /** Призыв к действию в конце статьи: подбирается под тему текста. */
+  cta?: { title: string; text: string; label: string; href: string };
 };
 
 import { contributedArticles } from "@/data/articles-contributed";
