@@ -24,6 +24,7 @@ import { Route as GameRouteImport } from './routes/game'
 import { Route as GameCreationRouteImport } from './routes/game-creation'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as IntensivRouteImport } from './routes/intensiv'
 import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as ManageApplicationsRouteImport } from './routes/manage-applications'
 import { Route as ManageArticlesRouteImport } from './routes/manage-articles'
@@ -140,6 +141,11 @@ const GamesRoute = GamesRouteImport.update({
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntensivRoute = IntensivRouteImport.update({
+  id: '/intensiv',
+  path: '/intensiv',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvestorsRoute = InvestorsRouteImport.update({
@@ -373,6 +379,7 @@ export interface FileRoutesByFullPath {
   '/game-creation': typeof GameCreationRoute
   '/games': typeof GamesRouteWithChildren
   '/how-it-works': typeof HowItWorksRoute
+  '/intensiv': typeof IntensivRoute
   '/investors': typeof InvestorsRoute
   '/manage-applications': typeof ManageApplicationsRoute
   '/manage-articles': typeof ManageArticlesRoute
@@ -430,6 +437,7 @@ export interface FileRoutesByTo {
   '/game': typeof GameRoute
   '/game-creation': typeof GameCreationRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/intensiv': typeof IntensivRoute
   '/investors': typeof InvestorsRoute
   '/manage-applications': typeof ManageApplicationsRoute
   '/manage-articles': typeof ManageArticlesRoute
@@ -490,6 +498,7 @@ export interface FileRoutesById {
   '/game-creation': typeof GameCreationRoute
   '/games': typeof GamesRouteWithChildren
   '/how-it-works': typeof HowItWorksRoute
+  '/intensiv': typeof IntensivRoute
   '/investors': typeof InvestorsRoute
   '/manage-applications': typeof ManageApplicationsRoute
   '/manage-articles': typeof ManageArticlesRoute
@@ -551,6 +560,7 @@ export interface FileRouteTypes {
     | '/game-creation'
     | '/games'
     | '/how-it-works'
+    | '/intensiv'
     | '/investors'
     | '/manage-applications'
     | '/manage-articles'
@@ -608,6 +618,7 @@ export interface FileRouteTypes {
     | '/game'
     | '/game-creation'
     | '/how-it-works'
+    | '/intensiv'
     | '/investors'
     | '/manage-applications'
     | '/manage-articles'
@@ -667,6 +678,7 @@ export interface FileRouteTypes {
     | '/game-creation'
     | '/games'
     | '/how-it-works'
+    | '/intensiv'
     | '/investors'
     | '/manage-applications'
     | '/manage-articles'
@@ -727,6 +739,7 @@ export interface RootRouteChildren {
   GameCreationRoute: typeof GameCreationRoute
   GamesRoute: typeof GamesRouteWithChildren
   HowItWorksRoute: typeof HowItWorksRoute
+  IntensivRoute: typeof IntensivRoute
   InvestorsRoute: typeof InvestorsRoute
   ManageApplicationsRoute: typeof ManageApplicationsRoute
   ManageArticlesRoute: typeof ManageArticlesRoute
@@ -872,6 +885,13 @@ declare module '@tanstack/react-router' {
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intensiv': {
+      id: '/intensiv'
+      path: '/intensiv'
+      fullPath: '/intensiv'
+      preLoaderRoute: typeof IntensivRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/investors': {
@@ -1211,6 +1231,7 @@ const rootRouteChildren: RootRouteChildren = {
   GameCreationRoute: GameCreationRoute,
   GamesRoute: GamesRouteWithChildren,
   HowItWorksRoute: HowItWorksRoute,
+  IntensivRoute: IntensivRoute,
   InvestorsRoute: InvestorsRoute,
   ManageApplicationsRoute: ManageApplicationsRoute,
   ManageArticlesRoute: ManageArticlesRoute,
