@@ -145,3 +145,22 @@ export const deleteSiteArticle = createServerFn({ method: "POST" })
     if (!count) return { ok: false, error: "Статья не найдена" };
     return { ok: true };
   });
+
+/**
+ * Временная ссылка на трек статьи. Файл в закрытой папке хранилища,
+ * поэтому ссылку выдаёт сервер и только для опубликованной статьи.
+ */
+export const getArticleAudioUrl = createServerFn({ method: "GET" })
+  .inputValidator((input: { slug: string }) => z.object({ slug: z.string().trim().min(1).max(80) }).parse(input))
+  .handler(async ({ data }): Promise<{ url: string | null; title: string | null }> => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: row } = await supabaseAdmin
+      .from("site_articles")
+      .select("audio_url, audio_title")
+      .eq("slug", data.slug)
+      .eq("is_published", true)
+      .maybeSingle();
+    if (!row?.audio_url) return { url: null, title: null };
+    const { data: signed } = await supabaseAdmin.storage.from("article-audio").createSignedUrl(row.audio_url, 60 * 60);
+    return { url: signed?.signedUrl ?? null, title: row.audio_title ?? null };
+  });
