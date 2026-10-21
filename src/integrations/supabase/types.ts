@@ -1140,6 +1140,66 @@ export type Database = {
         }
         Relationships: []
       }
+      site_articles: {
+        Row: {
+          author: string
+          author_bio: string
+          author_channel: string | null
+          author_telegram: string | null
+          category: string
+          created_at: string
+          date: string
+          description: string
+          id: string
+          intro: string
+          is_published: boolean
+          published_at: string | null
+          read_time: string
+          sections: Json
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string
+          author_bio?: string
+          author_channel?: string | null
+          author_telegram?: string | null
+          category?: string
+          created_at?: string
+          date?: string
+          description?: string
+          id?: string
+          intro?: string
+          is_published?: boolean
+          published_at?: string | null
+          read_time?: string
+          sections?: Json
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          author_bio?: string
+          author_channel?: string | null
+          author_telegram?: string | null
+          category?: string
+          created_at?: string
+          date?: string
+          description?: string
+          id?: string
+          intro?: string
+          is_published?: boolean
+          published_at?: string | null
+          read_time?: string
+          sections?: Json
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       telegram_updates: {
         Row: {
           chat_id: number | null
