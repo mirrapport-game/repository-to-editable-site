@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { articles } from "@/data/site";
 import { ChannelFeed } from "@/components/channel-feed";
+import { listPublishedSiteArticles } from "@/lib/site-articles.functions";
+import { mergeArticles } from "@/lib/site-articles";
 
 type BlogSearch = { q?: string; topic?: string };
 
 const POSTS_TOPIC = "Новые посты";
-const topics = ["Все", POSTS_TOPIC, ...Array.from(new Set(articles.map((article) => article.category)))];
 
 export const Route = createFileRoute("/blog/")({
   validateSearch: (search: Record<string, unknown>): BlogSearch => {
@@ -19,6 +20,8 @@ export const Route = createFileRoute("/blog/")({
     if (typeof search["topic"] === "string" && search["topic"]) result.topic = search["topic"];
     return result;
   },
+  // Статьи из базы идут первыми, рукописные — за ними.
+  loader: async () => mergeArticles(articles, await listPublishedSiteArticles()),
   head: () => ({ links: canonical("/blog"), meta: [...seoMeta("/blog"), 
   { title: "Блог «Раппóрт» — психология, отношения и игровые практики" },
   { name: "description", content: "Статьи об отношениях, трансформационных играх, работе ведущего и практике осознанной коммуникации." },
@@ -29,10 +32,12 @@ export const Route = createFileRoute("/blog/")({
 function BlogPage() {
   const { q, topic } = Route.useSearch();
   const navigate = useNavigate({ from: "/blog/" });
+  const all = Route.useLoaderData();
+  const topics = ["Все", POSTS_TOPIC, ...Array.from(new Set(all.map((article) => article.category)))];
   const safeQuery = q ?? "";
   const safeTopic = topic && topics.includes(topic) ? topic : "Все";
   const normalizedQuery = safeQuery.trim().toLocaleLowerCase("ru");
-  const filteredArticles = articles.filter((article) => {
+  const filteredArticles = all.filter((article) => {
     const matchesTopic = safeTopic === "Все" || article.category === safeTopic;
     const searchable = `${article.title} ${article.description} ${article.intro}`.toLocaleLowerCase("ru");
     return matchesTopic && (!normalizedQuery || searchable.includes(normalizedQuery));

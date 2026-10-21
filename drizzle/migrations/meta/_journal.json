@@ -29,6 +29,13 @@
       "when": 1792454655393,
       "tag": "0003_blog_hidden_posts",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792566085485,
+      "tag": "0004_create_site_articles",
+      "breakpoints": true
     }
   ]
 }

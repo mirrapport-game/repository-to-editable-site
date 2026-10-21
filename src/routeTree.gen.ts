@@ -26,6 +26,7 @@ import { Route as GamesRouteImport } from './routes/games'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as ManageApplicationsRouteImport } from './routes/manage-applications'
+import { Route as ManageArticlesRouteImport } from './routes/manage-articles'
 import { Route as ManageClubRouteImport } from './routes/manage-club'
 import { Route as ManageCourseRouteImport } from './routes/manage-course'
 import { Route as ManageCrmRouteImport } from './routes/manage-crm'
@@ -149,6 +150,11 @@ const InvestorsRoute = InvestorsRouteImport.update({
 const ManageApplicationsRoute = ManageApplicationsRouteImport.update({
   id: '/manage-applications',
   path: '/manage-applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManageArticlesRoute = ManageArticlesRouteImport.update({
+  id: '/manage-articles',
+  path: '/manage-articles',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ManageClubRoute = ManageClubRouteImport.update({
@@ -369,6 +375,7 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/investors': typeof InvestorsRoute
   '/manage-applications': typeof ManageApplicationsRoute
+  '/manage-articles': typeof ManageArticlesRoute
   '/manage-club': typeof ManageClubRoute
   '/manage-course': typeof ManageCourseRoute
   '/manage-crm': typeof ManageCrmRoute
@@ -425,6 +432,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/investors': typeof InvestorsRoute
   '/manage-applications': typeof ManageApplicationsRoute
+  '/manage-articles': typeof ManageArticlesRoute
   '/manage-club': typeof ManageClubRoute
   '/manage-course': typeof ManageCourseRoute
   '/manage-crm': typeof ManageCrmRoute
@@ -484,6 +492,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/investors': typeof InvestorsRoute
   '/manage-applications': typeof ManageApplicationsRoute
+  '/manage-articles': typeof ManageArticlesRoute
   '/manage-club': typeof ManageClubRoute
   '/manage-course': typeof ManageCourseRoute
   '/manage-crm': typeof ManageCrmRoute
@@ -544,6 +553,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/investors'
     | '/manage-applications'
+    | '/manage-articles'
     | '/manage-club'
     | '/manage-course'
     | '/manage-crm'
@@ -600,6 +610,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/investors'
     | '/manage-applications'
+    | '/manage-articles'
     | '/manage-club'
     | '/manage-course'
     | '/manage-crm'
@@ -658,6 +669,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/investors'
     | '/manage-applications'
+    | '/manage-articles'
     | '/manage-club'
     | '/manage-course'
     | '/manage-crm'
@@ -717,6 +729,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   InvestorsRoute: typeof InvestorsRoute
   ManageApplicationsRoute: typeof ManageApplicationsRoute
+  ManageArticlesRoute: typeof ManageArticlesRoute
   ManageClubRoute: typeof ManageClubRoute
   ManageCourseRoute: typeof ManageCourseRoute
   ManageCrmRoute: typeof ManageCrmRoute
@@ -873,6 +886,13 @@ declare module '@tanstack/react-router' {
       path: '/manage-applications'
       fullPath: '/manage-applications'
       preLoaderRoute: typeof ManageApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage-articles': {
+      id: '/manage-articles'
+      path: '/manage-articles'
+      fullPath: '/manage-articles'
+      preLoaderRoute: typeof ManageArticlesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/manage-club': {
@@ -1193,6 +1213,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   InvestorsRoute: InvestorsRoute,
   ManageApplicationsRoute: ManageApplicationsRoute,
+  ManageArticlesRoute: ManageArticlesRoute,
   ManageClubRoute: ManageClubRoute,
   ManageCourseRoute: ManageCourseRoute,
   ManageCrmRoute: ManageCrmRoute,
