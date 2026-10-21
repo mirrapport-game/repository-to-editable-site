@@ -603,3 +603,20 @@ html[data-quest="on"] {
 .home-trainer { background: var(--home-trainer-bg); color: var(--home-trainer-ink); border-block: 1px solid var(--border); }
 .home-trainer > .section-inner > .eyebrow { color: var(--home-trainer-ink); }
 .home-trainer > .section-inner > div { color: var(--foreground); border-top: 4px solid var(--schedule-living); }
+
+/* Интенсив «Новый уровень»: тёмная обложка с золотом */
+.theme-intensive {
+  --background: oklch(0.14 0.01 80); --foreground: oklch(0.95 0.02 85);
+  --card: oklch(0.19 0.015 80); --card-foreground: oklch(0.95 0.02 85);
+  --primary: oklch(0.78 0.13 85); --primary-foreground: oklch(0.16 0.01 80);
+  --muted: oklch(0.22 0.015 80); --muted-foreground: oklch(0.75 0.03 85);
+  --border: oklch(0.78 0.13 85 / 0.3); --input: oklch(0.78 0.13 85 / 0.4); --ring: oklch(0.78 0.13 85);
+  --gold-gradient: linear-gradient(180deg, oklch(0.92 0.09 90), oklch(0.7 0.13 75));
+  background: var(--background); color: var(--foreground);
+}
+@utility text-gold-gradient { background: var(--gold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@keyframes intensive-dash { to { stroke-dashoffset: 0; } }
+@keyframes intensive-pop { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+.intensive-path { stroke-dasharray: 600; stroke-dashoffset: 600; animation: intensive-dash 3.5s ease-out infinite; }
+.intensive-node { transform-box: fill-box; transform-origin: center; animation: intensive-pop 3.5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .intensive-path { animation: none; stroke-dashoffset: 0; } .intensive-node { animation: none; } }
