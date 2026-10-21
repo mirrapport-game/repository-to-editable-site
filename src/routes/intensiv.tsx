@@ -3,14 +3,15 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { CalendarDays, Check, Users } from "lucide-react";
 import cover from "@/assets/novyi-uroven-cover.png.asset.json";
+import olgaPortrait from "@/assets/olga-schastlivaya.jpg.asset.json";
 import { authorPortraitImage } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ConsentFields } from "@/components/consent-fields";
 import { submitLandingLead } from "@/lib/landing-leads.functions";
 
-const TITLE = "«Новый уровень» — интенсив для психологов по отношениям, 27.10";
-const DESC = "Бесплатный интенсив и нетворкинг для психологов по отношениям: путь клиента от первого касания до покупки с чеком 50/150/300 тыс. Ведущие — Ольга Счастливая и Артём Ефимов.";
+const TITLE = "«Новый уровень» — интенсив для психологов по отношениям в Санкт-Петербурге, 27.10";
+const DESC = "Бесплатный интенсив и нетворкинг для психологов по отношениям в Санкт-Петербурге 27.10: путь клиента от первого касания до покупки с чеком 50/150/300 тыс. Ведущие — Ольга Счастливая и Артём Ефимов.";
 
 export const Route = createFileRoute("/intensiv")({
   head: () => ({
