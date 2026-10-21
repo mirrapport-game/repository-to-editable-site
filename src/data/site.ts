@@ -276,6 +276,9 @@ export type Article = {
   date: string;
   publishedAt?: string;
   readTime: string;
+  /** Путь к треку на тему статьи в хранилище; показывается в блоке «послушать или прочитать». */
+  audioPath?: string;
+  audioTitle?: string;
   intro: string;
   sections: ArticleSection[];
   author?: string;

@@ -95,6 +95,8 @@ export function siteArticleToArticle(row: SiteArticleRow): Article {
   if (row.author_bio) article.authorBio = row.author_bio;
   if (row.author_telegram) article.authorTelegram = row.author_telegram;
   if (row.author_channel) article.authorChannel = row.author_channel;
+  if (row.audio_url) article.audioPath = row.audio_url;
+  if (row.audio_title) article.audioTitle = row.audio_title;
   return article;
 }
 
