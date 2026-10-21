@@ -143,7 +143,7 @@ function IntensivePage() {
           <h1 className="mt-6 font-display text-5xl uppercase leading-none text-gold-gradient md:text-8xl">«Новый уровень»</h1>
           <p className="mt-6 max-w-4xl text-3xl font-bold leading-tight text-foreground md:text-5xl">путь от первого касания клиента<br className="hidden md:block" /> и до покупки твоего продукта</p>
           <div className="my-6 h-px w-40 bg-primary" />
-          <p className="font-display font-bold uppercase leading-tight"><span className="block text-2xl md:text-3xl">Интенсив для</span><span className="mt-2 block text-4xl md:text-6xl">психологов<br />по отношениям</span></p>
+          <p className="font-sans font-bold uppercase leading-tight"><span className="block text-2xl md:text-3xl">Интенсив для</span><span className="mt-2 block text-4xl md:text-6xl">психологов<br />по отношениям</span></p>
           <p className="mt-5 text-2xl font-bold uppercase leading-tight text-foreground md:text-3xl">+ качественный нетворкинг</p>
           <div className="mt-10 w-full flex justify-center"><PathScene /></div>
           <Button asChild size="lg" className="mt-8 h-14 rounded-none px-10 text-base"><a href="#register">Зарегистрироваться</a></Button>

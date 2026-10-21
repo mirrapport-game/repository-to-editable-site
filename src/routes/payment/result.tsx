@@ -11,7 +11,15 @@ export const Route = createFileRoute("/payment/result")({
     box: typeof s["box"] === "string" ? s["box"] : undefined,
     mentorship: typeof s["mentorship"] === "string" ? s["mentorship"] : undefined,
   }),
-  head: () => ({ meta: [{ title: "Оплата — Раппóрт" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [
+    { title: "Оплата — Раппóрт" },
+    { name: "description", content: "Статус оплаты участия в играх и программах Раппóрт." },
+    { property: "og:title", content: "Оплата — Раппóрт" },
+    { property: "og:description", content: "Статус оплаты участия в играх и программах Раппóрт." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+    { name: "robots", content: "noindex" },
+  ] }),
   component: PaymentResultPage,
 });
 
