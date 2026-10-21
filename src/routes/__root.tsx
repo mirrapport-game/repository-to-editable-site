@@ -143,7 +143,7 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const path = useRouterState({ select: (s) => s.location.href });
-  const isLanding = path.startsWith("/lp/") || path.startsWith("/investors") || path.startsWith("/market");
+  const isLanding = path.startsWith("/lp/") || path.startsWith("/investors") || path.startsWith("/market") || path.startsWith("/intensiv");
   // SPA navigation: report each client-side page change to Yandex Metrika (first load is counted by init).
   const first = useRef(true);
   useEffect(() => { if (first.current) { first.current = false; return; } ymHit(location.href); }, [path]);

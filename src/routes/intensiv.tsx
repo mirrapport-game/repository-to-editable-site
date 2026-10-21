@@ -91,9 +91,20 @@ function SignupForm() {
 
 function IntensivePage() {
   return (
-    <div className="theme-intensive">
+    <div className="theme-intensive min-h-screen bg-background text-foreground">
+      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
+          <a href="#top" className="font-display text-xl uppercase tracking-wider text-gold-gradient">Новый уровень</a>
+          <nav className="hidden gap-6 text-sm uppercase tracking-wider text-muted-foreground md:flex">
+            <a href="#path" className="hover:text-primary">Путь A→C</a>
+            <a href="#hosts" className="hover:text-primary">Ведущие</a>
+            <a href="#register" className="hover:text-primary">27.10 · СПб</a>
+          </nav>
+          <Button asChild size="sm" className="rounded-none"><a href="#register">Регистрация</a></Button>
+        </div>
+      </header>
       {/* Обложка */}
-      <section className="relative isolate overflow-hidden">
+      <section id="top" className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
           <p className="eyebrow text-primary">27.10 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
@@ -108,7 +119,7 @@ function IntensivePage() {
       </section>
 
       {/* Путь A → B → C */}
-      <section className="mx-auto max-w-6xl px-5 py-20">
+      <section id="path" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
         <h2 className="text-center font-display text-4xl md:text-6xl">Из точки А — в точку <span className="text-gold-gradient">С</span></h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {steps.map((s) => (
@@ -144,13 +155,13 @@ function IntensivePage() {
       </section>
 
       {/* Ведущие */}
-      <section className="mx-auto max-w-6xl px-5 py-20">
+      <section id="hosts" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
         <h2 className="text-center font-display text-4xl md:text-6xl">Ведущие</h2>
         <img src={cover.url} alt="Ольга Счастливая и Артём Ефимов — ведущие интенсива «Новый уровень»" loading="lazy" className="mt-10 w-full border border-border" />
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <article className="border border-border bg-card p-8">
             <div className="flex items-center gap-5">
-              <img src={olgaPortrait.url} alt="Ольга Счастливая" loading="lazy" className="size-24 rounded-full object-cover object-top" />
+              <img src={olgaPortrait.url} alt="Ольга Счастливая" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Продажи услуг психологов</p><h3 className="mt-2 font-display text-4xl">Ольга Счастливая</h3></div>
             </div>
             <div className="mt-6 flex gap-10"><div><span className="font-display text-5xl text-gold-gradient">19</span><p className="text-sm text-muted-foreground">лет обучаю продажам</p></div><div><span className="font-display text-5xl text-gold-gradient">9</span><p className="text-sm text-muted-foreground">лет в мужской психологии</p></div></div>
@@ -158,7 +169,7 @@ function IntensivePage() {
           </article>
           <article className="border border-border bg-card p-8">
             <div className="flex items-center gap-5">
-              <img src={authorPortraitImage} alt="Артём Ефимов" loading="lazy" className="size-24 rounded-full object-cover" />
+              <img src={authorPortraitImage} alt="Артём Ефимов" loading="lazy" className="size-28 shrink-0 rounded-full border-2 border-primary object-cover object-[50%_20%]" />
               <div><p className="eyebrow text-primary">Специалист по отношениям</p><h3 className="mt-2 font-display text-4xl">Артём Ефимов</h3></div>
             </div>
             <p className="mt-6 leading-7">Автор серии трансформационных игр «Раппóрт», методолог и игропрактик. Более 20 лет работает с отношениями и помогает людям увидеть свои сценарии со стороны — через игру, без лекций.</p>
@@ -187,6 +198,18 @@ function IntensivePage() {
         </div>
         <SignupForm />
       </section>
+      <footer className="border-t border-border">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 py-10 text-center md:flex-row md:justify-between md:text-left">
+          <div>
+            <p className="font-display text-2xl uppercase text-gold-gradient">«Новый уровень»</p>
+            <p className="mt-1 text-sm text-muted-foreground">Интенсив для психологов по отношениям · 27.10, 12:00–16:00 · Санкт-Петербург</p>
+          </div>
+          <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground md:items-end">
+            <p>Ведущие: Ольга Счастливая и Артём Ефимов</p>
+            <div className="flex gap-4"><a href="https://t.me/Rapport_game_bot" className="hover:text-primary">Telegram</a><a href="/legal" className="hover:text-primary">Политика конфиденциальности</a></div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
