@@ -45,13 +45,6 @@ const outcomes = [
   "Структуру двухчасовой программы, после которой клиент влюбляется в вас и в ваш метод",
 ];
 
-const funnel = [
-  "На базе проблем ваших клиентов создаём мини-версию вашей услуги — тренинг в записи",
-  "Продаём этот мини-тренинг за 990 ₽",
-  "Клиент за несколько дней проходит тренинг и влюбляется в вас без вашего участия",
-  "Получает приглашение на консультацию и приходит к вам",
-  "С консультации вы продаёте сопровождение за 50 / 150 / 300 тыс.",
-];
 
 function PathScene() {
   return (
@@ -212,14 +205,6 @@ function IntensivePage() {
         </div>
       </section>
 
-      {/* Как вы зарабатываете */}
-      <section data-scene="3" className="mx-auto max-w-4xl px-5 py-16">
-        <p className="eyebrow text-center text-primary">Как это работает</p>
-        <h2 className="mt-4 text-center font-display text-4xl font-bold md:text-5xl">Как выстроить <span className="text-gold-gradient">путь клиента</span></h2>
-        <ol className="mt-10 grid gap-4">
-          {funnel.map((f, i) => <li key={f} className="flex items-start gap-5 border-l-2 border-primary bg-card p-5"><span className="font-display text-2xl text-primary">{i + 1}</span><span className="text-lg leading-7">{f}</span></li>)}
-        </ol>
-      </section>
 
       {/* Регистрация */}
       <section id="register" data-scene="3" className="mx-auto grid max-w-5xl scroll-mt-20 gap-10 px-5 py-20 md:grid-cols-2 md:items-center">
