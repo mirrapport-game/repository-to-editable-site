@@ -11,7 +11,3 @@ export const bookingCities: string[] = cities
   .filter((city) => city.slug !== "online")
   .map((city) => city.name);
 
-/** Итоговый город: выбранный из списка или вписанный от руки. */
-export function resolveBookingCity(pick: string, custom: string): string {
-  return pick === OTHER_CITY ? custom.trim() : pick;
-}
