@@ -13,6 +13,7 @@ export const gameLeadSchema = z.object({
   phone: z.string().max(60).transform(normalizeBookingPhone).refine((value) => value !== null, "Проверьте номер телефона"),
   game: z.string().trim().max(120),
   format: z.enum(["Онлайн", "Офлайн", "Индивидуально", "Для группы"]),
+  city: z.string().trim().min(2, "Укажите город").max(80, "Город слишком длинный"),
   marketing: z.boolean().optional(),
   website: z.string().max(0),
   mentorship: z.boolean().optional(),

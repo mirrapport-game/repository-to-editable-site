@@ -14,8 +14,9 @@ export const submitGameLead = createServerFn({ method: "POST" })
       marketing_consent: data.marketing ?? false,
       name: data.name,
       phone: data.phone,
+      city: data.city,
       source: `${data.formName ?? "Форма записи"}: «${data.game}» · ${data.format}`,
-      notes: [`Форма: ${data.formName ?? "Форма записи"}`, data.page && `Страница: ${data.page}`, `Игра: ${data.game}`, `Формат: ${data.format}`, data.mentorship ? "Интересует также индивидуальное сопровождение" : ""].filter(Boolean).join(". "),
+      notes: [`Форма: ${data.formName ?? "Форма записи"}`, data.page && `Страница: ${data.page}`, `Игра: ${data.game}`, `Формат: ${data.format}`, `Город: ${data.city}`, data.mentorship ? "Интересует также индивидуальное сопровождение" : ""].filter(Boolean).join(". "),
       stage: "observer",
       amount: 2500,
     });
@@ -25,7 +26,7 @@ export const submitGameLead = createServerFn({ method: "POST" })
     }
     try {
       const { notifyLead } = await import("./telegram-schedule.server");
-      await notifyLead(`Новая заявка: ${data.formName ?? "Форма записи"}${data.page ? `\nСтраница: ${data.page}` : ""}\nИгра: ${data.game}\nФормат: ${data.format}\nИмя: ${data.name}\nТелефон: ${data.phone}${data.mentorship ? "\nИнтересует сопровождение" : ""}`);
+      await notifyLead(`Новая заявка: ${data.formName ?? "Форма записи"}${data.page ? `\nСтраница: ${data.page}` : ""}\nИгра: ${data.game}\nФормат: ${data.format}\nГород: ${data.city}\nИмя: ${data.name}\nТелефон: ${data.phone}${data.mentorship ? "\nИнтересует сопровождение" : ""}`);
     } catch { console.error("Game lead saved, notification unavailable"); }
     return { ok: true };
     } catch { console.error("Game lead storage unavailable"); return { ok: false, message: BOOKING_FAILURE }; }

@@ -38,3 +38,4 @@
 - Self-hosted typography uses local WOFF2 subsets with optional font display and two critical Russian faces preloaded, avoiding late layout shifts and third-party font CSS.
 - The schema lives in Lovable Cloud migrations under drizzle/migrations; scheduled Telegram reminders must be recreated as managed HTTP schedules, not hand-written cron SQL.
 - Admin code entry (/vhod) checks the code against the server-only ADMIN_ENTRY_CODE secret and signs into the existing admin account, so the code never reaches the browser.
+- Public booking forms share one city field whose options are derived from the city catalogue (the online entry excluded) plus a free-text "other city" choice; the value is validated server-side and stored in crm_contacts.city, so every lead uses the same city vocabulary.

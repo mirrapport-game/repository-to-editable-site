@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { BOOKING_WIDGET_EVENT, BookingFormatField, type BookingFormat } from "@/components/booking-format";
 import { games } from "@/data/site";
+import { BookingCityField } from "@/components/booking-city-field";
 
 const available = games.filter((g) => !g.comingSoon);
 
@@ -20,6 +21,7 @@ export function BookingSection() {
   const [phone, setPhone] = useState("");
   const [game, setGame] = useState(available[0]?.title ?? "");
   const [format, setFormat] = useState<BookingFormat>("Онлайн");
+  const [city, setCity] = useState("");
   const [open, setOpen] = useState(false);
   const { busy, done, error, registered, send } = useGameBooking(phone);
 
@@ -41,11 +43,12 @@ export function BookingSection() {
       {open && (done ? <div className="border-t border-border p-5"><p className="font-display text-2xl">Спасибо!</p><p className="mt-1 text-sm text-muted-foreground">Мы свяжемся с вами в ближайшее время.</p></div> :
       <form className="grid grid-cols-1 max-h-[min(36rem,calc(100dvh-6rem))] gap-3 overflow-y-auto overscroll-contain border-t border-border p-4" onSubmit={async (e) => {
         e.preventDefault(); const marketing = wantsMarketing(e.currentTarget);
-        await send({ marketing, name, phone, game, format, website: "", formName: "Виджет «Записаться»", page: window.location.pathname });
+        await send({ marketing, name, phone, game, format, city, website: "", formName: "Виджет «Записаться»", page: window.location.pathname });
       }}>
         <p className="text-sm text-muted-foreground">Выберите игру и удобный формат — мы подберём дату и ведущего.</p>
         <div className="space-y-2"><Label htmlFor="widget-game">Игра</Label><Select value={game} onValueChange={setGame}><SelectTrigger id="widget-game" className="h-10"><SelectValue /></SelectTrigger><SelectContent className="z-[70]">{available.map((g) => <SelectItem key={g.slug} value={g.title}>{g.title}</SelectItem>)}<SelectItem value="Пока не выбрал(а) — нужна консультация">Помогите выбрать</SelectItem></SelectContent></Select></div>
         <BookingFormatField id="widget-format" value={format} onChange={setFormat} />
+        <BookingCityField id="widget-city" value={city} onChange={setCity} />
         <Input required placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} aria-label="Имя" />
         <Input required type="tel" autoComplete="tel" maxLength={60} placeholder="Телефон" value={phone} onChange={(e) => setPhone(e.target.value)} aria-label="Телефон" />
         <BookingRepeat visible={registered} />
