@@ -30,7 +30,7 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Использование файлов cookie"
-      className="fixed inset-x-2 bottom-2 z-[55] rounded-2xl border border-border bg-background/95 p-3 shadow-lg sm:inset-x-0 sm:bottom-0 sm:rounded-none sm:p-4 backdrop-blur supports-[backdrop-filter]:bg-background/85 md:p-5"
+      className="fixed inset-x-2 bottom-2 z-[65] rounded-2xl border border-border bg-background/95 p-3 shadow-lg sm:inset-x-0 sm:bottom-0 sm:rounded-none sm:p-4 backdrop-blur supports-[backdrop-filter]:bg-background/85 md:p-5"
     >
       <div className="mx-auto flex max-w-5xl items-center gap-3 sm:gap-4 sm:items-center">
         <div className="flex items-start gap-3">
