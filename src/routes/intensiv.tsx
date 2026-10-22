@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ConsentFields } from "@/components/consent-fields";
 import { submitLandingLead } from "@/lib/landing-leads.functions";
-import { followupTicketPrice, intensiveOffer } from "@/data/intensiv";
+import { intensiveOffer } from "@/data/intensiv";
 
 const rubles = (value: number) => new Intl.NumberFormat("ru-RU").format(value);
 
@@ -36,7 +36,7 @@ const situations = ["развод", "абьюз", "самоценность", "�
 const steps = [
   { k: "A", t: "Точка А", d: "Клиенты приходят редко, продажа консультации даётся тяжело, ценность сложно объяснить." },
   { k: "B", t: "Интенсив", d: "Собираем путь клиента, план мягкого донесения ценности и программу на 2 часа. Знакомимся с коллегами." },
-  { k: "C", t: "Новый уровень", d: `Понятный путь от первого касания клиента и до покупки твоего продукта. Генерация заявок — на ${intensiveOffer.applicationGenerationEvent}-м мероприятии, через неделю.` },
+  { k: "C", t: "Новый уровень", d: "Понятный путь от первого касания клиента и до покупки твоего продукта." },
 ];
 
 const outcomes = [
@@ -182,7 +182,7 @@ function IntensivePage() {
       <section data-scene="1" className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="border border-primary p-8"><Users className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl font-bold text-foreground">Качественный нетворкинг</h3><p className="mt-3 leading-7 text-muted-foreground">3–5 минут на каждого. Многие выступят перед всей аудиторией — это ваш шанс, чтобы коллеги и будущие партнёры узнали вас.</p></div>
-          <div className="border border-primary p-8"><CalendarDays className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl font-bold">Два касания — два мероприятия</h3><p className="mt-3 leading-7 text-muted-foreground">На первой встрече собираем путь клиента и знакомимся с коллегами. Генерация заявок будет на втором мероприятии — практическом интенсиве через неделю. На первой встрече получение заявок не предполагается.</p></div>
+          <div className="border border-primary p-8"><CalendarDays className="size-8 text-primary" /><h3 className="mt-4 font-display text-3xl font-bold">Первая встреча</h3><p className="mt-3 leading-7 text-muted-foreground">Разбираем ваши ситуации, собираем путь клиента и план мягкого донесения ценности. Уходите с готовым планом, который можно применить уже на следующей неделе.</p></div>
         </div>
       </section>
 
@@ -218,16 +218,6 @@ function IntensivePage() {
         <ol className="mt-10 grid gap-4">
           {funnel.map((f, i) => <li key={f} className="flex items-start gap-5 border-l-2 border-primary bg-card p-5"><span className="font-display text-2xl text-primary">{i + 1}</span><span className="text-lg leading-7">{f}</span></li>)}
         </ol>
-      </section>
-
-      <section data-scene="3" className="mx-auto max-w-5xl px-5 py-16">
-        <p className="text-sm font-bold uppercase text-primary">Второе мероприятие · через {intensiveOffer.followupAfterDays} дней</p>
-        <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">Следующий интенсив — через неделю</h2>
-        <p className="mt-6 text-xl leading-8">На втором касании переходим к практике и генерации заявок. Стоимость участия — <strong>{rubles(followupTicketPrice(false))} ₽</strong>.</p>
-        <div className="mt-8 border-l-2 border-primary pl-6">
-          <h3 className="text-2xl font-bold leading-tight md:text-3xl">Приди с другом — получи билет в подарок</h3>
-          <p className="mt-4 text-lg leading-8">Возьми с собой на бесплатную встречу 27.10 друга — психолога по отношениям. Мы подарим тебе билет на следующий интенсив стоимостью {rubles(intensiveOffer.followupPriceRub)} ₽: для тебя участие в нём будет бесплатным.</p>
-        </div>
       </section>
 
       {/* Регистрация */}
