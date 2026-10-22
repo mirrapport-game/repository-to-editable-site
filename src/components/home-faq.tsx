@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { BookingFormatField, type BookingFormat } from "@/components/booking-format";
+import { BookingCityField } from "@/components/booking-city-field";
 import { games } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -46,6 +47,7 @@ export function QuestFinalCta() {
   const [phone, setPhone] = useState("");
   const [game, setGame] = useState(available[0]?.title ?? "");
   const [format, setFormat] = useState<BookingFormat>("Онлайн");
+  const [city, setCity] = useState("");
   const { busy, done, error, registered, send } = useGameBooking(phone);
   return (
     <section className="section bg-primary text-primary-foreground">
@@ -58,10 +60,11 @@ export function QuestFinalCta() {
           {done ? <div><p className="font-display text-3xl">Спасибо!</p><p className="mt-2 text-muted-foreground">Мы свяжемся с вами в ближайшее время.</p></div> :
           <form className="grid gap-3" onSubmit={async (e) => {
             e.preventDefault(); const marketing = wantsMarketing(e.currentTarget);
-            await send({ marketing, name, phone, game, format, website: "", formName: "Главная — «Готовы попробовать?»", page: window.location.pathname });
+            await send({ marketing, name, phone, game, format, city, website: "", formName: "Главная — «Готовы попробовать?»", page: window.location.pathname });
           }}>
             <div className="space-y-2"><Label htmlFor="final-game">Игра</Label><Select value={game} onValueChange={setGame}><SelectTrigger id="final-game" className="h-11"><SelectValue /></SelectTrigger><SelectContent>{available.map((g) => <SelectItem key={g.slug} value={g.title}>{g.title}</SelectItem>)}<SelectItem value="Пока не выбрал(а) — нужна консультация">Помогите выбрать</SelectItem></SelectContent></Select></div>
             <BookingFormatField id="final-format" value={format} onChange={setFormat} />
+            <BookingCityField id="final-city" value={city} onChange={setCity} />
             <Input required className="h-11" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} aria-label="Имя" />
             <Input required className="h-11" type="tel" autoComplete="tel" maxLength={60} placeholder="Телефон" value={phone} onChange={(e) => setPhone(e.target.value)} aria-label="Телефон" />
             <BookingRepeat visible={registered} />

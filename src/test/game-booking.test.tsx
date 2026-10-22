@@ -1,12 +1,12 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, expect, it, vi } from "vitest";
-import { BOOKING_FAILURE } from "@/lib/booking-phone";
+import { BOOKING_FAILURE, gameLeadSchema } from "@/lib/booking-phone";
 
 const submit = vi.hoisted(() => vi.fn());
 vi.mock("@tanstack/react-start", () => ({ useServerFn: () => submit }));
 vi.mock("@/lib/game-leads.functions", () => ({ submitGameLead: () => {} }));
 import { useGameBooking } from "@/hooks/use-game-booking";
-const input = { name: "Тест", phone: "8 (999) 123-45-67", game: "Раппорт", format: "Онлайн" as const, website: "" };
+const input = { name: "Тест", phone: "8 (999) 123-45-67", game: "Раппорт", format: "Онлайн" as const, city: "Санкт-Петербург", website: "" };
 
 beforeEach(() => { localStorage.clear(); submit.mockReset(); });
 it("recognizes a successful repeat in another phone format", async () => {
@@ -39,4 +39,17 @@ it("rejects invalid numbers before sending", async () => {
   await act(() => result.current.send({ ...input, phone: "123" }));
   expect(submit).not.toHaveBeenCalled();
   expect(result.current.done).toBe(false);
+});
+it("asks for a city before sending", async () => {
+  const { result } = renderHook(() => useGameBooking(input.phone));
+  await act(() => result.current.send({ ...input, city: "" }));
+  expect(submit).not.toHaveBeenCalled();
+  expect(result.current.error).toBe("Укажите город");
+});
+it("trims a city typed in by hand", () => {
+  const parsed = gameLeadSchema.safeParse({ ...input, city: "  Тюмень  " });
+  expect(parsed.success && parsed.data.city).toBe("Тюмень");
+});
+it("refuses a city longer than 80 characters", () => {
+  expect(gameLeadSchema.safeParse({ ...input, city: "А".repeat(81) }).success).toBe(false);
 });
