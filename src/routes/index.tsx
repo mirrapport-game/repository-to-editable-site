@@ -15,6 +15,7 @@ import { AudienceSegments } from "@/components/audience-segments";
 import { HeroCards } from "@/components/hero-cards";
 import { CaseTrainer } from "@/components/case-trainer";
 import { HeroRotator } from "@/components/hero-rotator";
+import { HeroAudienceRotator } from "@/components/hero-audience-rotator";
 import { BookingBand } from "@/components/booking-band";
 import { MarathonSchedule } from "@/components/marathon-schedule";
 import { VideoCarousel } from "@/components/video-carousel";
@@ -42,7 +43,7 @@ function Index() {
         <div className="grid w-full items-end gap-5 sm:gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="lg:self-start lg:pt-[6vh]">
             <HeroRotator />
-            <p className="mt-5 font-display text-2xl font-bold uppercase leading-tight text-background sm:mt-6 sm:text-3xl lg:text-4xl">для психологов по отношениям</p>
+            <HeroAudienceRotator />
             <p className="mt-1 text-sm leading-6 text-background/80 sm:text-base">которые хотят влюбить клиента в свой продукт</p>
             <p className="mt-4 max-w-xl text-base leading-7 text-background sm:mt-6 sm:text-lg sm:leading-8">«Раппóрт» — серия игр Артёма Ефимова. Вы проживаете жизненную ситуацию за персонажа, получаете обратную связь без осуждения и пробуете новые способы слышать друг друга.</p>
           </div>

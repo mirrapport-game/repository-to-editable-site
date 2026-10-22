@@ -1,6 +1,7 @@
 import { BeforeAfter, SubscribeBanner } from "@/components/before-after";
 import { LiveGamesSlider } from "@/components/live-games-slider";
 import { HostRotator } from "@/components/host-rotator";
+import { FACILITATOR_AUDIENCES, HeroAudienceRotator } from "@/components/hero-audience-rotator";
 import { seoMeta, canonical } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Box, FileText, Globe, Megaphone, MessageCircle, PlayCircle, Users } from "lucide-react";
@@ -58,7 +59,7 @@ export const Route = createFileRoute("/facilitators")({
 function FacilitatorsPage() {
   return <>
     <section className="facilitator-hero"><div className="section-inner grid min-h-[42rem] items-end gap-10 py-16 lg:grid-cols-[1.15fr_.85fr]">
-      <div><p className="eyebrow text-accent">Игропрактика «Раппóрт»</p><h1 className="mt-5 max-w-4xl font-display text-6xl leading-[.94] sm:text-7xl lg:text-[5.5rem]">Вести людей к важным <em className="text-accent">разговорам</em></h1><p className="mt-7 max-w-2xl text-lg leading-8 text-background/75">Освойте психологическую игру про отношения и получите готовую структуру для очных и онлайн-встреч — без необходимости придумывать упражнения с нуля.</p><Button asChild size="lg" className="mt-9"><a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Узнать условия <ArrowRight /></a></Button></div>
+      <div><p className="eyebrow text-accent">Игропрактика «Раппóрт»</p><h1 className="mt-5 max-w-4xl font-display text-6xl leading-[.94] sm:text-7xl lg:text-[5.5rem]">Вести людей к важным <em className="text-accent">разговорам</em></h1><HeroAudienceRotator items={FACILITATOR_AUDIENCES} className="mt-6 font-display text-2xl font-bold uppercase leading-tight text-accent sm:text-3xl lg:text-4xl"/><p className="mt-1 max-w-2xl text-sm leading-6 text-background/75 sm:text-base">которые хотят влюбить в свой продукт</p><p className="mt-7 max-w-2xl text-lg leading-8 text-background/75">Освойте психологическую игру про отношения и получите готовую структуру для очных и онлайн-встреч — без необходимости придумывать упражнения с нуля.</p><p className="mt-7 max-w-2xl rounded-xl border border-accent/40 bg-accent/10 p-5 text-base leading-7 text-background">Игра — это первый шаг. Участник сначала проживает ситуацию в игре, привыкает к вам и доверяет вам — а потом покупает ваш основной продукт.</p><Button asChild size="lg" className="mt-9"><a href={TELEGRAM_URL} target="_blank" rel="noreferrer">Узнать условия <ArrowRight /></a></Button></div>
       <div className="border-l border-background/20 pl-7"><p className="font-display text-3xl italic text-background/90">Ведущий не даёт готовых ответов. Он создаёт пространство, где участник слышит себя.</p></div>
     </div></section>
 
