@@ -64,8 +64,13 @@ export async function parseSchedule(text: string, offset: string): Promise<Parse
   return (parsed.events ?? []).filter((e) => e.starts_at && !Number.isNaN(Date.parse(e.starts_at))).slice(0, 30).map((e) => ({ starts_at: new Date(e.starts_at).toISOString(), game: String(e.game ?? "").slice(0, 120), place: String(e.place ?? "").slice(0, 160) }));
 }
 
+/** Host chats that also receive leads from their own landing page. */
+export const LANDING_HOST_CHATS: Record<string, number> = { "volgograd-marina": 811308448 };
+
 /** Sends a site lead to every owner chat subscribed via the bot. Never throws. */
-export async function notifyLead(text: string) {
+export async function notifyLead(text: string, landing?: string) {
+  const hostChat = landing ? LANDING_HOST_CHATS[landing] : undefined;
+  if (hostChat) await tgSend(hostChat, text).catch((e) => console.error("Host lead notification failed:", e));
   try {
     const db = await adminDb();
     const { data } = await db.from("lead_notify_recipients").select("chat_id");

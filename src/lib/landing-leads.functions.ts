@@ -34,7 +34,7 @@ export const submitLandingLead = createServerFn({ method: "POST" })
     });
     if (error) { console.error("Landing lead failed:", error.message); throw new Error("Не удалось отправить заявку"); }
     const { notifyLead } = await import("./telegram-schedule.server");
-    await notifyLead(`Заявка с посадочной «${data.landing}»\nВедущая: ${data.host}\nИмя: ${data.name}\nКонтакт: ${data.contact}${utmLine ? `\nUTM: ${utmLine}` : ""}`);
+    await notifyLead(`Заявка с посадочной «${data.landing}»\nВедущая: ${data.host}\nИмя: ${data.name}\nКонтакт: ${data.contact}${utmLine ? `\nUTM: ${utmLine}` : ""}`, data.landing);
     return { ok: true };
   });
 
