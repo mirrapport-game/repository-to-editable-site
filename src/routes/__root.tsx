@@ -18,7 +18,6 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { BackNavigation } from "@/components/back-navigation";
 import { QuestBar, QuestHide, StoryNext } from "@/components/story-next";
 import { QuestProvider } from "@/hooks/use-quest";
-const ExitOffer = lazy(() => import("@/components/exit-offer").then((m) => ({ default: m.ExitOffer })));
 const CookieConsent = lazy(() => import("@/components/cookie-consent").then((m) => ({ default: m.CookieConsent })));
 import { BookingSection } from "@/components/booking-section";
 import { SiteBookingBand } from "@/components/booking-band";
@@ -151,7 +150,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}><QuestProvider>
-      <div className="min-h-screen"><SiteHeader /><QuestBar /><QuestHide><BackNavigation /></QuestHide><main><Outlet /></main><StoryNext /><QuestHide><SiteBookingBand /><BookingSection /><SiteFooter /></QuestHide></div><Suspense fallback={null}><CookieConsent /></Suspense><Suspense fallback={null}><SitePlayer /><TelegramMiniApp /></Suspense><QuestHide><Suspense fallback={null}><ExitOffer /></Suspense></QuestHide><Toaster richColors position="top-center" />
+      <div className="min-h-screen"><SiteHeader /><QuestBar /><QuestHide><BackNavigation /></QuestHide><main><Outlet /></main><StoryNext /><QuestHide><SiteBookingBand /><BookingSection /><SiteFooter /></QuestHide></div><Suspense fallback={null}><CookieConsent /></Suspense><Suspense fallback={null}><SitePlayer /><TelegramMiniApp /></Suspense><Toaster richColors position="top-center" />
     </QuestProvider></QueryClientProvider>
   );
 }

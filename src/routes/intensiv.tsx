@@ -17,8 +17,8 @@ import { intensiveOffer } from "@/data/intensiv";
 
 const rubles = (value: number) => new Intl.NumberFormat("ru-RU").format(value);
 
-const TITLE = "«Новый уровень» — интенсив для психологов по отношениям в Санкт-Петербурге, 27.10";
-const DESC = "Бесплатный интенсив 27.10 в Санкт-Петербурге: путь от первого касания клиента и до покупки твоего продукта и качественный нетворкинг для психологов по отношениям. Ведущие — Ольга Счастливая и Артём Ефимов.";
+const TITLE = "«Новый уровень» — интенсив для психологов по отношениям в Санкт-Петербурге, 05.11";
+const DESC = "Бесплатный интенсив 05.11 в Санкт-Петербурге: путь от первого касания клиента и до покупки твоего продукта и качественный нетворкинг для психологов по отношениям. Ведущие — Ольга Счастливая и Артём Ефимов.";
 
 export const Route = createFileRoute("/intensiv")({
   head: () => ({
@@ -123,7 +123,7 @@ function IntensivePage() {
           <nav className="hidden gap-6 text-sm uppercase tracking-wider text-muted-foreground md:flex">
             <a href="#path" className="hover:text-primary">Путь A→C</a>
             <a href="#hosts" className="hover:text-primary">Ведущие</a>
-            <a href="#register" className="hover:text-primary">27.10 · СПб</a>
+            <a href="#register" className="hover:text-primary">05.11 · СПб</a>
           </nav>
           <Button asChild size="sm" className="rounded-none"><a href="#register">Регистрация</a></Button>
         </div>
@@ -132,7 +132,7 @@ function IntensivePage() {
       <section id="top" data-scene="0" className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-transparent to-background/60" />
         <div className="mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center">
-          <p className="eyebrow text-primary">27.10 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
+          <p className="eyebrow text-primary">05.11 · 12:00–16:00 · Санкт-Петербург · участие бесплатно</p>
           <h1 className="mt-6 font-display text-5xl uppercase leading-none text-gold-gradient md:text-8xl">«Новый уровень»</h1>
           <p className="mt-6 max-w-4xl text-3xl font-bold leading-tight text-foreground md:text-5xl">путь от первого касания клиента<br className="hidden md:block" /> и до покупки твоего продукта</p>
           <div className="my-6 h-px w-40 bg-primary" />
@@ -209,7 +209,7 @@ function IntensivePage() {
       {/* Регистрация */}
       <section id="register" data-scene="3" className="mx-auto grid max-w-5xl scroll-mt-20 gap-10 px-5 py-20 md:grid-cols-2 md:items-center">
         <div>
-          <p className="font-display text-7xl text-gold-gradient">27.10</p>
+          <p className="font-display text-7xl text-gold-gradient">05.11</p>
           <p className="mt-2 text-2xl">12:00–16:00</p>
           <p className="mt-2 text-xl uppercase tracking-wider">Санкт-Петербург</p>
           <p className="mt-6 text-xl uppercase tracking-wider text-primary">Участие бесплатно</p>
@@ -221,7 +221,7 @@ function IntensivePage() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 pb-24 pt-10 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl uppercase text-gold-gradient">«Новый уровень»</p>
-            <p className="mt-1 text-sm text-muted-foreground">Интенсив для психологов по отношениям · 27.10, 12:00–16:00 · Санкт-Петербург</p>
+            <p className="mt-1 text-sm text-muted-foreground">Интенсив для психологов по отношениям · 05.11, 12:00–16:00 · Санкт-Петербург</p>
           </div>
           <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground md:items-end">
             <p>Ведущие: Ольга Счастливая и Артём Ефимов</p>
