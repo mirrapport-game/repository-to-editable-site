@@ -23,7 +23,7 @@ export function webhookSecret() {
 export const PLAY_WEBAPP_URL = "https://rapportgame.ru/play";
 
 export async function tgSendPlay(chatId: number) {
-  await tgSend(chatId, "Раппóрт прямо в Telegram — без регистрации. Мини-игра про отношения: играйте с друзьями прямо здесь. А в клубе знакомств приглашения и совпадения будут приходить вам сообщениями. 6 этапов от знакомства до близости. Первая игра бесплатно, каждая следующая — 500 ₽.", { inline_keyboard: [[{ text: "Играть в Раппóрт", web_app: { url: PLAY_WEBAPP_URL } }], [{ text: "Клуб знакомств", web_app: { url: "https://rapportgame.ru/community" } }]] });
+  await tgSend(chatId, "Здравствуйте! Это бот «Раппóрт». Записаться на игру можно на сайте rapportgame.ru — мы свяжемся с вами.");
 }
 
 export const CHANNEL_CHAT = "@rapport_game";
