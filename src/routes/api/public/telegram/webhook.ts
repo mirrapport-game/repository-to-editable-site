@@ -41,7 +41,7 @@ export const Route = createFileRoute("/api/public/telegram/webhook")({
 
         const raw: string = msg.text ?? "";
         const sender = String(msg.from?.username ?? "").toLowerCase();
-        if (LEAD_OWNERS.includes(sender) && /^\/(start leads|leads)\b/i.test(raw)) {
+        if (LEAD_OWNERS.includes(sender) && /^\/(start|leads)\b/i.test(raw)) {
           await db.from("lead_notify_recipients").upsert({ chat_id: msg.chat.id, username: sender });
           await tgSend(msg.chat.id, "Готово! Сюда будут приходить заявки с сайта «Раппóрт».");
           return Response.json({ ok: true });
