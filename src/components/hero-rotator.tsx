@@ -22,7 +22,7 @@ export function HeroRotator() {
     sync(); motion.addEventListener("change", sync);
     return () => { if (timer) clearInterval(timer); motion.removeEventListener("change", sync); };
   }, []);
-  const item = HOME_HEADLINES[i % HOME_HEADLINES.length];
+  const item = HOME_HEADLINES[i % HOME_HEADLINES.length]!;
   return <h1 className="font-display leading-[0.95]">
     <span className="hidden text-5xl font-medium sm:block sm:text-7xl lg:text-8xl">Раппóрт</span>
     <span aria-hidden="true" className="block min-h-[1.2em] whitespace-nowrap text-3xl text-accent sm:mt-2 sm:text-4xl lg:text-5xl"><em key={`a${i}`} className="inline-block animate-in fade-in duration-500 motion-reduce:animate-none">{item.audience}</em></span>
