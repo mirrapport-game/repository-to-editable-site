@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { Pause, Play, SkipBack, SkipForward } from "lucide-react";
-import hereAndNow from "@/assets/here-and-now.mp3";
-import segodnya from "@/assets/segodnya-sluchilos-vazhnoe.mp3";
-import possoritsya from "@/assets/hochesh-possoritsya.mp3";
+import hereAndNow from "@/assets/here-and-now.mp3?url";
+import segodnya from "@/assets/segodnya-sluchilos-vazhnoe.mp3?url";
+import possoritsya from "@/assets/hochesh-possoritsya.mp3?url";
 
 const TRACKS = [
   { title: "Here and Now", url: hereAndNow },

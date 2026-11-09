@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { openBookingWidget } from "@/components/booking-format";
 import { GameOrderForm } from "@/components/game-order-form";
 import { authorPortraitImage } from "@/data/site";
-import presentation from "@/assets/rapport-business-presentation.pdf";
+import presentation from "@/assets/rapport-business-presentation.pdf?url";
 import { CountUp, DemoCallInvite, FlipCards, Reveal, TeamCheck } from "@/components/business-interactive";
 import businessCutout from "@/assets/rapport-business-cutout.webp";
 

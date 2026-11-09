@@ -15,7 +15,6 @@ import { AudienceSegments } from "@/components/audience-segments";
 import { HeroCards } from "@/components/hero-cards";
 import { CaseTrainer } from "@/components/case-trainer";
 import { HeroRotator } from "@/components/hero-rotator";
-import { HeroAudienceRotator } from "@/components/hero-audience-rotator";
 import { BookingBand } from "@/components/booking-band";
 import { MarathonSchedule } from "@/components/marathon-schedule";
 import { VideoCarousel } from "@/components/video-carousel";
@@ -43,8 +42,10 @@ function Index() {
         <div className="grid w-full items-end gap-5 sm:gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="lg:self-start lg:pt-[6vh]">
             <HeroRotator />
-            <HeroAudienceRotator />
-            <p className="mt-1 text-sm leading-6 text-background/80 sm:text-base">которые хотят влюбить клиента в свой продукт</p>
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:max-w-md">
+              <Button asChild size="lg" className="h-14 text-lg font-bold uppercase tracking-widest sm:h-16 sm:text-xl"><Link to="/" reloadDocument>Играть</Link></Button>
+              <Button asChild size="lg" variant="outline" className="h-14 border-2 border-accent bg-transparent text-lg font-bold uppercase tracking-widest text-accent hover:bg-accent hover:text-accent-foreground sm:h-16 sm:text-xl"><Link to="/facilitators">Вести</Link></Button>
+            </div>
             <p className="mt-4 max-w-xl text-base leading-7 text-background sm:mt-6 sm:text-lg sm:leading-8">«Раппóрт» — серия игр Артёма Ефимова. Вы проживаете жизненную ситуацию за персонажа, получаете обратную связь без осуждения и пробуете новые способы слышать друг друга.</p>
           </div>
           <HeroCards />
