@@ -6,7 +6,7 @@ import { GameOrderForm } from "@/components/game-order-form";
 import { Reveal } from "@/components/business-interactive";
 import { CountUp, PageMotion } from "@/components/motion";
 import { seoHead } from "@/lib/seo";
-import deck from "@/assets/rapport-investor-deck.pdf";
+import deck from "@/assets/rapport-investor-deck.pdf?url";
 
 // Питч для инвесторов — все цифры и условия из брифа автора (Артём Ефимов). Страница не индексируется.
 const TITLE = "Раппорт Групп — инвестиции в рынок психологических игр";
