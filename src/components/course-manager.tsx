@@ -4,6 +4,8 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { safeFileName, submissionStatusLabels, type CourseInvite, type CourseLesson, type CourseSubmission, type SubmissionStatus, COURSES, courseLabel } from "@/lib/course";
 import { CourseAuthPanel } from "@/components/course-auth-panel";
+import { adminResetPhonePassword } from "@/lib/phone-auth.functions";
+import { PHONE_PASSWORD_MIN } from "@/lib/phone";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -147,6 +149,7 @@ export function CourseManager() {
           <div className="flex gap-2">{!i.used_by && <Button size="sm" variant="outline" onClick={() => copyInvite(i.code)}><Copy />Ссылка</Button>}<Button size="icon" variant="outline" onClick={() => removeInvite(i)} aria-label="Удалить приглашение"><Trash2 /></Button></div>
         </div>)}</div>
         <StudentHostLinks students={students} onDone={load} />
+        <PhonePasswordReset />
       </TabsContent>
     </Tabs>
 
@@ -199,4 +202,26 @@ function StudentHostLinks({ students, onDone }: { students: Student[]; onDone: (
   return <div className="mt-10"><h3 className="font-display text-2xl">Страницы ведущих</h3><p className="mt-2 text-sm text-muted-foreground">Выберите, чья страница принадлежит ведущему — тогда он сможет сам добавлять отзывы из кабинета.</p>
     <div className="mt-4 divide-y divide-border border-y border-border">{students.map((s) => <div key={s.user_id} className="flex flex-wrap items-center justify-between gap-3 py-3"><span>{s.email ?? "Ведущий"}</span>
       <select className="rounded-md border border-input bg-background px-3 py-2 text-sm" value={s.facilitator_slug ?? "none"} onChange={(e) => link(s.user_id, e.target.value)}><option value="none">— не выбрано —</option>{hosts.map((h) => <option key={h.slug} value={h.slug}>{h.name} · {h.city}</option>)}</select></div>)}</div></div>;
+}
+
+// Hosts who forgot the phone sign-in password get a new one from the admin.
+function PhonePasswordReset() {
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  async function submit(e: FormEvent) {
+    e.preventDefault(); setBusy(true);
+    try { await adminResetPhonePassword({ data: { phone, password } }); toast.success("Пароль обновлён — передайте его ведущему"); setPassword(""); }
+    catch (err) { toast.error(err instanceof Error ? err.message : "Не удалось сменить пароль"); }
+    finally { setBusy(false); }
+  }
+  return <form onSubmit={submit} className="mt-10 border border-border bg-card p-5">
+    <p className="font-display text-2xl">Новый пароль ведущему</p>
+    <p className="mt-1 text-sm text-muted-foreground">Если ведущий забыл пароль для входа по телефону.</p>
+    <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+      <div className="space-y-2"><Label htmlFor="rp-phone">Телефон ведущего</Label><Input id="rp-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required maxLength={20} placeholder="+7 900 123-45-67" /></div>
+      <div className="space-y-2"><Label htmlFor="rp-pass">Новый пароль</Label><Input id="rp-pass" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={PHONE_PASSWORD_MIN} maxLength={72} autoComplete="off" /></div>
+      <Button type="submit" disabled={busy}>Сменить</Button>
+    </div>
+  </form>;
 }
