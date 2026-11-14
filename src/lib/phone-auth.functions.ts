@@ -8,6 +8,8 @@ import { normalizePhone, PHONE_LOCK_MINUTES, PHONE_MAX_FAILED_ATTEMPTS, PHONE_PA
 // the password is checked by the auth service itself, and the browser only receives a session.
 const WRONG = "Неверный номер телефона или пароль";
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+const WEAK = "Этот пароль слишком простой или встречался в утечках — придумайте другой";
+const isWeak = (m?: string) => /weak|easy to guess|pwned|leaked/i.test(m ?? "");
 
 function phoneOrThrow(v: unknown) {
   const p = normalizePhone(String(v ?? ""));
@@ -73,7 +75,7 @@ export const phoneRegister = createServerFn({ method: "POST" })
     if (taken) throw new Error("Этот номер уже зарегистрирован — войдите с паролем");
     const email = `phone${data.phone}@phone.rapportgame.ru`;
     const created = await supabaseAdmin.auth.admin.createUser({ email, password: data.password, email_confirm: true, user_metadata: { full_name: data.name, phone: data.phone } });
-    if (created.error || !created.data.user) { console.error("phone register", created.error?.message); throw new Error("Не удалось создать кабинет, попробуйте ещё раз"); }
+    if (created.error || !created.data.user) { if (isWeak(created.error?.message)) throw new Error(WEAK); console.error("phone register", created.error?.message); throw new Error("Не удалось создать кабинет, попробуйте ещё раз"); }
     const { error: mapErr } = await supabaseAdmin.from("phone_logins").insert({ phone: data.phone, user_id: created.data.user.id });
     if (mapErr) { await supabaseAdmin.auth.admin.deleteUser(created.data.user.id); throw new Error("Этот номер уже зарегистрирован — войдите с паролем"); }
     try {
@@ -94,7 +96,7 @@ export const linkPhoneLogin = createServerFn({ method: "POST" })
     const { data: other } = await supabaseAdmin.from("phone_logins").select("user_id").eq("phone", data.phone).maybeSingle();
     if (other && other.user_id !== context.userId) throw new Error("Этот номер уже привязан к другому кабинету");
     const { error } = await supabaseAdmin.auth.admin.updateUserById(context.userId, { password: data.password });
-    if (error) throw new Error("Не удалось сохранить пароль");
+    if (error) throw new Error(isWeak(error.message) ? WEAK : "Не удалось сохранить пароль");
     await supabaseAdmin.from("phone_logins").delete().eq("user_id", context.userId);
     const { error: e2 } = await supabaseAdmin.from("phone_logins").insert({ phone: data.phone, user_id: context.userId });
     if (e2) throw new Error("Не удалось привязать номер");
@@ -112,7 +114,7 @@ export const adminResetPhonePassword = createServerFn({ method: "POST" })
     const { data: row } = await supabaseAdmin.from("phone_logins").select("user_id").eq("phone", data.phone).maybeSingle();
     if (!row) throw new Error("Ведущий с таким номером не найден");
     const { error } = await supabaseAdmin.auth.admin.updateUserById(row.user_id, { password: data.password });
-    if (error) throw new Error("Не удалось сменить пароль");
+    if (error) throw new Error(isWeak(error.message) ? WEAK : "Не удалось сменить пароль");
     await supabaseAdmin.from("phone_logins").update({ failed_attempts: 0, locked_until: null, updated_at: new Date().toISOString() }).eq("phone", data.phone);
     return { ok: true };
   });
