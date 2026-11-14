@@ -40,3 +40,4 @@
 - Admin code entry (/vhod) checks the code against the server-only ADMIN_ENTRY_CODE secret and signs into the existing admin account, so the code never reaches the browser.
 - Public booking forms share one city field whose options are derived from the city catalogue (the online entry excluded) plus a free-text "other city" choice; the value is validated server-side and stored in crm_contacts.city, so every lead uses the same city vocabulary.
 - Import non-image binary assets (mp3, pdf) with the ?url suffix; the dev server otherwise tries to parse them as UTF-8 modules and breaks the preview.
+- Public pages read host reviews via facilitator_public_reviews and channel posts via getChannelPosts (hidden posts filtered server-side); the underlying tables stay owner/admin-only so private columns never reach visitors.
