@@ -1122,6 +1122,33 @@ export type Database = {
           },
         ]
       }
+      phone_logins: {
+        Row: {
+          created_at: string
+          failed_attempts: number
+          locked_until: string | null
+          phone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          failed_attempts?: number
+          locked_until?: string | null
+          phone: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          failed_attempts?: number
+          locked_until?: string | null
+          phone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       quest_progress: {
         Row: {
           levels: string[]

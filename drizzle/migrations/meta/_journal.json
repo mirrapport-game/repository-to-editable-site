@@ -50,6 +50,13 @@
       "when": 1794654312287,
       "tag": "0006_tighten_public_read_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794654467337,
+      "tag": "0007_phone_logins",
+      "breakpoints": true
     }
   ]
 }
