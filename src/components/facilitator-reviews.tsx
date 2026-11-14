@@ -49,14 +49,15 @@ export function FacilitatorSection({ slug, name }: { slug: string; name: string 
   const [reviewedIds, setReviewedIds] = useState<string[]>([]);
 
   async function load() {
-    const { data } = await supabase.from("facilitator_reviews").select("id,author_name,rating,body,created_at,order_id").eq("facilitator_slug", slug).order("created_at", { ascending: false });
+    const { data } = await supabase.rpc("facilitator_public_reviews", { _slug: slug });
     setReviews(data ?? []);
     const { data: u } = await supabase.auth.getUser();
     setUserId(u.user?.id ?? null);
     if (u.user) {
       const { data: o } = await supabase.from("game_orders").select("id,game,status,created_at,payment_status,amount_rub").eq("facilitator_slug", slug).eq("user_id", u.user.id).order("created_at", { ascending: false });
       setOrders(o ?? []);
-      setReviewedIds((data ?? []).map((r) => r.order_id));
+      const { data: mine } = await supabase.from("facilitator_reviews").select("order_id").eq("facilitator_slug", slug).eq("user_id", u.user.id);
+      setReviewedIds((mine ?? []).map((r) => r.order_id));
     }
   }
   useEffect(() => { void load(); }, [slug]);

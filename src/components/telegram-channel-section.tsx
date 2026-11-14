@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Megaphone, Send } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { getChannelPosts, type ChannelPost } from "@/lib/telegram-feed.functions";
 import { Button } from "@/components/ui/button";
 import { TELEGRAM_CHANNEL_URL } from "@/data/site";
 
 export function TelegramChannelSection() {
-  const [posts, setPosts] = useState<{ message_id: number; text: string; posted_at: string }[]>([]);
-  useEffect(() => { void supabase.from("channel_posts").select("message_id,text,posted_at").order("posted_at", { ascending: false }).limit(3).then(({ data }) => setPosts(data ?? [])); }, []);
+  const [posts, setPosts] = useState<ChannelPost[]>([]);
+  useEffect(() => { void getChannelPosts().then((p) => setPosts(p.slice(0, 3))).catch(() => setPosts([])); }, []);
   return (
     <section className="section bg-foreground text-background">
       <div className="section-inner grid items-center gap-10 lg:grid-cols-[auto_1fr_auto]">
@@ -30,8 +30,8 @@ export function TelegramChannelSection() {
         </Button>
       </div>
       {posts.length > 0 && <div className="section-inner mt-12 grid gap-px bg-background/15 md:grid-cols-3">
-        {posts.map((p) => <a key={p.message_id} href={`${TELEGRAM_CHANNEL_URL}/${p.message_id}`} target="_blank" rel="noreferrer" className="bg-foreground p-6 transition-colors hover:bg-background/5">
-          <p className="eyebrow text-accent">{new Date(p.posted_at).toLocaleDateString("ru-RU", { day: "numeric", month: "long" })}</p>
+        {posts.map((p) => <a key={p.id} href={p.url} target="_blank" rel="noreferrer" className="bg-foreground p-6 transition-colors hover:bg-background/5">
+          <p className="eyebrow text-accent">{new Date(p.date).toLocaleDateString("ru-RU", { day: "numeric", month: "long" })}</p>
           <p className="mt-3 line-clamp-6 whitespace-pre-line text-sm leading-6 text-background/85">{p.text}</p>
         </a>)}
       </div>}
