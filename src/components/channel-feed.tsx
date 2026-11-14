@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { getChannelPosts, type ChannelPost } from "@/lib/telegram-feed.functions";
 
 // Latest posts from the Telegram channel; reloaded on visit and every 10 minutes while the page stays open.
-// Admins can hide a post from the site (blog_hidden_posts); the Telegram post itself stays.
+// Admins can hide a post from the site (blog_hidden_posts, filtered on the server); the Telegram post itself stays.
 export function ChannelFeed({ bare = false }: { bare?: boolean }) {
   const [posts, setPosts] = useState<ChannelPost[] | null>(null);
   const [hidden, setHidden] = useState<Set<string>>(new Set());
@@ -15,7 +15,6 @@ export function ChannelFeed({ bare = false }: { bare?: boolean }) {
   useEffect(() => {
     const load = () => getChannelPosts().then(setPosts).catch(() => setPosts((p) => p ?? []));
     load();
-    void supabase.from("blog_hidden_posts").select("post_id").then(({ data }) => setHidden(new Set((data ?? []).map((r) => r.post_id))));
     void supabase.auth.getUser().then(async ({ data }) => {
       if (!data.user) return;
       const { data: ok } = await supabase.rpc("has_role", { _user_id: data.user.id, _role: "admin" });
