@@ -75,7 +75,7 @@ export const phoneRegister = createServerFn({ method: "POST" })
     if (taken) throw new Error("Этот номер уже зарегистрирован — войдите с паролем");
     const email = `phone${data.phone}@phone.rapportgame.ru`;
     const created = await supabaseAdmin.auth.admin.createUser({ email, password: data.password, email_confirm: true, user_metadata: { full_name: data.name, phone: data.phone } });
-    if (created.error || !created.data.user) { if (isWeak(created.error?.message)) throw new Error(WEAK); console.error("phone register", created.error?.message); throw new Error("Не удалось создать кабинет, попробуйте ещё раз"); }
+    if (created.error || !created.data.user) { if (isWeak(created.error?.message)) throw new Error(WEAK); throw new Error("Не удалось создать кабинет, попробуйте ещё раз"); }
     const { error: mapErr } = await supabaseAdmin.from("phone_logins").insert({ phone: data.phone, user_id: created.data.user.id });
     if (mapErr) { await supabaseAdmin.auth.admin.deleteUser(created.data.user.id); throw new Error("Этот номер уже зарегистрирован — войдите с паролем"); }
     try {

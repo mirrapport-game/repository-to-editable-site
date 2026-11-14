@@ -41,3 +41,4 @@
 - Public booking forms share one city field whose options are derived from the city catalogue (the online entry excluded) plus a free-text "other city" choice; the value is validated server-side and stored in crm_contacts.city, so every lead uses the same city vocabulary.
 - Import non-image binary assets (mp3, pdf) with the ?url suffix; the dev server otherwise tries to parse them as UTF-8 modules and breaks the preview.
 - Public pages read host reviews via facilitator_public_reviews and channel posts via getChannelPosts (hidden posts filtered server-side); the underlying tables stay owner/admin-only so private columns never reach visitors.
+- Host cabinet sign-in: phone + password maps the phone to an account in phone_logins and the password is checked by the auth service on the server (with lockout); email + password uses standard auth; registration on both requires an invite code.

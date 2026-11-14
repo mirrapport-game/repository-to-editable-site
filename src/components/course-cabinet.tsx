@@ -72,7 +72,7 @@ export function CourseCabinet() {
   }
 
   if (loading) return <div className="py-24 text-center text-muted-foreground">Загрузка…</div>;
-  if (!userId) return <CourseAuthPanel phone title="Вход в кабинет ведущего" note="Войдите по номеру телефона или через Telegram. Новые ведущие регистрируются по коду приглашения." returnPath="/course" />;
+  if (!userId) return <CourseAuthPanel phone title="Вход в кабинет ведущего" note="Войдите по телефону, почте или через Telegram. Новые ведущие регистрируются по коду приглашения." returnPath="/course" />;
   if (!isStudent) return <div className="mx-auto max-w-md py-12"><form onSubmit={redeem} className="border border-border bg-card p-7">
     <h2 className="font-display text-4xl">Код приглашения</h2>
     <p className="mt-3 text-sm leading-6 text-muted-foreground">Курс доступен по приглашению. Введите код, который вы получили от Артёма.</p>
