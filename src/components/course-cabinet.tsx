@@ -1,6 +1,7 @@
 import { HostOwnReviews } from "@/components/host-reviews";
 import { HostChallenge } from "@/components/host-challenge";
 import { HostWorkspace } from "@/components/host-workspace";
+import { PhoneLinkCard } from "@/components/phone-link-card";
 import { useEffect, useState, type FormEvent } from "react";
 import { CheckCircle2, Clock3, Lock, LogOut, Paperclip, PlayCircle, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
@@ -71,7 +72,7 @@ export function CourseCabinet() {
   }
 
   if (loading) return <div className="py-24 text-center text-muted-foreground">Загрузка…</div>;
-  if (!userId) return <CourseAuthPanel title="Вход в кабинет ведущего" note="Войдите или зарегистрируйтесь — доступ к урокам откроется по вашему коду приглашения." returnPath="/course" />;
+  if (!userId) return <CourseAuthPanel phone title="Вход в кабинет ведущего" note="Войдите по номеру телефона или через Telegram. Новые ведущие регистрируются по коду приглашения." returnPath="/course" />;
   if (!isStudent) return <div className="mx-auto max-w-md py-12"><form onSubmit={redeem} className="border border-border bg-card p-7">
     <h2 className="font-display text-4xl">Код приглашения</h2>
     <p className="mt-3 text-sm leading-6 text-muted-foreground">Курс доступен по приглашению. Введите код, который вы получили от Артёма.</p>
@@ -92,6 +93,7 @@ export function CourseCabinet() {
         <div className="mt-3 h-1.5 w-64 max-w-full bg-border"><div className="h-full bg-primary transition-all" style={{ width: `${items.length ? (approved / items.length) * 100 : 0}%` }} /></div></div>
       <Button size="icon" variant="outline" onClick={() => supabase.auth.signOut()} aria-label="Выйти"><LogOut /></Button>
     </div>
+    <PhoneLinkCard />
     <HostWorkspace />
     <HostChallenge />
     <HostOwnReviews />
