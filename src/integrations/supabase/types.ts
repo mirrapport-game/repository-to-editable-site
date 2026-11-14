@@ -1324,6 +1324,16 @@ export type Database = {
         Args: { _contact: string; _event_id: string; _name: string }
         Returns: string
       }
+      facilitator_public_reviews: {
+        Args: { _slug: string }
+        Returns: {
+          author_name: string
+          body: string
+          created_at: string
+          id: string
+          rating: number
+        }[]
+      }
       focus_group_feed: {
         Args: never
         Returns: {
